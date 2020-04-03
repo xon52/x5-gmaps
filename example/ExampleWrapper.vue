@@ -1,0 +1,57 @@
+<template>
+  <div class="wrapper">
+    <h2 v-if="title" class="title">{{ title }}</h2>
+    <div class="description">
+      <slot name="description"></slot>
+    </div>
+    <div class="side">
+      <slot name="map"></slot>
+    </div>
+    <div class="side">
+      <div class="code">
+        <h4>Code:</h4>
+        <slot name="code"></slot>
+      </div>
+    </div>
+    <slot></slot>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ExampleWrapper',
+  props: {
+    title: { type: String, default: null }
+  }
+}
+</script>
+
+<style scoped>
+.wrapper {
+  padding: 20px 0;
+  width: auto;
+}
+.title {
+  text-align: center;
+  margin: 0;
+}
+.description {
+  text-align: center;
+}
+.side {
+  width: 50%;
+  height: 300px;
+  display: inline-block;
+  max-height: 100%;
+  overflow: auto;
+  background: #eee;
+}
+.code {
+  padding: 0 20px;
+}
+@media screen and (max-width: 600px) {
+  .side {
+    width: 100%;
+  }
+}
+</style>
