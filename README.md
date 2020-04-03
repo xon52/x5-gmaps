@@ -1,6 +1,5 @@
-# x5 GMaps ([Live Demo](https://codesandbox.io/s/x5-gmaps-example-gpids?hidenavigation=1&view=preview))
+# x5-gmaps ([Live Demo](https://codesandbox.io/s/x5-gmaps-example-gpids?hidenavigation=1&view=preview))
 
-![GitHub file size in bytes](https://img.shields.io/github/size/xon52/x5-gmaps/dist/index.js)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/x5-gmaps)
 
 This is a lightweight Google Maps plugin for Vue.
@@ -122,7 +121,7 @@ InfoWindows are placed with Maps can take a few [options](https://developers.goo
 
 They are used to put HTML in and have a close/dismiss button built-in.
 
-This component only support a `@closed` event *(for when someone closes the window)*
+This component only supports a `@closed` event *(for when someone closes the window)*
 
 ```html
 <template>
