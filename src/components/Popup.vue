@@ -21,6 +21,11 @@ export default {
     position: { type: Object, required: true }
   },
   data: () => ({ popup: null }),
+  watch: {
+    position(pos) {
+      this.popup.setPosition(pos)
+    }
+  },
   mounted() {
     const Popup = createPopupClass()
     this.$GMaps()

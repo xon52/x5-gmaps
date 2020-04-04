@@ -28,6 +28,10 @@ export default () => {
     this.content.style.left = divPosition.x + 'px'
     this.content.style.top = divPosition.y + 'px'
   }
+  Popup.prototype.setPosition = function(position) {
+    this.position = new window.google.maps.LatLng(position.lat, position.lng)
+    this.draw()
+  }
 
   return Popup
 }
