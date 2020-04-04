@@ -5,6 +5,10 @@
 </template>
 
 <script>
+const defaultOptions = {
+
+}
+
 export default {
   name: 'gmapsInfoWindow',
   inject: ['getMap', 'handleError'],
@@ -13,6 +17,14 @@ export default {
   methods: {
     open() {
       this.infoW.open(this.getMap())
+    }
+  },
+  watch: {
+    options: {
+      deep: true,
+      handler() {
+        this.marker.setOptions(this.options)
+      }
     }
   },
   mounted() {
