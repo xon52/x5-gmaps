@@ -8,8 +8,10 @@ export default {
     if (!this.options.position) return this.handleError('Marker options require a position property.')
     this.$GMaps()
       .then(GMaps => (this.marker = new GMaps.Marker({ map: this.getMap(), ...this.options })))
-      .then(() => this.marker.addListener('click', e => this.$emit('click', e)))
       .then(() => this.marker.addListener('position_changed', () => this.$emit('positionChanged', this.marker.getPosition())))
+      .then(() => this.marker.addListener('click', e => this.$emit('click', e)))
+      .then(() => this.marker.addListener('dblclick', e => this.$emit('doubleClick', e)))
+      .then(() => this.marker.addListener('rightclick', e => this.$emit('rightClick', e)))
       .catch(e => this.handleError(e))
   },
   watch: {
