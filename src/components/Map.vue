@@ -9,6 +9,11 @@
 </template>
 
 <script>
+const defaultOptions = {
+  center: { lat: -27.5, lng: 153 },
+  zoom: 12
+}
+
 export default {
   name: 'gmapsMap',
   provide: function() {
@@ -17,7 +22,7 @@ export default {
       handleError: e => this.handleError(e)
     }
   },
-  props: { options: { type: Object, required: true } },
+  props: { options: { type: Object, default: () => ({}) } },
   data: () => ({
     error: null,
     loading: true,
@@ -40,12 +45,13 @@ export default {
     }
   },
   mounted() {
-    if (!this.options.zoom) return this.handleError('Map options require a zoom property.')
-    if (!this.options.center) return this.handleError('Map options require a center property.')
     this.$GMaps()
-      .then(GMaps => (this.map = new GMaps.Map(this.$refs.gmap, this.options)))
+      .then(GMaps => (this.map = new GMaps.Map(this.$refs.gmap, { ...defaultOptions, ...this.options })))
       .then(() => this.map.addListener('bounds_changed', () => this.$emit('boundsChanged', this.map.getBounds())))
       .then(() => this.map.addListener('center_changed', () => this.$emit('centerChanged', this.map.getCenter())))
+      .then(() => this.map.addListener('click', e => this.$emit('click', e)))
+      .then(() => this.map.addListener('dblclick', e => this.$emit('doubleClick', e)))
+      .then(() => this.map.addListener('rightclick', e => this.$emit('rightClick', e)))
       .catch(e => this.handleError(e))
       .finally(() => (this.loading = false))
   },
