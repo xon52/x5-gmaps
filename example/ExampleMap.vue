@@ -6,19 +6,12 @@
       </p>
     </template>
     <template #map>
-      <gmaps-map :options="mapOptions" />
+      <gmaps-map />
     </template>
     <template #code>
       <div>
         <pre>
-&lt;gmaps-map :options="mapOptions"/>
-
-...
-
-mapOptions = {
-    center: { lat: -27.47, lng: 153.025 },
-    zoom: 12
-}
+&lt;gmaps-map />
           </pre
         >
       </div>
@@ -32,12 +25,6 @@ import { gmapsMap } from '../dist'
 
 export default {
   name: 'ExampleMap',
-  components: { ExampleWrapper, gmapsMap },
-  data: () => ({
-    mapOptions: {
-      center: { lat: -27.47, lng: 153.025 },
-      zoom: 12
-    }
-  })
+  components: { ExampleWrapper, gmapsMap }
 }
 </script>

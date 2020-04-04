@@ -25,7 +25,7 @@
     <template #code>
       <div>
         <pre>
-&lt;gmaps-map :options="mapOptions">
+&lt;gmaps-map>
   &lt;gmaps-popup
     :position="{ lat: -27.46, lng: 153.02 }"
     background="#BBF0FF">

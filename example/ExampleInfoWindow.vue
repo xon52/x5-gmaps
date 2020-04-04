@@ -28,7 +28,7 @@
     <template #code>
       <div>
         <pre>
-&lt;gmaps-map :options="mapOptions">
+&lt;gmaps-map>
   &lt;gmaps-info-window :options="optionsA">
     &lt;p>
       Any &lt;span style="background:yellow;">HTML&lt;/span> can&lt;br />go in

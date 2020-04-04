@@ -20,7 +20,7 @@
     <template #code>
       <div>
         <pre>
-&lt;gmaps-map :options="mapOptions" />
+&lt;gmaps-map />
   &lt;gmaps-marker
     :options="optionsA"
     @positionChanged="updatePosition"

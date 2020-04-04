@@ -5,22 +5,29 @@
     </template>
     <template #map>
       <gmaps-map :options="mapOptions">
-        <gmaps-marker :options="optionsA" />
-        <gmaps-marker :options="optionsB" />
+        <gmaps-marker v-for="(item, i) in items" :key="i" :options="item.options" />
       </gmaps-map>
     </template>
     <template #code>
       <div>
         <pre>
-&lt;gmaps-map lat="-27.47" lng="153.025" zoom="14">
-  &lt;gmaps-marker :options="optionsA" />
-  &lt;gmaps-marker :options="optionsB" />
+&lt;gmaps-map>
+  &lt;gmaps-marker
+    v-for="(item, i) in items"
+    :key="i"
+    :options="item.options"
+  />
 &lt;/gmaps-map>
 
 ...
 
-optionsA = { position: { lat: -27.46, lng: 153.02 } }
-optionsB = { position: { lat: -27.48, lng: 153.03 } }
+items = [
+  { options: { position: { lat: -27.41, lng: 153.01 } } },
+  { options: { position: { lat: -27.42, lng: 153.02 } } },
+  ...,
+  { options: { position: { lat: -27.48, lng: 153.08 } } },
+  { options: { position: { lat: -27.49, lng: 153.09 } } },
+]
           </pre
         >
       </div>
@@ -37,8 +44,8 @@ export default {
   components: { ExampleWrapper, gmapsMap, gmapsMarker },
   data: () => ({
     mapOptions: {
-      center: { lat: -27.47, lng: 153.025 },
-      zoom: 12,
+      center: { lat: -27.5, lng: 153 },
+      zoom: 11,
       fullscreenControl: false,
       mapTypeControl: false,
       rotateControl: false,
@@ -46,8 +53,18 @@ export default {
       streetViewControl: false,
       zoomControl: false
     },
-    optionsA: { position: { lat: -27.46, lng: 153.02 } },
-    optionsB: { position: { lat: -27.48, lng: 153.03 } }
-  })
+    items: []
+  }),
+  created() {
+    for (let i = 0; i < 20; i++)
+      this.items.push({
+        options: {
+          position: {
+            lat: -27.5 + Math.random() / 10 - 0.05,
+            lng: 153 + Math.random() / 10 - 0.05
+          }
+        }
+      })
+  }
 }
 </script>

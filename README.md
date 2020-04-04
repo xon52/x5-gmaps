@@ -56,9 +56,15 @@ Some pre-built components have been provided for general use, or as examples for
 
 ![Map](./example/img/map.png)
 
-Maps can take many [options](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions), but `zoom` and `center` options are required.
+Maps can take many [options](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions). `zoom` is defaulted to `12` and `center` is defaulted to Brisbane (as these options are required).
 
-This component supports `@boundsChanged` and `@centerChanged` events and return their new values.
+This component supports the following events:
+
+- `@boundsChanged` _returns new bounds_
+- `@centerChanged` _returns new center_
+- `@click` _returns event_
+- `@doubleClick` _returns event_
+- `@rightClick` _returns event_
 
 ```html
 <template>
@@ -86,12 +92,17 @@ This component supports `@boundsChanged` and `@centerChanged` events and return 
 
 Markers are placed within Maps and can take many [options](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions). A `position` option is required.
 
-This component supports `@click` *(which returns the event)* and `@positionChanged` events *(which returns the new position)*.
+This component supports the following events:
+
+- `@positionChanged` _returns new position_
+- `@click` _returns event_
+- `@doubleClick` _returns event_
+- `@rightClick` _returns event_
 
 ```html
 <template>
-  <gmaps-map :options="mapOptions" ref="map">
-    <gmaps-marker :options="options" />
+  <gmaps-map>
+    <gmaps-marker v-for="(item, i) in items" :key="i" :options="item.options" />
   </gmaps-map>
 </template>
 
@@ -101,13 +112,13 @@ This component supports `@click` *(which returns the event)* and `@positionChang
   export default {
     components: { gmapsMap, gmapsMarker },
     data: () => ({
-      options: {
-        position: { lat: -27.46, lng: 153.02 },
-      },
-      mapOptions: {
-        center: { lat: -27.47, lng: 153.025 },
-        zoom: 12,
-      },
+      items: [
+        { options: { position: { lat: -27.41, lng: 153.01 } } },
+        { options: { position: { lat: -27.42, lng: 153.02 } } },
+        ...,
+        { options: { position: { lat: -27.48, lng: 153.08 } } },
+        { options: { position: { lat: -27.49, lng: 153.09 } } },
+      ],
     }),
   }
 </script>
@@ -121,7 +132,7 @@ InfoWindows are placed with Maps can take a few [options](https://developers.goo
 
 They are used to put HTML in and have a close/dismiss button built-in.
 
-This component only supports a `@closed` event *(for when someone closes the window)*
+This component only supports a `@closed` event _(for when someone closes the window)_
 
 ```html
 <template>
@@ -157,6 +168,7 @@ This component only supports a `@closed` event *(for when someone closes the win
 A Popup is a custom [DOM Element](https://developers.google.com/maps/documentation/javascript/reference/overlay-view). It is here primarily as an example of what is needed when creating your own map objects, but serves as a cleaner InfoWindow for Vue.
 
 It takes the following props:
+
 - `position` (req'd)
 - `background` (style)
 - `height` (style)
