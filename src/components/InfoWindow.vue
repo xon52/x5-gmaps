@@ -5,10 +5,6 @@
 </template>
 
 <script>
-const defaultOptions = {
-
-}
-
 export default {
   name: 'gmapsInfoWindow',
   inject: ['getMap', 'handleError'],

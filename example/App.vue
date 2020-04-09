@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="center">
-      <img src="./x5-gmaps-logo.png" width="300" />
+      <img src="./img/logo.svg" width="300" />
       <h1>x5 GMaps Example</h1>
     </div>
     <example-map></example-map>

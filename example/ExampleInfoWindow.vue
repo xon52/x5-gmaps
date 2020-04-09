@@ -20,7 +20,7 @@
           <p>Any <span style="background:yellow;">HTML</span> can<br />go in <strong>these</strong>.</p>
         </gmaps-info-window>
         <gmaps-info-window ref="b" :options="optionsB" style="background:#BBF0FF;" @closed="bClosed = true">
-          <p>Even a whole Vue component<img src="./marker2.png" height="20px" /></p>
+          <p>Even a whole Vue component<img src="./img/marker2.png" height="20px" /></p>
           <p><em>(but they're locked in the white Google bubble with a close button)</em></p>
         </gmaps-info-window>
       </gmaps-map>
@@ -65,7 +65,7 @@ openB() {
 
 <script>
 import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap, gmapsInfoWindow } from '../dist'
+import { gmapsMap, gmapsInfoWindow } from '../src'
 
 export default {
   name: 'ExampleInfoWindow',

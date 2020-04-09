@@ -1,4 +1,4 @@
-# x5-gmaps ([Live Demo](https://codesandbox.io/s/x5-gmaps-example-gpids?hidenavigation=1&view=preview))
+# x5-gmaps ([Live Demo](https://xon52.github.io/x5-gmaps))
 
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/x5-gmaps)
 
@@ -54,7 +54,7 @@ Some pre-built components have been provided for general use, or as examples for
 
 ## Map
 
-![Map](./example/img/map.png)
+![Map](./example/img/readme-map.png)
 
 Maps can take many [options](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions). `zoom` is defaulted to `12` and `center` is defaulted to Brisbane (as these options are required).
 
@@ -88,7 +88,7 @@ This component supports the following events:
 
 ## Marker
 
-![Marker](./example/img/marker.png)
+![Marker](./example/img/readme-marker.png)
 
 Markers are placed within Maps and can take many [options](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions). A `position` option is required.
 
@@ -126,7 +126,7 @@ This component supports the following events:
 
 ## InfoWindow
 
-![InfoWindow](./example/img/info-window.png)
+![InfoWindow](./example/img/readme-info-window.png)
 
 InfoWindows are placed with Maps can take a few [options](https://developers.google.com/maps/documentation/javascript/reference/info-window#InfoWindowOptions). A `position` option is required.
 
@@ -163,7 +163,7 @@ This component only supports a `@closed` event _(for when someone closes the win
 
 ## Popup
 
-![Popup](./example/img/popup.png)
+![Popup](./example/img/readme-popup.png)
 
 A Popup is a custom [DOM Element](https://developers.google.com/maps/documentation/javascript/reference/overlay-view). It is here primarily as an example of what is needed when creating your own map objects, but serves as a cleaner InfoWindow for Vue.
 

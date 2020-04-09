@@ -21,7 +21,7 @@
 
 <script>
 import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap } from '../dist'
+import { gmapsMap } from '../src'
 
 export default {
   name: 'ExampleMap',

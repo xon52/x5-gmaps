@@ -63,7 +63,7 @@ openB() {
 
 <script>
 import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap, gmapsPopup } from '../dist'
+import { gmapsMap, gmapsPopup } from '../src'
 
 export default {
   name: 'ExamplePopup',

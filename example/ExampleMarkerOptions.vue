@@ -72,7 +72,7 @@ mounted() {
 
 <script>
 import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap, gmapsMarker } from '../dist'
+import { gmapsMap, gmapsMarker } from '../src'
 
 export default {
   name: 'ExampleMarkerOptions',
@@ -90,13 +90,13 @@ export default {
     },
     optionsA: {
       position: { lat: -27.46, lng: 153.02 },
-      icon: require('./marker.png'),
+      icon: require('./img/marker.png'),
       title: 'Marker A',
       draggable: true
     },
     optionsB: {
       position: { lat: -27.48, lng: 153.03 },
-      icon: require('./marker2.png'),
+      icon: require('./img/marker2.png'),
       title: 'Marker B',
       opacity: 0.7
     },

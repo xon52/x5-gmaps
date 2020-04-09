@@ -37,7 +37,7 @@ items = [
 
 <script>
 import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap, gmapsMarker } from '../dist'
+import { gmapsMap, gmapsMarker } from '../src'
 
 export default {
   name: 'ExampleMarker',
