@@ -12,6 +12,7 @@ module.exports = {
       template: './example/public/index.html',
     },
   },
+  // For copying static files like favicon
   configureWebpack: {
     plugins: [
       new CopyPlugin([
