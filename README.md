@@ -73,6 +73,8 @@ This component supports the following events:
 - `@click` _returns event_
 - `@doubleClick` _returns event_
 - `@rightClick` _returns event_
+- `@mouseover` _returns event_
+- `@mouseout` _returns event_
 
 ```html
 <template>

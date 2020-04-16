@@ -12,6 +12,8 @@ export default {
       .then(() => this.marker.addListener('click', e => this.$emit('click', e)))
       .then(() => this.marker.addListener('dblclick', e => this.$emit('doubleClick', e)))
       .then(() => this.marker.addListener('rightclick', e => this.$emit('rightClick', e)))
+      .then(() => this.marker.addListener('mouseover', e => this.$emit('mouseover', e)))
+      .then(() => this.marker.addListener('mouseout', e => this.$emit('mouseout', e)))
       .catch(e => this.handleError(e))
   },
   watch: {
