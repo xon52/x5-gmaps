@@ -4,13 +4,15 @@
     <div class="description">
       <slot name="description"></slot>
     </div>
-    <div class="side">
-      <slot name="map"></slot>
-    </div>
-    <div class="side">
-      <div class="code">
-        <h4>Code:</h4>
-        <slot name="code"></slot>
+    <div class="sides">
+      <div class="side">
+        <slot name="map"></slot>
+      </div>
+      <div class="side">
+        <div class="code">
+          <h4>Code:</h4>
+          <slot name="code"></slot>
+        </div>
       </div>
     </div>
     <slot></slot>
@@ -44,6 +46,9 @@ export default {
   display: inline-block;
   max-height: 100%;
   overflow: auto;
+}
+.sides {
+  border: 2px ridge silver;
   background: #eee;
 }
 .code {
