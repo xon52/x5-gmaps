@@ -11,9 +11,14 @@ const loadAPI = (key, options) => {
   document.querySelector('head').appendChild(script)
 }
 // Convert options object into URI parameters
-const uriOptions = options =>
+const uriOptions = (options) =>
   Object.keys(options)
-    .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(options[k])}`)
+    .map((k) => {
+      const val = Array.isArray(options[k])
+        ? options[k].map((v) => encodeURIComponent(v)).join(',')
+        : encodeURIComponent(options[k])
+      return `${encodeURIComponent(k)}=${val}`
+    })
     .join('&')
 // Check if loaded
 const loaded = () => !!window.google && !!window.google.maps
@@ -22,9 +27,9 @@ let loading = false
 // All promises that need to be resolved once map is loaded
 const promises = []
 // onLoad callback for Google Maps load
-window.x5GMapsOnLoad = () => promises.forEach(p => p.resolve(window.google.maps))
+window.x5GMapsOnLoad = () => promises.forEach((p) => p.resolve(window.google.maps))
 // onError callback for Google Maps fail
-const onError = e => promises.forEach(p => p.reject(e))
+const onError = (e) => promises.forEach((p) => p.reject(e))
 // Exported promise to get map
 const getMap = () => {
   // Early return if map already loaded
