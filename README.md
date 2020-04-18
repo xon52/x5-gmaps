@@ -23,7 +23,7 @@ Vue.use(x5GMaps, options)
 
 new Vue({
   el: '#app',
-  render: h => h(App),
+  render: (h) => h(App),
 })
 ```
 
@@ -31,8 +31,8 @@ Options should be your key, or an object with your key and any additional option
 
 ```js
 Vue.use(x5GMaps, 'a987asdfg34h7fklawhlkfha')
-// OR
-Vue.use(x5GMaps, { key: 'MY_GOOGLE_KEY', libraries: 'places' })
+// OR with libraries
+Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] })
 ```
 
 <br>
@@ -50,7 +50,7 @@ const myInfoWindow = new GMaps.InfoWindow({ ... })
 
 ```js
 module.exports = {
-  transpileDependencies: ['x5-gmaps']
+  transpileDependencies: ['x5-gmaps'],
 }
 ```
 
@@ -206,6 +206,49 @@ All events are registered from the markup/component you place inside it rather t
         center: { lat: -27.47, lng: 153.025 },
         zoom: 12,
       },
+    }),
+  }
+</script>
+```
+
+## Heatmap
+
+![Heatmap](./example/img/readme-heatmap.png)
+
+Heatmaps are placed within Maps and have several props which are derived from the [GoogleMaps Heatmap Options](https://developers.google.com/maps/documentation/javascript/reference/visualization#HeatmapLayerOptions). Some are named differently as they have been enhanced/simplified.
+
+| Props        |      Type      |   Default    | Description                                                                           |
+| :----------- | :------------: | :----------: | :------------------------------------------------------------------------------------ |
+| items        | Array\<Object> | **required** | An array of objects that has `lat` and `lng` properties                               |
+| colors       | Array\<String> |      -       | An array of one or more colors to color heatmap _e.g. ['red','#0F0','rgba(0,0,0,0)`]_ |
+| maxIntensity |     Number     |      -       | Number of points in one spot to reach "maximum heat" color                            |
+| opacity      |     Number     |    `0.6`     | Opacity of the heatmap                                                                |
+| radius       |     Number     |      -       | The radius of influence for each data point, in pixels.                               |
+
+This component does not have any events.
+
+\*\* Note require to include the "visualization" library as described in [Deployment](#deployment)
+
+```html
+<template>
+  <gmaps-map>
+    <gmaps-heatmap :data="items" :opacity="0.8" />
+  </gmaps-map>
+</template>
+
+<script>
+  import { gmapsMap, gmapsHeatmap } from 'x5-gmaps'
+
+  export default {
+    components: { gmapsMap, gmapsHeatmap },
+    data: () => ({
+      items: [
+        { lat: -27.41, lng: 153.01 },
+        { lat: -27.42, lng: 153.02 },
+        ...,
+        { lat: -27.48, lng: 153.08 },
+        { lat: -27.49, lng: 153.09 },
+      ],
     }),
   }
 </script>

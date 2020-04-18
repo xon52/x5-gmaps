@@ -1,8 +1,9 @@
 import { init, getMap } from './init.js'
-import gmapsMap from './components/Map.vue'
-import gmapsInfoWindow from './components/InfoWindow.vue'
-import gmapsMarker from './components/Marker.vue'
-import gmapsPopup from './components/Popup.vue'
+export { default as gmapsMap } from './components/Map.vue'
+export { default as gmapsInfoWindow } from './components/InfoWindow.vue'
+export { default as gmapsMarker } from './components/Marker.vue'
+export { default as gmapsHeatmap } from './components/Heatmap.vue'
+export { default as gmapsPopup } from './components/Popup.vue'
 import './scss/index.scss'
 
 export default function(Vue, options) {
@@ -12,5 +13,3 @@ export default function(Vue, options) {
   init(key, opt)
   Vue.prototype.$GMaps = () => getMap()
 }
-
-export { gmapsMap, gmapsInfoWindow, gmapsMarker, gmapsPopup }

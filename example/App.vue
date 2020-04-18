@@ -10,6 +10,7 @@
     <example-marker-options></example-marker-options>
     <example-info-window></example-info-window>
     <example-popup></example-popup>
+    <example-heatmap></example-heatmap>
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import ExampleMarker from './ExampleMarker'
 import ExampleMarkerOptions from './ExampleMarkerOptions'
 import ExampleInfoWindow from './ExampleInfoWindow'
 import ExamplePopup from './ExamplePopup'
+import ExampleHeatmap from './ExampleHeatmap'
 
 export default {
   name: 'Example-App',
@@ -29,7 +31,8 @@ export default {
     ExampleMarker,
     ExampleMarkerOptions,
     ExampleInfoWindow,
-    ExamplePopup
+    ExamplePopup,
+    ExampleHeatmap
   }
 }
 </script>
