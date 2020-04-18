@@ -4,15 +4,17 @@ export default {
   inject: ['getMap', 'handleError'],
   props: {
     colors: { type: Array, default: null },
+    dissipating: { type: Boolean, default: true },
     items: { type: Array, required: true },
     maxIntensity: { type: [String, Number], default: null },
     opacity: { type: [String, Number], default: null },
-    radius: { type: [String, Number], default: null }
+    radius: { type: [String, Number], default: null },
+    weightProp: { type: String, default: null }
   },
   data: () => ({ heatmap: null }),
   computed: {
     options() {
-      const options = {}
+      const options = { dissipating: this.dissipating }
       if (this.colors) options.gradient = ['rgba(0,0,0,0)', ...this.colors]
       if (this.maxIntensity) options.maxIntensity = +this.maxIntensity
       if (this.opacity) options.opacity = +this.opacity
@@ -22,7 +24,9 @@ export default {
   },
   methods: {
     getData(GMaps) {
-      return this.items.map(e => new GMaps.LatLng({ lat: e.lat, lng: e.lng }))
+      if (this.weightProp)
+        return this.items.map(e => ({ location: new GMaps.LatLng(e.lat, e.lng), weight: e[this.weightProp] }))
+      return this.items.map(e => new GMaps.LatLng(e.lat, e.lng))
     }
   },
   mounted() {

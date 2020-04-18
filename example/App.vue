@@ -4,13 +4,14 @@
       <img src="./img/logo.svg" width="300" />
       <h1>x5-gmaps Example</h1>
     </div>
-    <example-map></example-map>
-    <example-map-options></example-map-options>
-    <example-marker></example-marker>
-    <example-marker-options></example-marker-options>
-    <example-info-window></example-info-window>
-    <example-popup></example-popup>
-    <example-heatmap></example-heatmap>
+    <example-map />>
+    <example-map-options />
+    <example-marker />
+    <example-marker-options />
+    <example-info-window />
+    <example-popup />
+    <example-heatmap />
+    <example-heatmap-weighted />
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import ExampleMarkerOptions from './ExampleMarkerOptions'
 import ExampleInfoWindow from './ExampleInfoWindow'
 import ExamplePopup from './ExamplePopup'
 import ExampleHeatmap from './ExampleHeatmap'
+import ExampleHeatmapWeighted from './ExampleHeatmapWeighted'
 
 export default {
   name: 'Example-App',
@@ -32,7 +34,8 @@ export default {
     ExampleMarkerOptions,
     ExampleInfoWindow,
     ExamplePopup,
-    ExampleHeatmap
+    ExampleHeatmap,
+    ExampleHeatmapWeighted,
   }
 }
 </script>

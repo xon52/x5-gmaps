@@ -221,9 +221,11 @@ Heatmaps are placed within Maps and have several props which are derived from th
 | :----------- | :------------: | :----------: | :------------------------------------------------------------------------------------ |
 | items        | Array\<Object> | **required** | An array of objects that has `lat` and `lng` properties                               |
 | colors       | Array\<String> |      -       | An array of one or more colors to color heatmap _e.g. ['red','#0F0','rgba(0,0,0,0)`]_ |
-| maxIntensity |     Number     |      -       | Number of points in one spot to reach "maximum heat" color                            |
+| dissipating  |    Boolean     |    `true`    | Specifies whether heatmaps dissipate on zoom.                                         |
 | opacity      |     Number     |    `0.6`     | Opacity of the heatmap                                                                |
+| maxIntensity |     Number     |      -       | Number of points in one spot to reach "maximum heat" color                            |
 | radius       |     Number     |      -       | The radius of influence for each data point, in pixels.                               |
+| weightProp   |     String     |      -       | The property of items that should be used as the weight (Numbers > 0).                |
 
 This component does not have any events.
 
