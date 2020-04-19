@@ -41,7 +41,7 @@ export default {
       .catch(e => this.handleError(e))
   },
   watch: {
-    data() {
+    items() {
       this.$GMaps()
         .then(GMaps => this.heatmap.setData(this.getData(GMaps)))
         .catch(e => this.handleError(e))
