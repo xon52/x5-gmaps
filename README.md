@@ -100,14 +100,28 @@ This component supports the following events:
 
 ![Marker](./example/img/readme-marker.png)
 
-Markers are placed within Maps and can take many [options](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions). A `position` option is required.
+Markers are placed within Maps and can take many [options](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions). A `position` option is required within the options prop or as its own prop.
 
 This component supports the following events:
 
-- `@positionChanged` _returns new position_
+- `@move` _returns new position { lat, lng }_
 - `@click` _returns event_
 - `@doubleClick` _returns event_
 - `@rightClick` _returns event_
+- ~~`@positionChanged`~~ (depreciated) _returns new position_
+
+| Props     |  Type   | Default | Description                                   |
+| :-------- | :-----: | :-----: | :-------------------------------------------- |
+| options\* | Object  |    -    | An object of Google Maps Marker options       |
+| icon      | String  |    -    | URL of the marker icon to be used             |
+| label     | String  |    -    | Marker label                                  |
+| opacity   | Number  |  `1.0`  | Opacity of the marker                         |
+| position  | Object  |    -    | An object that has `lat` and `lng` properties |
+| title     | String  |    -    | Marker title (shown on hover)                 |
+| visible   | Boolean | `true`  | If marker is visible                          |
+| zIndex    | Number  |    -    | Override position in DOM                      |
+
+_\* If you want to change values on the fly, use the named props instead of within the options prop. Changing named props will trigger an update._
 
 ```html
 <template>
@@ -221,11 +235,11 @@ Heatmaps are placed within Maps and have several props which are derived from th
 | :----------- | :------------: | :----------: | :------------------------------------------------------------------------------------ |
 | items        | Array\<Object> | **required** | An array of objects that has `lat` and `lng` properties                               |
 | colors       | Array\<String> |      -       | An array of one or more colors to color heatmap _e.g. ['red','#0F0','rgba(0,0,0,0)`]_ |
-| dissipating  |    Boolean     |    `true`    | Specifies whether heatmaps dissipate on zoom.                                         |
+| dissipating  |    Boolean     |    `true`    | Specifies whether heatmaps dissipate on zoom                                          |
 | opacity      |     Number     |    `0.6`     | Opacity of the heatmap                                                                |
 | maxIntensity |     Number     |      -       | Number of points in one spot to reach "maximum heat" color                            |
-| radius       |     Number     |      -       | The radius of influence for each data point, in pixels.                               |
-| weightProp   |     String     |      -       | The property of items that should be used as the weight (Numbers > 0).                |
+| radius       |     Number     |      -       | The radius of influence for each data point, in pixels                                |
+| weightProp   |     String     |      -       | The property of items that should be used as the weight (Numbers > 0)                 |
 
 This component does not have any events.
 

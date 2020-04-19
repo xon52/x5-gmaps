@@ -13,7 +13,7 @@ export default {
   },
   data: () => ({ heatmap: null }),
   computed: {
-    options() {
+    _options() {
       const options = { dissipating: this.dissipating }
       if (this.colors) options.gradient = ['rgba(0,0,0,0)', ...this.colors]
       if (this.maxIntensity) options.maxIntensity = +this.maxIntensity
@@ -35,7 +35,7 @@ export default {
         this.heatmap = new GMaps.visualization.HeatmapLayer({
           map: this.getMap(),
           data: this.getData(GMaps),
-          ...this.options
+          options: { ...this._options }
         })
       })
       .catch(e => this.handleError(e))
@@ -46,8 +46,8 @@ export default {
         .then(GMaps => this.heatmap.setData(this.getData(GMaps)))
         .catch(e => this.handleError(e))
     },
-    options() {
-      this.heatmap.setOptions(this.options)
+    _options(newVal) {
+      this.heatmap.setOptions(newVal)
     }
   },
   beforeDestroy() {

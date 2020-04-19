@@ -12,4 +12,6 @@ export default function(Vue, options) {
   const opt = { ...options }
   init(key, opt)
   Vue.prototype.$GMaps = () => getMap()
+  if (process.env.NODE_ENV === 'development')
+    console.warn('x5-gmaps note: marker @positionChanged event has been depreciated; please use @move instead.')
 }
