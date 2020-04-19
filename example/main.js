@@ -7,7 +7,7 @@ import App from './App.vue'
 import x5GMaps from '../src'
 Vue.use(x5GMaps, {
   key: process.env.VUE_APP_GOOGLE_KEY,
-  libraries: ['visualization', 'places'],
+  libraries: ['visualization'],
 })
 // ------------------------------
 // x5-modal plugin install END
