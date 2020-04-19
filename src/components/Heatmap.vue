@@ -27,6 +27,11 @@ export default {
       if (this.weightProp)
         return this.items.map(e => ({ location: new GMaps.LatLng(e.lat, e.lng), weight: e[this.weightProp] }))
       return this.items.map(e => new GMaps.LatLng(e.lat, e.lng))
+    },
+    updateData() {
+      this.$GMaps()
+        .then(GMaps => this.heatmap.setData(this.getData(GMaps)))
+        .catch(e => this.handleError(e))
     }
   },
   mounted() {
@@ -42,9 +47,10 @@ export default {
   },
   watch: {
     items() {
-      this.$GMaps()
-        .then(GMaps => this.heatmap.setData(this.getData(GMaps)))
-        .catch(e => this.handleError(e))
+      this.updateData()
+    },
+    weightProp() {
+      this.updateData()
     },
     _options(newVal) {
       this.heatmap.setOptions(newVal)
