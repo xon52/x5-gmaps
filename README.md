@@ -19,7 +19,10 @@ This plugin can be installed like any Vue plugin:
 
 ```js
 import x5GMaps from 'x5-gmaps'
-Vue.use(x5GMaps, options)
+// Option 1: Just your key
+Vue.use(x5GMaps, 'YOUR_GOOGLE_KEY')
+// Option 2: With libraries
+Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] })
 
 new Vue({
   el: '#app',
@@ -27,30 +30,31 @@ new Vue({
 })
 ```
 
-Options should be your key, or an object with your key and any additional options you want included in Google Maps:
+:warning: This plugin is not transpiled! If you want it compatible with IE, Edge, and Safari, you need to add this to your `vue.config.js` file:
 
 ```js
-Vue.use(x5GMaps, 'a987asdfg34h7fklawhlkfha')
-// OR with libraries
-Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] })
+module.exports = {
+  transpileDependencies: ['x5-gmaps'],
+}
 ```
 
 <br>
 
 # Usage
 
-This plugin makes available `$GMaps()` which returns a promise that resolves with `windows.google.maps` after it has loaded. It will timeout after 5 seconds if it cannot retrieve API access.
-
-```js
-const GMaps = await this.$GMaps()
-const myInfoWindow = new GMaps.InfoWindow({ ... })
+```html
+<template>
+  <gmaps-map>
+    <gmaps-marker :position="{ lat: -27, lng: 153 }" />
+  </gmaps-map>
+</template>
 ```
 
-:warning: This plugin is not transpiled! If you want to include it for use on IE or Edge, you need to add this to your `vue.config.js` file:
-
 ```js
-module.exports = {
-  transpileDependencies: ['x5-gmaps'],
+import { gmapsMap, gmapsMarker } from 'x5-gmaps'
+
+export default {
+  components: { gmapsMap, gmapsMarker },
 }
 ```
 
@@ -271,6 +275,8 @@ This component does not have any events.
 ```
 
 ### :warning: **It's highly recommended to check out the demo at the top of this readme to have a play around.**
+
+<!-- TODO: Advanced usage: Component creation, this.$GMaps() etc -->
 
 <br>
 

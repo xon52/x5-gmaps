@@ -40,7 +40,7 @@ items = [
 
 <script>
 import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap, gmapsHeatmap } from '../src'
+import { gmapsMap, gmapsHeatmap } from '../src' // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleHeatmapWeighted',

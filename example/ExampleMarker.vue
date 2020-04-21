@@ -40,7 +40,7 @@ items = [
 
 <script>
 import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap, gmapsMarker } from '../src'
+import { gmapsMap, gmapsMarker } from '../src' // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleMarker',

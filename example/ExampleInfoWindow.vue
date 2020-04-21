@@ -65,7 +65,7 @@ openB() {
 
 <script>
 import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap, gmapsInfoWindow } from '../src'
+import { gmapsMap, gmapsInfoWindow } from '../src' // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleInfoWindow',

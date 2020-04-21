@@ -21,7 +21,7 @@
 
 <script>
 import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap } from '../src'
+import { gmapsMap } from '../src' // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleMap',
