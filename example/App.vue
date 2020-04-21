@@ -4,7 +4,8 @@
       <img src="./img/logo.svg" width="300" />
       <h1>x5-gmaps Example</h1>
     </div>
-    <example-map />>
+    <button @click="showMap = !showMap">Test</button>
+    <example-map v-if="showMap" />
     <example-map-options />
     <example-marker />
     <example-marker-options />
@@ -35,8 +36,11 @@ export default {
     ExampleInfoWindow,
     ExamplePopup,
     ExampleHeatmap,
-    ExampleHeatmapWeighted,
-  }
+    ExampleHeatmapWeighted
+  },
+  data: () => ({
+    showMap: false
+  })
 }
 </script>
 

@@ -1,6 +1,6 @@
 {
   "name": "x5-gmaps",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "private": false,
   "description": "A lightweight Google Maps plugin for Vue",
   "author": "Keagan Chisnall",
@@ -27,7 +27,7 @@
     "vue": "^2.6.11",
     "vue-loader": "^15.9.1",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.42.0",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },
   "bugs": {
@@ -41,9 +41,6 @@
     "google"
   ],
   "license": "MIT",
-  "peerdependencies": {
-    "vue": "^2.6.11"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xon52/x5-gmaps.git"

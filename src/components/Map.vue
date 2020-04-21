@@ -53,7 +53,7 @@ export default {
       .then(() => this.map.addListener('dblclick', e => this.$emit('doubleClick', e)))
       .then(() => this.map.addListener('rightclick', e => this.$emit('rightClick', e)))
       .catch(e => this.handleError(e))
-      .finally(() => (this.loading = false))
+      .finally(() => setTimeout(() => (this.loading = false), 100))
   },
   beforeDestroy() {
     if (this.map)
