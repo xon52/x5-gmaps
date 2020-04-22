@@ -4,6 +4,8 @@
 
 This is a lightweight Google Maps plugin for Vue.
 
+Also check out a [tutorial creating a COVID Heatmap](https://medium.com/javascript-in-plain-english/making-a-covid-map-using-vue-google-maps-89eb70a9f089) using this.
+
 :warning: This plugin is in development, so please let me know if you find any errors.
 
 ## Installation
