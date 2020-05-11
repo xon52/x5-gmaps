@@ -6,7 +6,7 @@
   "author": "Keagan Chisnall",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --mode production",
     "deploy": "rimraf dist && webpack && npx publish"
   },
   "main": "dist",
@@ -18,14 +18,14 @@
     "@vue/cli-plugin-eslint": "~4.3.1",
     "@vue/cli-service": "~4.3.1",
     "babel-eslint": "^10.0.3",
-    "css-loader": "^3.5.2",
-    "eslint": "^6.7.2",
+    "css-loader": "^3.5.3",
+    "eslint": "^7.0.0",
     "eslint-plugin-vue": "^6.1.2",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
-    "style-loader": "^1.1.4",
+    "style-loader": "^1.2.1",
     "vue": "^2.6.11",
-    "vue-loader": "^15.9.1",
+    "vue-loader": "^15.9.2",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
