@@ -1,12 +1,12 @@
 // Google Maps base URL
 const baseURL = 'https://maps.googleapis.com/maps/api/js'
 // Google Maps full URL with query parameters
-const genURL = (key, options) => `${baseURL}?key=${key}&${options}&callback=x5GMapsOnLoad`
+const genURL = (options) => `${baseURL}?${options}&callback=x5GMapsOnLoad`
 // Insert the Google Maps script into the DOM
-const loadAPI = (key, options) => {
+const loadAPI = (options) => {
   const script = document.createElement('script')
   script.type = 'text/javascript'
-  script.src = genURL(key, options)
+  script.src = genURL(options)
   script.onError = onError(new Error('Error loading script'))
   document.querySelector('head').appendChild(script)
 }
@@ -40,13 +40,13 @@ const getMap = () => {
   return new Promise((resolve, reject) => promises.push({ resolve, reject }))
 }
 // Exported initialisation
-const init = (key, opt) => {
+const init = (options) => {
   // Early return if map already loaded
   if (loaded()) throw new Error('x5GMaps :: Plugin already initialised')
   // Map is still loading
   loading = true
   // Initiate map loading with given key, any options, and a promise resolve callback
-  loadAPI(key, uriOptions(opt))
+  loadAPI(uriOptions(options))
   // Give up if map takes too long
   setTimeout(() => {
     if (!loaded()) onError(new Error('Loading timed out'))

@@ -3,9 +3,16 @@
     <div class="center">
       <img src="./img/logo.svg" width="300" />
       <h1>x5-gmaps Example</h1>
-      <p>I have also written a tutorial on using this package to create a <a href="https://medium.com/javascript-in-plain-english/making-a-covid-map-using-vue-google-maps-89eb70a9f089" target="_blank">COVID Heatmap</a>.</p>
+      <p>
+        I have also written a tutorial on using this package to create a
+        <a
+          href="https://medium.com/javascript-in-plain-english/making-a-covid-map-using-vue-google-maps-89eb70a9f089"
+          target="_blank"
+          >COVID Heatmap</a
+        >.
+      </p>
     </div>
-    <example-map v-if="showMap" />
+    <example-map />
     <example-map-options />
     <example-marker />
     <example-marker-options />
