@@ -16,11 +16,12 @@ export default {
   computed: {
     _options() {
       const options = { ...this.options }
-      if (this.icon) options.icon = +this.icon
-      if (this.label) options.label = +this.label
+      if (this.icon) options.icon = this.icon
+      if (this.label) options.label = this.label
+      if (this.opacity) options.opacity = this.opacity
       if (this.position) options.position = this.position
-      if (this.title) options.title = +this.title
-      if (this.visible) options.visible = +this.visible
+      if (this.title) options.title = this.title
+      if (this.visible) options.visible = this.visible
       if (this.zIndex) options.zIndex = +this.zIndex
       return options
     }
