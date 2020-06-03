@@ -15,7 +15,7 @@ export default {
   name: 'gmapsPopup',
   inject: ['getMap', 'handleError'],
   props: {
-    background: { type: String, default: '#EEE' },
+    background: { type: String, default: '#EEEEEE' },
     width: { type: String, default: '200px' },
     height: { type: String, default: '60px' },
     position: { type: Object, required: true }

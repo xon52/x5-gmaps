@@ -14,12 +14,12 @@
     "dist"
   ],
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.3.1",
-    "@vue/cli-plugin-eslint": "~4.3.1",
-    "@vue/cli-service": "~4.3.1",
+    "@vue/cli-plugin-babel": "^4.4.1",
+    "@vue/cli-plugin-eslint": "~4.4.1",
+    "@vue/cli-service": "~4.4.1",
     "babel-eslint": "^10.0.3",
     "css-loader": "^3.5.3",
-    "eslint": "^7.0.0",
+    "eslint": "^7.1.0",
     "eslint-plugin-vue": "^6.1.2",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
