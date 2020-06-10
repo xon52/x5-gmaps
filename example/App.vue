@@ -14,6 +14,7 @@
     </div>
     <example-map />
     <example-map-options />
+    <example-set-position />
     <example-marker />
     <example-marker-options />
     <example-info-window />
@@ -26,6 +27,7 @@
 <script>
 import ExampleMap from './ExampleMap'
 import ExampleMapOptions from './ExampleMapOptions'
+import ExampleSetPosition from './ExampleSetPosition'
 import ExampleMarker from './ExampleMarker'
 import ExampleMarkerOptions from './ExampleMarkerOptions'
 import ExampleInfoWindow from './ExampleInfoWindow'
@@ -38,6 +40,7 @@ export default {
   components: {
     ExampleMap,
     ExampleMapOptions,
+    ExampleSetPosition,
     ExampleMarker,
     ExampleMarkerOptions,
     ExampleInfoWindow,
