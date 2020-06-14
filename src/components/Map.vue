@@ -40,7 +40,7 @@ export default {
     options: {
       deep: true,
       handler(options) {
-        this.map.setOptions(options)
+        if (this.map) this.map.setOptions(options)
       }
     }
   },
