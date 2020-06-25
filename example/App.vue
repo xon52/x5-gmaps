@@ -21,6 +21,7 @@
     <example-popup />
     <example-heatmap />
     <example-heatmap-weighted />
+    <example-polyline />
   </div>
 </template>
 
@@ -34,6 +35,7 @@ import ExampleInfoWindow from './ExampleInfoWindow'
 import ExamplePopup from './ExamplePopup'
 import ExampleHeatmap from './ExampleHeatmap'
 import ExampleHeatmapWeighted from './ExampleHeatmapWeighted'
+import ExamplePolyline from './ExamplePolyline'
 
 export default {
   name: 'Example-App',
@@ -46,7 +48,8 @@ export default {
     ExampleInfoWindow,
     ExamplePopup,
     ExampleHeatmap,
-    ExampleHeatmapWeighted
+    ExampleHeatmapWeighted,
+    ExamplePolyline
   }
 }
 </script>

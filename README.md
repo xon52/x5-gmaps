@@ -235,7 +235,7 @@ All events are registered from the markup/component you place inside it rather t
 
 ![Heatmap](./example/img/readme-heatmap.png)
 
-Heatmaps are placed within Maps and have several props which are derived from the [GoogleMaps Heatmap Options](https://developers.google.com/maps/documentation/javascript/reference/visualization#HeatmapLayerOptions). Some are named differently as they have been enhanced/simplified.
+Heatmaps are placed within Maps and have several props which are derived from the [Heatmap Options](https://developers.google.com/maps/documentation/javascript/reference/visualization#HeatmapLayerOptions). Some are named differently as they have been enhanced/simplified.
 
 | Props        |      Type      |   Default    | Description                                                                           |
 | :----------- | :------------: | :----------: | :------------------------------------------------------------------------------------ |
@@ -263,6 +263,70 @@ This component does not have any events.
 
   export default {
     components: { gmapsMap, gmapsHeatmap },
+    data: () => ({
+      items: [
+        { lat: -27.41, lng: 153.01 },
+        { lat: -27.42, lng: 153.02 },
+        ...,
+        { lat: -27.48, lng: 153.08 },
+        { lat: -27.49, lng: 153.09 },
+      ],
+    }),
+  }
+</script>
+```
+
+## Polylines / Polygons
+
+![Polyline](./example/img/readme-polyline.png)
+![Polygon](./example/img/readme-polygon.png)
+
+Polylines/polygons are placed within Maps and have several props which are derived from the [Polyline Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolylineOptions) and [Polygon Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolygonOptions).
+
+This component supports the following events:
+
+- `@click` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
+- `@doubleClick` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
+- `@drag` _returns [MouseEvent](https://developers.google.com/maps/documentation/javascript/reference/map#MouseEvent)_
+- `@dragEnd` _returns [MouseEvent](https://developers.google.com/maps/documentation/javascript/reference/map#MouseEvent)_
+- `@dragStart` _returns [MouseEvent](https://developers.google.com/maps/documentation/javascript/reference/map#MouseEvent)_
+- `@mouseover` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
+- `@rightClick` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
+
+| Props          |  Type   |   Default    | Description                                                                                  |
+| :------------- | :-----: | :----------: | :------------------------------------------------------------------------------------------- |
+| clickable      | Boolean |    `true`    | Indicates whether this Polyline handles mouse events                                         |
+| draggable      | Boolean |   `false`    | Allow the shape to be dragged over the map                                                   |
+| editable       | Boolean |   `false`    | Allow editing the shape by dragging the control points                                       |
+| fillColor      | String  |    black     | _(Only polygons)_ The fill color \*\*\*                                                      |
+| fillOpacity    | Number  |    `0.3`     | _(Only polygons)_ The fill opacity between 0.0 and 1.0                                       |
+| geodesic       | Boolean |   `false`    | When true, lines will follow the curvature of the Earth                                      |
+| icons          |  Array  |      []      | _(Only polylines)_ Add icons along your path \*\*                                            |
+| path           |  Array  | **required** | Path points (objects with `lat` and `lng` properties)                                        |
+| strokeColor    | String  |    black     | The stroke color \*\*\*                                                                      |
+| strokePosition | Number  |     `0`      | _(Only polygons)_ The stroke position along the path (0 = CENTER / 1 = INSIDE / 2 = OUTSIDE) |
+| strokeOpacity  | Number  |    `1.0`     | The stroke opacity between 0.0 and 1.0                                                       |
+| strokeWeight   | Number  |      -       | The stroke width in pixels                                                                   |
+| visible        | Boolean |    `true`    | Whether this polyline is visible on the map                                                  |
+| zIndex         | Number  |     `0`      | The zIndex compared to other polys                                                           |
+
+\* Only for polygons\
+\*\* Note this is one of those things you're surprised Google couldn't do right. It doesn't take images like all the rest of the icon properties of other components. [Here's their example](https://developers.google.com/maps/documentation/javascript/examples/overlay-symbol-custom)\
+\*\*\* All CSS3 colors are supported except for extended named colors
+
+```html
+<template>
+  <gmaps-map>
+    <gmaps-polygon :path="items" :strokeColor="blue" :fillColor="red" />
+    <gmaps-polyline :path="items" :strokeColor="blue" />
+  </gmaps-map>
+</template>
+
+<script>
+  import { gmapsMap, gmapsPolyline, gmapsPolygon } from 'x5-gmaps'
+
+  export default {
+    components: { gmapsMap, gmapsPolyline, gmapsPolygon },
     data: () => ({
       items: [
         { lat: -27.41, lng: 153.01 },
