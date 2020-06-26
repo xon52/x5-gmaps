@@ -1,4 +1,5 @@
 import { init, getMap } from './init.js'
+export { default as gmapsCircle } from './components/Circle.vue'
 export { default as gmapsHeatmap } from './components/Heatmap.vue'
 export { default as gmapsInfoWindow } from './components/InfoWindow.vue'
 export { default as gmapsMap } from './components/Map.vue'
@@ -6,6 +7,7 @@ export { default as gmapsMarker } from './components/Marker.vue'
 export { default as gmapsPolyline } from './components/Polyline.vue'
 export { default as gmapsPolygon } from './components/Polygon.vue'
 export { default as gmapsPopup } from './components/Popup.vue'
+export { default as gmapsRectangle } from './components/Rectangle.vue'
 import './scss/index.scss'
 
 const install = (Vue, options) => {

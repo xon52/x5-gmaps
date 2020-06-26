@@ -22,34 +22,37 @@
     <example-heatmap />
     <example-heatmap-weighted />
     <example-polyline />
+    <example-shape />
   </div>
 </template>
 
 <script>
-import ExampleMap from './ExampleMap'
-import ExampleMapOptions from './ExampleMapOptions'
-import ExampleSetPosition from './ExampleSetPosition'
-import ExampleMarker from './ExampleMarker'
-import ExampleMarkerOptions from './ExampleMarkerOptions'
-import ExampleInfoWindow from './ExampleInfoWindow'
-import ExamplePopup from './ExamplePopup'
 import ExampleHeatmap from './ExampleHeatmap'
 import ExampleHeatmapWeighted from './ExampleHeatmapWeighted'
+import ExampleInfoWindow from './ExampleInfoWindow'
+import ExampleMap from './ExampleMap'
+import ExampleMapOptions from './ExampleMapOptions'
+import ExampleMarker from './ExampleMarker'
+import ExampleMarkerOptions from './ExampleMarkerOptions'
 import ExamplePolyline from './ExamplePolyline'
+import ExamplePopup from './ExamplePopup'
+import ExampleSetPosition from './ExampleSetPosition'
+import ExampleShape from './ExampleShape'
 
 export default {
   name: 'Example-App',
   components: {
-    ExampleMap,
-    ExampleMapOptions,
-    ExampleSetPosition,
-    ExampleMarker,
-    ExampleMarkerOptions,
-    ExampleInfoWindow,
-    ExamplePopup,
     ExampleHeatmap,
     ExampleHeatmapWeighted,
-    ExamplePolyline
+    ExampleInfoWindow,
+    ExampleMap,
+    ExampleMapOptions,
+    ExampleMarker,
+    ExampleMarkerOptions,
+    ExamplePolyline,
+    ExamplePopup,
+    ExampleSetPosition,
+    ExampleShape,
   }
 }
 </script>

@@ -235,7 +235,7 @@ All events are registered from the markup/component you place inside it rather t
 
 ![Heatmap](./example/img/readme-heatmap.png)
 
-Heatmaps are placed within Maps and have several props which are derived from the [Heatmap Options](https://developers.google.com/maps/documentation/javascript/reference/visualization#HeatmapLayerOptions). Some are named differently as they have been enhanced/simplified.
+Heatmaps are placed within Maps and have several props which are derived from Google's [Heatmap Options](https://developers.google.com/maps/documentation/javascript/reference/visualization#HeatmapLayerOptions). Some are named differently as they have been enhanced/simplified.
 
 | Props        |      Type      |   Default    | Description                                                                           |
 | :----------- | :------------: | :----------: | :------------------------------------------------------------------------------------ |
@@ -281,7 +281,7 @@ This component does not have any events.
 ![Polyline](./example/img/readme-polyline.png)
 ![Polygon](./example/img/readme-polygon.png)
 
-Polylines/polygons are placed within Maps and have several props which are derived from the [Polyline Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolylineOptions) and [Polygon Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolygonOptions).
+Polylines/polygons are placed within Maps and have several props which are derived from Google's [Polyline Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolylineOptions) and [Polygon Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolygonOptions).
 
 This component supports the following events:
 
@@ -310,7 +310,6 @@ This component supports the following events:
 | visible        | Boolean |    `true`    | Whether this polyline is visible on the map                                                  |
 | zIndex         | Number  |     `0`      | The zIndex compared to other polys                                                           |
 
-\* Only for polygons\
 \*\* Note this is one of those things you're surprised Google couldn't do right. It doesn't take images like all the rest of the icon properties of other components. [Here's their example](https://developers.google.com/maps/documentation/javascript/examples/overlay-symbol-custom)\
 \*\*\* All CSS3 colors are supported except for extended named colors
 
@@ -335,6 +334,71 @@ This component supports the following events:
         { lat: -27.48, lng: 153.08 },
         { lat: -27.49, lng: 153.09 },
       ],
+    }),
+  }
+</script>
+```
+
+## Rectangles / Circles
+
+![Rectangles/Circles](./example/img/readme-shapes.png)
+
+Rectangles/circles are placed within Maps and have several props which are derived from Google's [Rectangle Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#RectangleOptions) and [Circle Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#CircleOptions).
+
+This component supports the following events:
+
+- `@boundsChanged` _(Only rectangles) returns new bounds_
+- `@centerChanged` _(Only circles) returns new center_
+- `@radiusChanged` _(Only circles) returns new radius_
+- `@click` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
+- `@doubleClick` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
+- `@drag` _returns [MouseEvent](https://developers.google.com/maps/documentation/javascript/reference/map#MouseEvent)_
+- `@dragEnd` _returns [MouseEvent](https://developers.google.com/maps/documentation/javascript/reference/map#MouseEvent)_
+- `@dragStart` _returns [MouseEvent](https://developers.google.com/maps/documentation/javascript/reference/map#MouseEvent)_
+- `@mouseover` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
+- `@rightClick` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
+
+| Props          |  Type   |   Default    | Description                                                                        |
+| :------------- | :-----: | :----------: | :--------------------------------------------------------------------------------- |
+| bounds         |  Array  | **required** | _(Only rectangles)_ Position of your rectangle `{ east, north, south, west }`      |
+| center         | Object  | **required** | _(Only circles)_ The center of the Circle (object with `lat` and `lng` properties) |
+| radius         | Number  | **required** | _(Only circles)_ The radius in meters on the Earth's surface                       |
+| clickable      | Boolean |    `true`    | Indicates whether this Polyline handles mouse events                               |
+| draggable      | Boolean |   `false`    | Allow the shape to be dragged over the map                                         |
+| editable       | Boolean |   `false`    | Allow editing the shape by dragging the control points                             |
+| fillColor      | String  |    black     | The fill color \*\*\*                                                              |
+| fillOpacity    | Number  |    `0.3`     | The fill opacity between 0.0 and 1.0                                               |
+| strokeColor    | String  |    black     | The stroke color \*\*\*                                                            |
+| strokePosition | Number  |     `0`      | The stroke position along the path (0 = CENTER / 1 = INSIDE / 2 = OUTSIDE)         |
+| strokeOpacity  | Number  |    `1.0`     | The stroke opacity between 0.0 and 1.0                                             |
+| strokeWeight   | Number  |      -       | The stroke width in pixels                                                         |
+| visible        | Boolean |    `true`    | Whether this polyline is visible on the map                                        |
+| zIndex         | Number  |     `0`      | The zIndex compared to other polys                                                 |
+
+\*\*\* All CSS3 colors are supported except for extended named colors
+
+```html
+<template>
+  <gmaps-map>
+    <gmaps-rectangle :bounds="bounds" :strokeColor="blue" :fillColor="red" />
+    <gmaps-circle :center="center" :radius="radius" :strokeColor="green" :fillColor="yellow" />
+  </gmaps-map>
+</template>
+
+<script>
+  import { gmapsMap, gmapsRectangle, gmapsCircle } from 'x5-gmaps'
+
+  export default {
+    components: { gmapsMap, gmapsPolyline, gmapsPolygon },
+    data: () => ({
+      bounds: {
+        east: 153.12,
+        north: -27.44,
+        west: 153.0,
+        south: -27.58,
+      },
+      center: { lat: -27.479, lng: 152.937 },
+      radius: 5000,
     }),
   }
 </script>
