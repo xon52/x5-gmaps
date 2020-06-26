@@ -1,7 +1,7 @@
 <template>
   <example-wrapper title="Polylines and Polygons">
     <div class="instructions">
-      <p class="instructions-title">Polygons are basically the same but are able to be filled in.</p>
+      <p class="instructions-title">Polygons are basically the same as polylines but are able to be filled in.</p>
 
       <button class="instructions-action" @click="polygon = !polygon">
         Switch to {{ polygon ? 'Polyline' : 'Polygon' }}
@@ -23,7 +23,6 @@
           strokeColor="dodgerblue"
           strokeWeight="5"
           fillColor="red"
-          :icons="icons"
         />
         <gmaps-polyline
           v-else
