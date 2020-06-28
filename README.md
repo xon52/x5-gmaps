@@ -406,6 +406,27 @@ This component supports the following events:
 
 ### :warning: **It's highly recommended to check out the demo at the top of this readme to have a play around.**
 
+## Custom map slots
+
+While you shouldn't see these for too long, if at all, there are two customisable slots: _Loading_ and _Error_.
+
+```html
+<template>
+  <gmaps-map>
+    <template v-slot:loading>
+      <div>
+        <span>This is now loading...</span>
+      </div>
+    </template>
+    <template v-slot:error="{ error }">
+      <div>
+        <span>You broke it: {{ error }}</span>
+      </div>
+    </template>
+  </gmaps-map>
+</template>
+```
+
 <!-- TODO: Advanced usage: Component creation, this.$GMaps() etc -->
 
 <br>

@@ -1,7 +1,18 @@
 <template>
   <div class="gmaps-map">
-    <span v-if="error" class="gmaps-error">Error: {{ error }}</span>
-    <div v-else-if="loading" class="gmaps-spinner"></div>
+    <!-- Error slot -->
+    <template v-if="error">
+      <slot name="error" :error="error">
+        <span class="gmaps-error">Error: {{ error }}</span>
+      </slot>
+    </template>
+    <!-- Loading slot -->
+    <template v-else-if="loading">
+      <slot name="loading">
+        <span class="gmaps-spinner"></span>
+      </slot>
+    </template>
+    <!-- Map -->
     <div v-show="!error && !loading" class="gmaps-map" ref="gmap">
       <slot v-if="map" />
     </div>

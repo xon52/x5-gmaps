@@ -2,8 +2,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-  margin: 0 auto;
-  background: #e5e3df;
 }
 .gmaps-spinner {
   position: absolute;
@@ -16,9 +14,9 @@
   display: inline-block;
   width: 150px;
   height: 150px;
-  border: 20px solid #fff4;
+  border: 20px solid #eee;
   border-radius: 50%;
-  border-top-color: #fff;
+  border-top-color: #ddd;
   animation: gmaps-spin 1s ease-in-out infinite;
 }
 .gmaps-error {

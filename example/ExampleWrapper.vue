@@ -54,7 +54,6 @@ export default {
 }
 .sides {
   border: 2px ridge silver;
-  background: #eee;
 }
 .code {
   padding: 0 20px;
