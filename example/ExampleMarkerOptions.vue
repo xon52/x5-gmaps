@@ -8,12 +8,17 @@
     <template #description>
       <p>
         As with the map, there are also many
-        <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions" target="_blank">options</a> available for markers.
+        <a
+          href="https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions"
+          target="_blank"
+          >options</a
+        >
+        available for markers.
       </p>
     </template>
     <template #map>
       <gmaps-map :options="mapOptions">
-        <gmaps-marker :options="optionsA" @positionChanged="updatePosition" />
+        <gmaps-marker :options="optionsA" @move="updatePosition" />
         <gmaps-marker :options="optionsB" @click="increaseOpacity" />
       </gmaps-map>
     </template>
@@ -23,7 +28,7 @@
 &lt;gmaps-map />
   &lt;gmaps-marker
     :options="optionsA"
-    @positionChanged="updatePosition"
+    @move="updatePosition"
   />
   &lt;gmaps-marker
     :options="optionsB"
@@ -52,7 +57,7 @@ increaseOpacity() {
   this.optionsB.opacity = Math.round(op > 9 ? 5 : op + 1) / 10
 }
 updatePosition(pos) {
-  this.positionA = pos.toJSON()
+  this.positionA = pos
 }
 
 ...
@@ -108,7 +113,7 @@ export default {
       this.optionsB.opacity = Math.round(op > 9 ? 5 : op + 1) / 10
     },
     updatePosition(pos) {
-      this.positionA = pos.toJSON()
+      this.positionA = pos
     }
   },
   mounted() {

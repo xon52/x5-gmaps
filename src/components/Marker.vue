@@ -26,6 +26,15 @@ export default {
       return options
     }
   },
+  methods: {
+    changedPosition() {
+      const oldPosition = this.options.position
+      const newPosition = this.marker.getPosition().toJSON()
+      return Math.abs(newPosition.lat - oldPosition.lat) > 0.001 || Math.abs(newPosition.lng - oldPosition.lng) > 0.001
+        ? newPosition
+        : false
+    }
+  },
   mounted() {
     if (!this.position && !this.options.position)
       throw new Error(
@@ -34,11 +43,14 @@ export default {
     this.$GMaps()
       .then(GMaps => (this.marker = new GMaps.Marker({ map: this.getMap(), ...this._options })))
       .then(() =>
-        // Depreciated 19/04
-        this.marker.addListener('position_changed', () => this.$emit('positionChanged', this.marker.getPosition()))
-      )
-      .then(() =>
-        this.marker.addListener('position_changed', () => this.$emit('move', this.marker.getPosition().toJSON()))
+        this.marker.addListener('position_changed', () => {
+          const position = this.changedPosition()
+          if (position) {
+            this.$emit('move', position)
+            // Depreciated 19/04
+            this.$emit('positionChanged', position)
+          }
+        })
       )
       .then(() => this.marker.addListener('click', e => this.$emit('click', e)))
       .then(() => this.marker.addListener('dblclick', e => this.$emit('doubleClick', e)))
