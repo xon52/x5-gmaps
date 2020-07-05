@@ -39,7 +39,7 @@ export default {
     changedCenter() {
       const oldCenter = this.center
       const newCenter = this.circle.getCenter().toJSON()
-      return Math.abs(newCenter.lat - oldCenter.lat) > 0.0001 || Math.abs(newCenter.lng - oldCenter.lng) > 0.0001
+      return Math.abs(newCenter.lat - oldCenter.lat) > 0.001 || Math.abs(newCenter.lng - oldCenter.lng) > 0.001
         ? newCenter
         : false
     },

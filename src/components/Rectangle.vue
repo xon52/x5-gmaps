@@ -37,10 +37,10 @@ export default {
     changedBounds() {
       const oldBounds = this.bounds
       const newBounds = this.rectangle.getBounds().toJSON()
-      return Math.abs(newBounds.north - oldBounds.north) > 0.0001 ||
-        Math.abs(newBounds.south - oldBounds.south) > 0.0001 ||
-        Math.abs(newBounds.east - oldBounds.east) > 0.0001 ||
-        Math.abs(newBounds.west - oldBounds.west) > 0.0001
+      return Math.abs(newBounds.north - oldBounds.north) > 0.001 ||
+        Math.abs(newBounds.south - oldBounds.south) > 0.001 ||
+        Math.abs(newBounds.east - oldBounds.east) > 0.001 ||
+        Math.abs(newBounds.west - oldBounds.west) > 0.001
         ? newBounds
         : false
     }
