@@ -1,6 +1,6 @@
 {
   "name": "x5-gmaps",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "private": false,
   "description": "A lightweight Google Maps plugin for Vue",
   "author": "Keagan Chisnall",
@@ -14,7 +14,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@babel/core": "^7.10.4",
+    "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@vue/cli-plugin-babel": "^4.4.6",
     "@vue/cli-plugin-eslint": "^4.4.6",
@@ -24,7 +24,7 @@
     "copy-webpack-plugin": "^6.0.3",
     "core-js": "^3.6.5",
     "css-loader": "^3.6.0",
-    "eslint": "^7.4.0",
+    "eslint": "^7.5.0",
     "eslint-plugin-vue": "^6.1.2",
     "node-sass": "^4.14.1",
     "sass-loader": "^9.0.2",
