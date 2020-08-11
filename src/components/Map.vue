@@ -27,17 +27,18 @@ const defaultOptions = {
 
 export default {
   name: 'gmapsMap',
-  provide: function() {
+  provide: function () {
     return {
       getMap: () => this.getMap(),
-      handleError: e => this.handleError(e)
+      handleError: (e) => this.handleError(e)
     }
   },
   props: { options: { type: Object, default: () => ({}) } },
   data: () => ({
     error: null,
     loading: true,
-    map: null
+    map: null,
+    GMaps: null
   }),
   methods: {
     handleError(e) {
@@ -57,20 +58,22 @@ export default {
   },
   mounted() {
     this.$GMaps()
-      .then(GMaps => (this.map = new GMaps.Map(this.$refs.gmap, { ...defaultOptions, ...this.options })))
+      .then((GMaps) => (this.GMaps = GMaps))
+      .then(() => (this.map = new this.GMaps.Map(this.$refs.gmap, { ...defaultOptions, ...this.options })))
       .then(() => this.map.addListener('bounds_changed', () => this.$emit('boundsChanged', this.map.getBounds())))
       .then(() => this.map.addListener('center_changed', () => this.$emit('centerChanged', this.map.getCenter())))
-      .then(() => this.map.addListener('click', e => this.$emit('click', e)))
-      .then(() => this.map.addListener('dblclick', e => this.$emit('doubleClick', e)))
-      .then(() => this.map.addListener('rightclick', e => this.$emit('rightClick', e)))
-      .catch(e => this.handleError(e))
+      .then(() => this.map.addListener('click', (e) => this.$emit('click', e)))
+      .then(() => this.map.addListener('dblclick', (e) => this.$emit('doubleClick', e)))
+      .then(() => this.map.addListener('rightclick', (e) => this.$emit('rightClick', e)))
+      .catch((e) => this.handleError(e))
       .finally(() => setTimeout(() => (this.loading = false), 100))
   },
   beforeDestroy() {
-    if (this.map)
-      this.$GMaps()
-        .then(GMaps => GMaps.event.clearInstanceListeners(this.map))
-        .catch(e => this.handleError(e))
+    try {
+      this.GMaps.event.clearInstanceListeners(this.map)
+    } catch (e) {
+      this.handleError(e)
+    }
   }
 }
 </script>

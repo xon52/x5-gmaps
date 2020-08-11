@@ -12,7 +12,10 @@ export default {
     visible: { type: Boolean, default: null },
     zIndex: { type: [String, Number], default: null }
   },
-  data: () => ({ marker: null }),
+  data: () => ({
+    marker: null,
+    GMaps: null
+  }),
   computed: {
     _options() {
       const options = { ...this.options }
@@ -41,7 +44,8 @@ export default {
         'x5-gmaps: A position is required by every marker. Set this as either a position prop, or a position property of the options prop.'
       )
     this.$GMaps()
-      .then(GMaps => (this.marker = new GMaps.Marker({ map: this.getMap(), ...this._options })))
+      .then((GMaps) => (this.GMaps = GMaps))
+      .then(() => (this.marker = new this.GMaps.Marker({ map: this.getMap(), ...this._options })))
       .then(() =>
         this.marker.addListener('position_changed', () => {
           const position = this.changedPosition()
@@ -52,12 +56,12 @@ export default {
           }
         })
       )
-      .then(() => this.marker.addListener('click', e => this.$emit('click', e)))
-      .then(() => this.marker.addListener('dblclick', e => this.$emit('doubleClick', e)))
-      .then(() => this.marker.addListener('rightclick', e => this.$emit('rightClick', e)))
-      .then(() => this.marker.addListener('mouseover', e => this.$emit('mouseover', e)))
-      .then(() => this.marker.addListener('mouseout', e => this.$emit('mouseout', e)))
-      .catch(e => this.handleError(e))
+      .then(() => this.marker.addListener('click', (e) => this.$emit('click', e)))
+      .then(() => this.marker.addListener('dblclick', (e) => this.$emit('doubleClick', e)))
+      .then(() => this.marker.addListener('rightclick', (e) => this.$emit('rightClick', e)))
+      .then(() => this.marker.addListener('mouseover', (e) => this.$emit('mouseover', e)))
+      .then(() => this.marker.addListener('mouseout', (e) => this.$emit('mouseout', e)))
+      .catch((e) => this.handleError(e))
   },
   watch: {
     _options(newVal) {
@@ -65,11 +69,11 @@ export default {
     }
   },
   beforeDestroy() {
-    if (this.marker) {
+    try {
       this.marker.setMap(null)
-      this.$GMaps()
-        .then(GMaps => GMaps.event.clearInstanceListeners(this.marker))
-        .catch(e => this.handleError(e))
+      this.GMaps.event.clearInstanceListeners(this.marker)
+    } catch (e) {
+      this.handleError(e)
     }
   },
   render: () => null
