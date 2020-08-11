@@ -12,11 +12,11 @@
 .gmaps-spinner::after {
   content: '';
   display: inline-block;
-  width: 150px;
-  height: 150px;
-  border: 20px solid #eee;
+  width: 200px;
+  height: 200px;
+  border: 20px solid #ccc;
   border-radius: 50%;
-  border-top-color: #ddd;
+  border-top-color: #aaa;
   animation: gmaps-spin 1s ease-in-out infinite;
 }
 .gmaps-error {
