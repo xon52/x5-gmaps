@@ -13,8 +13,8 @@
       </slot>
     </template>
     <!-- Map -->
-    <div v-show="!error && !loading" class="gmaps-map" ref="gmap">
-      <slot v-if="map" />
+    <div class="gmaps-map" ref="gmap">
+      <slot v-if="!error && !loading && map" />
     </div>
   </div>
 </template>
