@@ -427,7 +427,8 @@ Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] })
 </template>
 
 <script>
-  // I leave these as external variables so they can be used inside my arrow functions without confusing the "this" context.
+  // I leave these as external variables so they can be used inside
+  // my arrow functions without confusing the "this" context.
   let PlacesService
   let PlacesServiceOK
 
@@ -442,7 +443,10 @@ Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] })
         })
       },
     },
-    // The `maps` object from Google is only available after the pages has been loaded; which hopefully happens before mounted() but that is not guaranteed. That is why I use the `$GMaps()` promise which returns the `maps` object once the Google code has loaded.
+    // The `maps` object from Google is only available after the pages
+    // has been loaded; which hopefully happens before mounted() but
+    // that is not guaranteed. That is why I use the `$GMaps()` promise
+    // which returns the `maps` object once the Google code has loaded.
     mounted() {
       this.$GMaps().then((maps) => {
         PlacesServiceOK = maps.places.PlacesServiceStatus.OK
