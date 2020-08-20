@@ -404,11 +404,64 @@ This component supports the following events:
 </script>
 ```
 
+<br>
+<hr>
+<br>
+
+## Google Place Library (and `$GMaps()`)
+
+As mentioned above, additional libraries can be used in conjunction with this package, and as an example, this is how you would include the [Places Library](https://developers.google.com/maps/documentation/javascript/places).
+
+```js
+// main.js
+Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] })
+```
+
+### :warning: This is an example taken from a project of mine; you may be able to find a more efficient way to do this. It is focused around using the [AutocompleteService](https://developers.google.com/maps/documentation/javascript/places-autocomplete).
+
+### :information_source: `$GMaps()` is the little promise that returns the Google `maps` object once the Google Maps code has successfully loaded. This is the little trick with getting it to work with Vue and is what you need to access the `maps` object references in all of the Google Maps documentation.
+
+```html
+<template>
+  ...
+</template>
+
+<script>
+  // I leave these as external variables so they can be used inside my arrow functions without confusing the "this" context.
+  let PlacesService
+  let PlacesServiceOK
+
+  export default {
+    methods: {
+      query(input) {
+        return new Promise((resolve, reject) => {
+          PlacesService.getPlacePredictions({ input }, (results, status) => {
+            if (status !== PlacesServiceOK) reject(new Error(status))
+            else resolve(results)
+          })
+        })
+      },
+    },
+    // The `maps` object from Google is only available after the pages has been loaded; which hopefully happens before mounted() but that is not guaranteed. That is why I use the `$GMaps()` promise which returns the `maps` object once the Google code has loaded.
+    mounted() {
+      this.$GMaps().then((maps) => {
+        PlacesServiceOK = maps.places.PlacesServiceStatus.OK
+        PlacesService = new maps.places.AutocompleteService()
+      })
+    },
+  }
+</script>
+```
+
+<hr>
+
 ### :warning: **It's highly recommended to check out the demo at the top of this readme to have a play around.**
+
+<hr>
 
 ## Custom map slots
 
-While you shouldn't see these for too long, if at all, there are two customisable slots: _Loading_ and _Error_.
+While you shouldn't see these for too long while the map loads (if at all), there are two customisable slots: _Loading_ and _Error_.
 
 ```html
 <template>
