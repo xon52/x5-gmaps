@@ -408,7 +408,7 @@ This component supports the following events:
 <hr>
 <br>
 
-## Google Place Library (and `$GMaps()`)
+## Google Places Library (and `$GMaps()`)
 
 As mentioned above, additional libraries can be used in conjunction with this package, and as an example, this is how you would include the [Places Library](https://developers.google.com/maps/documentation/javascript/places).
 
