@@ -25,8 +25,8 @@
           strokeColor="green"
           strokeWeight="5"
           fillColor="yellow"
-          @centerChanged="center = $event"
-          @radiusChanged="radius = $event"
+          @centerChanged="centerChanged"
+          @radiusChanged="radiusChanged"
         />
       </gmaps-map>
     </template>
@@ -101,6 +101,16 @@ export default {
     },
     center: { lat: -27.479, lng: 152.937 },
     radius: 5000
-  })
+  }),
+  methods: {
+    radiusChanged(e) {
+      console.log('radius', e)
+      this.radius = e
+    },
+    centerChanged(e) {
+      console.log('center', e)
+      this.center = e
+    },
+  }
 }
 </script>
