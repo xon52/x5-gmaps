@@ -65,6 +65,7 @@ export default {
       .then(() => this.map.addListener('click', (e) => this.$emit('click', e)))
       .then(() => this.map.addListener('dblclick', (e) => this.$emit('doubleClick', e)))
       .then(() => this.map.addListener('rightclick', (e) => this.$emit('rightClick', e)))
+      .then(() => this.map.addListener('zoom_changed', () => this.$emit('zoomChanged', this.map.getZoom())))
       .catch((e) => this.handleError(e))
       .finally(() => setTimeout(() => (this.loading = false), 100))
   },
