@@ -16,9 +16,12 @@ export default {
     visible: { type: Boolean, default: true },
     zIndex: { type: [String, Number], default: 0 }
   },
-  data: () => ({ rectangle: null, test: 0 }),
+  data: (vm) => ({
+    rectangle: null,
+    tempBounds: vm.bounds
+  }),
   computed: {
-    _options: vm => ({
+    _options: (vm) => ({
       bounds: vm.bounds,
       clickable: vm.clickable,
       draggable: vm.draggable,
@@ -35,38 +38,36 @@ export default {
   },
   methods: {
     changedBounds() {
-      const oldBounds = this.bounds
+      const oldBounds = this.tempBounds
       const newBounds = this.rectangle.getBounds().toJSON()
-      return Math.abs(newBounds.north - oldBounds.north) > 0.001 ||
+      if (
+        Math.abs(newBounds.north - oldBounds.north) > 0.001 ||
         Math.abs(newBounds.south - oldBounds.south) > 0.001 ||
         Math.abs(newBounds.east - oldBounds.east) > 0.001 ||
         Math.abs(newBounds.west - oldBounds.west) > 0.001
-        ? newBounds
-        : false
+      ) {
+        this.tempBounds = newBounds
+        this.$emit('boundsChanged', newBounds)
+      }
     }
   },
   mounted() {
     this.$GMaps()
-      .then(GMaps => {
+      .then((GMaps) => {
         this.rectangle = new GMaps.Rectangle({
           map: this.getMap(),
           options: { ...this._options }
         })
       })
-      .then(() =>
-        this.rectangle.addListener('bounds_changed', () => {
-          const bounds = this.changedBounds()
-          if (bounds) this.$emit('boundsChanged', bounds)
-        })
-      )
-      .then(() => this.rectangle.addListener('click', e => this.$emit('click', e)))
-      .then(() => this.rectangle.addListener('dblclick', e => this.$emit('doubleClick', e)))
-      .then(() => this.rectangle.addListener('drag', e => this.$emit('drag', e)))
-      .then(() => this.rectangle.addListener('dragend', e => this.$emit('dragEnd', e)))
-      .then(() => this.rectangle.addListener('dragstart', e => this.$emit('dragStart', e)))
-      .then(() => this.rectangle.addListener('mouseover', e => this.$emit('mouseover', e)))
-      .then(() => this.rectangle.addListener('rightclick', e => this.$emit('rightClick', e)))
-      .catch(e => this.handleError(e))
+      .then(() => this.rectangle.addListener('bounds_changed', () => this.changedBounds()))
+      .then(() => this.rectangle.addListener('click', (e) => this.$emit('click', e)))
+      .then(() => this.rectangle.addListener('dblclick', (e) => this.$emit('doubleClick', e)))
+      .then(() => this.rectangle.addListener('drag', (e) => this.$emit('drag', e.latLng.toJSON())))
+      .then(() => this.rectangle.addListener('dragend', (e) => this.$emit('dragEnd', e.latLng.toJSON())))
+      .then(() => this.rectangle.addListener('dragstart', (e) => this.$emit('dragStart', e.latLng.toJSON())))
+      .then(() => this.rectangle.addListener('mouseover', (e) => this.$emit('mouseover', e)))
+      .then(() => this.rectangle.addListener('rightclick', (e) => this.$emit('rightClick', e)))
+      .catch((e) => this.handleError(e))
   },
   watch: {
     _options(newVal) {
