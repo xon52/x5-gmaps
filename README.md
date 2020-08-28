@@ -76,6 +76,7 @@ This component supports the following events:
 
 - `@boundsChanged` _returns new bounds_
 - `@centerChanged` _returns new center_
+- `@zoomChanged` _returns new zoom level_
 - `@click` _returns event_
 - `@doubleClick` _returns event_
 - `@rightClick` _returns event_
@@ -292,6 +293,7 @@ This component supports the following events:
 - `@dragStart` _returns [MouseEvent](https://developers.google.com/maps/documentation/javascript/reference/map#MouseEvent)_
 - `@mouseover` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
 - `@rightClick` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
+- `@pathChanged` _returns array of points_
 
 | Props          |  Type   |   Default    | Description                                                                                  |
 | :------------- | :-----: | :----------: | :------------------------------------------------------------------------------------------- |
