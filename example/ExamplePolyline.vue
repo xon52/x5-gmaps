@@ -18,19 +18,21 @@
       <gmaps-map :options="mapOptions">
         <gmaps-polygon
           v-if="polygon"
-          :path="items"
           :editable="editable"
+          :path="items"
+          @pathChanged="items = $event"
+          fillColor="red"
           strokeColor="dodgerblue"
           strokeWeight="5"
-          fillColor="red"
         />
         <gmaps-polyline
           v-else
-          :path="items"
           :editable="editable"
+          :icons="icons"
+          :path="items"
+          @pathChanged="items = $event"
           strokeColor="dodgerblue"
           strokeWeight="5"
-          :icons="icons"
         />
       </gmaps-map>
     </template>
@@ -42,6 +44,7 @@
     :editable="editable"
     :icons="icons"
     :path="items"
+    @pathChanged="items = $event"
     strokeColor="dodgerblue"
     strokeWeight="5"
   />
