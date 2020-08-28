@@ -2,6 +2,7 @@
   <example-wrapper title="Rectangles and Circles">
     <div class="instructions">
       <label><input type="checkbox" v-model="editable" /> Editable</label>
+      <label><input type="checkbox" v-model="draggable" /> Draggable</label>
     </div>
     <template #description>
       <p>
@@ -12,21 +13,24 @@
       <gmaps-map :options="mapOptions">
         <gmaps-rectangle
           :bounds="bounds"
+          :draggable="draggable"
           :editable="editable"
+          @boundsChanged="bounds = $event"
+          fillColor="red"
           strokeColor="dodgerblue"
           strokeWeight="5"
-          fillColor="red"
-          @boundsChanged="bounds = $event"
         />
         <gmaps-circle
           :center="center"
-          :radius="radius"
+          :draggable="draggable"
           :editable="editable"
+          :radius="radius"
+          @centerChanged="centerChanged"
+          @drag="dragChanged"
+          @radiusChanged="radiusChanged"
+          fillColor="yellow"
           strokeColor="green"
           strokeWeight="5"
-          fillColor="yellow"
-          @centerChanged="centerChanged"
-          @radiusChanged="radiusChanged"
         />
       </gmaps-map>
     </template>
@@ -36,20 +40,22 @@
 &lt;gmaps-map>
   &lt;gmaps-rectangle
     :bounds="bounds"
+    :draggable="draggable"
     :editable="editable"
+    @boundsChanged="bounds = $event"
+    fillColor="red"
     strokeColor="dodgerblue"
     strokeWeight="5"
-    fillColor="red"
-    @boundsChanged="bounds = $event"
   />
   &lt;gmaps-circle
     :center="center"
+    :draggable="draggable"
     :editable="editable"
-    strokeColor="green"
-    strokeWeight="5"
-    fillColor="yellow"
     @centerChanged="center = $event"
     @radiusChanged="radius = $event"
+    fillColor="yellow"
+    strokeColor="green"
+    strokeWeight="5"
   />
 &lt;/gmaps-map>
 
@@ -92,6 +98,7 @@ export default {
       streetViewControl: false,
       zoomControl: false
     },
+    draggable: false,
     editable: false,
     bounds: {
       east: 153.12,
@@ -111,6 +118,9 @@ export default {
       console.log('center', e)
       this.center = e
     },
+    dragChanged(e) {
+      console.log('drag', e)
+    }
   }
 }
 </script>
