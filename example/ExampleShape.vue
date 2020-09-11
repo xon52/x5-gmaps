@@ -111,15 +111,15 @@ export default {
   }),
   methods: {
     radiusChanged(e) {
-      console.log('radius', e)
+      console.log('radius', e) // eslint-disable-line no-console
       this.radius = e
     },
     centerChanged(e) {
-      console.log('center', e)
+      console.log('center', e) // eslint-disable-line no-console
       this.center = e
     },
     dragChanged(e) {
-      console.log('drag', e)
+      console.log('drag', e) // eslint-disable-line no-console
     }
   }
 }
