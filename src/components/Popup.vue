@@ -23,7 +23,7 @@ export default {
   data: () => ({ popup: null }),
   watch: {
     position(pos) {
-      this.popup.setPosition(pos)
+      if (pos) this.popup.setPosition(pos)
     }
   },
   mounted() {
