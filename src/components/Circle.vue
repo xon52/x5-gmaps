@@ -41,7 +41,8 @@ export default {
   },
   methods: {
     changedCenter() {
-      const oldCenter = this.tempCenter
+      // This is fired when the component is replaced and may not have a tempCenter
+      const oldCenter = this.tempCenter || -1
       const newCenter = this.circle.getCenter().toJSON()
       if (Math.abs(newCenter.lat - oldCenter.lat) > 0.0001 || Math.abs(newCenter.lng - oldCenter.lng) > 0.0001) {
         this.tempCenter = newCenter
@@ -49,7 +50,8 @@ export default {
       }
     },
     changedRadius() {
-      const oldRadius = this.tempRadius
+      // This is fired when the component is replaced and may not have a tempCenter
+      const oldRadius = this.tempRadius || -1
       const newRadius = this.circle.getRadius()
       if (Math.abs(newRadius - oldRadius) > 1) {
         this.tempRadius = newRadius

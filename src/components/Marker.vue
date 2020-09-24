@@ -32,7 +32,10 @@ export default {
   methods: {
     changedPosition() {
       const oldPosition = this.options.position
+      // This function is fired when a marker is replaced by Vue (and options is undefined)
+      if (!oldPosition) return
       const newPosition = this.marker.getPosition().toJSON()
+
       return Math.abs(newPosition.lat - oldPosition.lat) > 0.001 || Math.abs(newPosition.lng - oldPosition.lng) > 0.001
         ? newPosition
         : false

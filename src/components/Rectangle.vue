@@ -38,7 +38,8 @@ export default {
   },
   methods: {
     changedBounds() {
-      const oldBounds = this.tempBounds
+      // This is fired when the component is replaced and may not have a tempCenter
+      const oldBounds = this.tempBounds || { north: -1, south: -1, east: -1, west: -1 }
       const newBounds = this.rectangle.getBounds().toJSON()
       if (
         Math.abs(newBounds.north - oldBounds.north) > 0.001 ||
