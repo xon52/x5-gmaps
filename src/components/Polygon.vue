@@ -44,6 +44,8 @@ export default {
           .map((e) => e.toJSON())
         this.polygon.setPath(result)
         this.$emit('path-changed', result)
+        // TODO: Remove in major release
+        this.$emit('pathChanged', result) // eslint-disable-line
       }
     }
   },
@@ -64,6 +66,11 @@ export default {
       // NOTE: path events insert_at and set_at only fired once so mouse up was more reliable (but mouse up doesn't trigger for remove event)
       .then(() => this.polygon.addListener('mouseup', () => this.changedPath()))
       .then(() => this.polygon.getPath().addListener('remove_at', () => this.changedPath()))
+      // TODO: Remove in major release
+      .then(() => this.polygon.addListener('dblclick', (e) => this.$emit('doubleClick', e))) // eslint-disable-line
+      .then(() => this.polygon.addListener('dragend', (e) => this.$emit('dragEnd', e))) // eslint-disable-line
+      .then(() => this.polygon.addListener('dragstart', (e) => this.$emit('dragStart', e))) // eslint-disable-line
+      .then(() => this.polygon.addListener('rightclick', (e) => this.$emit('rightClick', e))) // eslint-disable-line
       .catch((e) => this.handleError(e))
   },
   watch: {

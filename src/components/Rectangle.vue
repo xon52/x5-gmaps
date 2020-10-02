@@ -49,6 +49,8 @@ export default {
       ) {
         this.tempBounds = newBounds
         this.$emit('bounds-changed', newBounds)
+        // TODO: Remove in major release
+        this.$emit('boundsChanged', newBounds) // eslint-disable-line
       }
     }
   },
@@ -68,6 +70,11 @@ export default {
       .then(() => this.rectangle.addListener('dragstart', (e) => this.$emit('drag-start', e.latLng.toJSON())))
       .then(() => this.rectangle.addListener('mouseover', (e) => this.$emit('mouseover', e)))
       .then(() => this.rectangle.addListener('rightclick', (e) => this.$emit('right-click', e)))
+      // TODO: Remove in major release
+      .then(() => this.rectangle.addListener('dblclick', (e) => this.$emit('doubleClick', e))) // eslint-disable-line
+      .then(() => this.rectangle.addListener('dragend', (e) => this.$emit('dragEnd', e))) // eslint-disable-line
+      .then(() => this.rectangle.addListener('dragstart', (e) => this.$emit('dragStart', e))) // eslint-disable-line
+      .then(() => this.rectangle.addListener('rightclick', (e) => this.$emit('rightClick', e))) // eslint-disable-line
       .catch((e) => this.handleError(e))
   },
   watch: {

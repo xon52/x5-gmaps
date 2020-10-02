@@ -67,6 +67,12 @@ export default {
       .then(() => this.map.addListener('dblclick', (e) => this.$emit('double-click', e)))
       .then(() => this.map.addListener('rightclick', (e) => this.$emit('right-click', e)))
       .then(() => this.map.addListener('zoom_changed', () => this.$emit('zoom-changed', this.map.getZoom())))
+      // TODO: Remove in major release
+      .then(() => this.map.addListener('bounds_changed', () => this.$emit('boundsChanged', this.map.getBounds()))) // eslint-disable-line
+      .then(() => this.map.addListener('center_changed', () => this.$emit('centerChanged', this.map.getCenter()))) // eslint-disable-line
+      .then(() => this.map.addListener('dblclick', (e) => this.$emit('doubleClick', e))) // eslint-disable-line
+      .then(() => this.map.addListener('rightclick', (e) => this.$emit('rightClick', e))) // eslint-disable-line
+      .then(() => this.map.addListener('zoom_changed', () => this.$emit('zoomChanged', this.map.getZoom()))) // eslint-disable-line
       .catch((e) => this.handleError(e))
       .finally(() => setTimeout(() => (this.loading = false), 100))
   },

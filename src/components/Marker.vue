@@ -64,6 +64,9 @@ export default {
       .then(() => this.marker.addListener('rightclick', (e) => this.$emit('right-click', e)))
       .then(() => this.marker.addListener('mouseover', (e) => this.$emit('mouseover', e)))
       .then(() => this.marker.addListener('mouseout', (e) => this.$emit('mouseout', e)))
+      // TODO: Remove in major release
+      .then(() => this.marker.addListener('dblclick', (e) => this.$emit('doubleClick', e))) // eslint-disable-line
+      .then(() => this.marker.addListener('rightclick', (e) => this.$emit('right-click', e))) // eslint-disable-line
       .catch((e) => this.handleError(e))
   },
   watch: {
