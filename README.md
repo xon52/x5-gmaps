@@ -83,6 +83,10 @@ This component supports the following events:
 - `@mouseover` _returns event_
 - `@mouseout` _returns event_
 
+Once the map is loaded, it `$emit`'s itself (map instance) via the event `mounted` (thanks [thefoxie](https://github.com/thefoxie)).
+
+The default template for the slot also has a slot prop of `map` which can be referred to.
+
 ```html
 <template>
   <gmaps-map :options="mapOptions" />

@@ -14,7 +14,7 @@
     </template>
     <!-- Map -->
     <div class="gmaps-map" ref="gmap">
-      <slot v-if="!error && !loading && map" />
+      <slot v-if="!error && !loading && map" :map="map" />
     </div>
   </div>
 </template>
@@ -60,8 +60,7 @@ export default {
     this.$GMaps()
       .then((GMaps) => (this.GMaps = GMaps))
       .then(() => (this.map = new this.GMaps.Map(this.$refs.gmap, { ...defaultOptions, ...this.options })))
-      .then(() => this.map.addListener('bounds_changed', () => this.$emit('boundsChanged', this.map.getBounds())))
-      .then(() => this.map.addListener('center_changed', () => this.$emit('centerChanged', this.map.getCenter())))
+      .then(() => this.$emit('mounted', this.map))
       .then(() => this.map.addListener('click', (e) => this.$emit('click', e)))
       .then(() => this.map.addListener('dblclick', (e) => this.$emit('doubleClick', e)))
       .then(() => this.map.addListener('rightclick', (e) => this.$emit('rightClick', e)))
