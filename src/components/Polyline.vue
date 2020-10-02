@@ -38,7 +38,7 @@ export default {
           .getPath()
           .getArray()
           .map((e) => e.toJSON())
-        this.$emit('pathChanged', result)
+        this.$emit('path-changed', result)
       }
     }
   },
@@ -51,12 +51,12 @@ export default {
         })
       })
       .then(() => this.polyline.addListener('click', (e) => this.$emit('click', e)))
-      .then(() => this.polyline.addListener('dblclick', (e) => this.$emit('doubleClick', e)))
+      .then(() => this.polyline.addListener('dblclick', (e) => this.$emit('double-click', e)))
       .then(() => this.polyline.addListener('drag', (e) => this.$emit('drag', e)))
-      .then(() => this.polyline.addListener('dragend', (e) => this.$emit('dragEnd', e)))
-      .then(() => this.polyline.addListener('dragstart', (e) => this.$emit('dragStart', e)))
+      .then(() => this.polyline.addListener('dragend', (e) => this.$emit('drag-end', e)))
+      .then(() => this.polyline.addListener('dragstart', (e) => this.$emit('drag-start', e)))
       .then(() => this.polyline.addListener('mouseover', (e) => this.$emit('mouseover', e)))
-      .then(() => this.polyline.addListener('rightclick', (e) => this.$emit('rightClick', e)))
+      .then(() => this.polyline.addListener('rightclick', (e) => this.$emit('right-click', e)))
       // NOTE: path events insert_at and set_at only fired once so mouse up was more reliable (but mouse up doesn't trigger for remove event)
       .then(() => this.polyline.addListener('mouseup', () => this.changedPath()))
       .then(() => this.polyline.getPath().addListener('remove_at', () => this.changedPath()))

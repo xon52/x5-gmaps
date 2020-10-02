@@ -46,7 +46,7 @@ export default {
       const newCenter = this.circle.getCenter().toJSON()
       if (Math.abs(newCenter.lat - oldCenter.lat) > 0.0001 || Math.abs(newCenter.lng - oldCenter.lng) > 0.0001) {
         this.tempCenter = newCenter
-        this.$emit('centerChanged', newCenter)
+        this.$emit('center-changed', newCenter)
       }
     },
     changedRadius() {
@@ -55,7 +55,7 @@ export default {
       const newRadius = this.circle.getRadius()
       if (Math.abs(newRadius - oldRadius) > 1) {
         this.tempRadius = newRadius
-        this.$emit('radiusChanged', newRadius)
+        this.$emit('radius-changed', newRadius)
       }
     }
   },
@@ -70,12 +70,12 @@ export default {
       .then(() => this.circle.addListener('center_changed', () => this.changedCenter()))
       .then(() => this.circle.addListener('radius_changed', () => this.changedRadius()))
       .then(() => this.circle.addListener('click', (e) => this.$emit('click', e)))
-      .then(() => this.circle.addListener('dblclick', (e) => this.$emit('doubleClick', e)))
+      .then(() => this.circle.addListener('dblclick', (e) => this.$emit('double-click', e)))
       .then(() => this.circle.addListener('drag', (e) => this.$emit('drag', e.latLng.toJSON())))
-      .then(() => this.circle.addListener('dragend', (e) => this.$emit('dragEnd', e.latLng.toJSON())))
-      .then(() => this.circle.addListener('dragstart', (e) => this.$emit('dragStart', e.latLng.toJSON())))
+      .then(() => this.circle.addListener('dragend', (e) => this.$emit('drag-end', e.latLng.toJSON())))
+      .then(() => this.circle.addListener('dragstart', (e) => this.$emit('drag-start', e.latLng.toJSON())))
       .then(() => this.circle.addListener('mouseover', (e) => this.$emit('mouseover', e)))
-      .then(() => this.circle.addListener('rightclick', (e) => this.$emit('rightClick', e)))
+      .then(() => this.circle.addListener('rightclick', (e) => this.$emit('right-click', e)))
       .catch((e) => this.handleError(e))
   },
   watch: {

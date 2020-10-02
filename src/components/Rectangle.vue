@@ -48,7 +48,7 @@ export default {
         Math.abs(newBounds.west - oldBounds.west) > 0.001
       ) {
         this.tempBounds = newBounds
-        this.$emit('boundsChanged', newBounds)
+        this.$emit('bounds-changed', newBounds)
       }
     }
   },
@@ -62,12 +62,12 @@ export default {
       })
       .then(() => this.rectangle.addListener('bounds_changed', () => this.changedBounds()))
       .then(() => this.rectangle.addListener('click', (e) => this.$emit('click', e)))
-      .then(() => this.rectangle.addListener('dblclick', (e) => this.$emit('doubleClick', e)))
+      .then(() => this.rectangle.addListener('dblclick', (e) => this.$emit('double-click', e)))
       .then(() => this.rectangle.addListener('drag', (e) => this.$emit('drag', e.latLng.toJSON())))
-      .then(() => this.rectangle.addListener('dragend', (e) => this.$emit('dragEnd', e.latLng.toJSON())))
-      .then(() => this.rectangle.addListener('dragstart', (e) => this.$emit('dragStart', e.latLng.toJSON())))
+      .then(() => this.rectangle.addListener('dragend', (e) => this.$emit('drag-end', e.latLng.toJSON())))
+      .then(() => this.rectangle.addListener('dragstart', (e) => this.$emit('drag-start', e.latLng.toJSON())))
       .then(() => this.rectangle.addListener('mouseover', (e) => this.$emit('mouseover', e)))
-      .then(() => this.rectangle.addListener('rightclick', (e) => this.$emit('rightClick', e)))
+      .then(() => this.rectangle.addListener('rightclick', (e) => this.$emit('right-click', e)))
       .catch((e) => this.handleError(e))
   },
   watch: {

@@ -43,7 +43,7 @@ export default {
           .getArray()
           .map((e) => e.toJSON())
         this.polygon.setPath(result)
-        this.$emit('pathChanged', result)
+        this.$emit('path-changed', result)
       }
     }
   },
@@ -56,11 +56,11 @@ export default {
         })
       })
       .then(() => this.polygon.addListener('click', (e) => this.$emit('click', e)))
-      .then(() => this.polygon.addListener('dblclick', (e) => this.$emit('doubleClick', e)))
+      .then(() => this.polygon.addListener('dblclick', (e) => this.$emit('double-click', e)))
       .then(() => this.polygon.addListener('drag', (e) => this.$emit('drag', e)))
-      .then(() => this.polygon.addListener('dragend', (e) => this.$emit('dragEnd', e)))
-      .then(() => this.polygon.addListener('dragstart', (e) => this.$emit('dragStart', e)))
-      .then(() => this.polygon.addListener('rightclick', (e) => this.$emit('rightClick', e)))
+      .then(() => this.polygon.addListener('dragend', (e) => this.$emit('drag-end', e)))
+      .then(() => this.polygon.addListener('dragstart', (e) => this.$emit('drag-start', e)))
+      .then(() => this.polygon.addListener('rightclick', (e) => this.$emit('right-click', e)))
       // NOTE: path events insert_at and set_at only fired once so mouse up was more reliable (but mouse up doesn't trigger for remove event)
       .then(() => this.polygon.addListener('mouseup', () => this.changedPath()))
       .then(() => this.polygon.getPath().addListener('remove_at', () => this.changedPath()))
