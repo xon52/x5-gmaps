@@ -1,4 +1,5 @@
 <script>
+// eslint:
 export default {
   name: 'gmapsCircle',
   inject: ['getMap', 'handleError'],
@@ -47,6 +48,8 @@ export default {
       if (Math.abs(newCenter.lat - oldCenter.lat) > 0.0001 || Math.abs(newCenter.lng - oldCenter.lng) > 0.0001) {
         this.tempCenter = newCenter
         this.$emit('center-changed', newCenter)
+        // TODO: Remove in major release
+        this.$emit('centerChanged', newCenter) // eslint-disable-line
       }
     },
     changedRadius() {
@@ -56,6 +59,8 @@ export default {
       if (Math.abs(newRadius - oldRadius) > 1) {
         this.tempRadius = newRadius
         this.$emit('radius-changed', newRadius)
+        // TODO: Remove in major release
+        this.$emit('radiusChanged', newRadius) // eslint-disable-line
       }
     }
   },
@@ -76,6 +81,11 @@ export default {
       .then(() => this.circle.addListener('dragstart', (e) => this.$emit('drag-start', e.latLng.toJSON())))
       .then(() => this.circle.addListener('mouseover', (e) => this.$emit('mouseover', e)))
       .then(() => this.circle.addListener('rightclick', (e) => this.$emit('right-click', e)))
+      // TODO: Remove in major release
+      .then(() => this.circle.addListener('dblclick', (e) => this.$emit('doubleClick', e))) // eslint-disable-line
+      .then(() => this.circle.addListener('dragend', (e) => this.$emit('dragEnd', e.latLng.toJSON()))) // eslint-disable-line
+      .then(() => this.circle.addListener('dragstart', (e) => this.$emit('dragStart', e.latLng.toJSON()))) // eslint-disable-line
+      .then(() => this.circle.addListener('rightclick', (e) => this.$emit('rightClick', e))) // eslint-disable-line
       .catch((e) => this.handleError(e))
   },
   watch: {

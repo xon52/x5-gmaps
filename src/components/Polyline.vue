@@ -39,6 +39,8 @@ export default {
           .getArray()
           .map((e) => e.toJSON())
         this.$emit('path-changed', result)
+        // TODO: Remove in major release
+        this.$emit('pathChanged', result) // eslint-disable-line
       }
     }
   },
@@ -60,6 +62,11 @@ export default {
       // NOTE: path events insert_at and set_at only fired once so mouse up was more reliable (but mouse up doesn't trigger for remove event)
       .then(() => this.polyline.addListener('mouseup', () => this.changedPath()))
       .then(() => this.polyline.getPath().addListener('remove_at', () => this.changedPath()))
+      // TODO: Remove in major release
+      .then(() => this.polyline.addListener('dblclick', (e) => this.$emit('doubleClick', e))) // eslint-disable-line
+      .then(() => this.polyline.addListener('dragend', (e) => this.$emit('dragEnd', e))) // eslint-disable-line
+      .then(() => this.polyline.addListener('dragstart', (e) => this.$emit('dragStart', e))) // eslint-disable-line
+      .then(() => this.polyline.addListener('rightclick', (e) => this.$emit('rightClick', e))) // eslint-disable-line
       .catch((e) => this.handleError(e))
   },
   watch: {
