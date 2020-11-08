@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap } from '../src' // import from 'x5-gmaps' for plugin
+import ExampleWrapper from '../Wrapper'
+import { gmapsMap } from '@/' // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleMap',

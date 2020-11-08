@@ -81,8 +81,8 @@ radius: 5000
 </template>
 
 <script>
-import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap, gmapsRectangle, gmapsCircle } from '../src' // import from 'x5-gmaps' for plugin
+import ExampleWrapper from '../Wrapper'
+import { gmapsMap, gmapsRectangle, gmapsCircle } from '@/' // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleShape',

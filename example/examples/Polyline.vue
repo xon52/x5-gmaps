@@ -79,8 +79,8 @@ icons: [
 </template>
 
 <script>
-import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap, gmapsPolyline, gmapsPolygon } from '../src' // import from 'x5-gmaps' for plugin
+import ExampleWrapper from '../Wrapper'
+import { gmapsMap, gmapsPolyline, gmapsPolygon } from '@/' // import from 'x5-gmaps' for plugin
 
 const icon = {
   path: 'M -2,0 0,-2 2,0 0,2 z',

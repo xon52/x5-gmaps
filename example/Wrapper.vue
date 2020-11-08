@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper" :id="anchor">
-    <h2 v-if="title" class="title">{{ title }} <a :href="`#${anchor}`">#</a></h2>
+  <div class="wrapper">
+    <h2 v-if="title" class="title">{{ title }}</h2>
     <div class="description">
       <slot name="description"></slot>
     </div>
@@ -21,14 +21,9 @@
 
 <script>
 export default {
-  name: 'ExampleWrapper',
+  name: 'Wrapper',
   props: {
     title: { type: String, default: null }
-  },
-  computed: {
-    anchor() {
-      return this.title.toLowerCase().replace(/\s/g, '')
-    }
   }
 }
 </script>

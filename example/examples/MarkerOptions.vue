@@ -40,12 +40,12 @@
 
 optionsA = {
   position: { lat: -27.46, lng: 153.02 },
-  icon: require('./marker.png'),
+  icon: require('../marker.png'),
   title: 'Marker A'
 }
 optionsB = {
   position: { lat: -27.48, lng: 153.03 },
-  icon: require('./marker2.png'),
+  icon: require('../marker2.png'),
   title: 'Marker B',
   opacity: 0.7
 }
@@ -76,8 +76,8 @@ mounted() {
 </template>
 
 <script>
-import ExampleWrapper from './ExampleWrapper'
-import { gmapsMap, gmapsMarker } from '../src' // import from 'x5-gmaps' for plugin
+import ExampleWrapper from '../Wrapper'
+import { gmapsMap, gmapsMarker } from '@/' // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleMarkerOptions',
@@ -95,13 +95,13 @@ export default {
     },
     optionsA: {
       position: { lat: -27.46, lng: 153.02 },
-      icon: require('./img/marker.png'),
+      icon: require('../img/marker.png'),
       title: 'Marker A',
       draggable: true
     },
     optionsB: {
       position: { lat: -27.48, lng: 153.03 },
-      icon: require('./img/marker2.png'),
+      icon: require('../img/marker2.png'),
       title: 'Marker B',
       opacity: 0.7
     },
