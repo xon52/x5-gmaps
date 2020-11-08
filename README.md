@@ -4,7 +4,10 @@
 
 This is a lightweight Google Maps plugin for Vue.
 
-Also check out a [tutorial creating a COVID Heatmap](https://medium.com/javascript-in-plain-english/making-a-covid-map-using-vue-google-maps-89eb70a9f089) using this.
+## Samples/examples/tutorials
+
+- [Tutorial creating a COVID Heatmap](https://medium.com/javascript-in-plain-english/making-a-covid-map-using-vue-google-maps-89eb70a9f089)
+- [Address Autocomplete Example](https://xon5.medium.com/vue-google-maps-and-autocomplete-e9bf0fa3c42e)
 
 :warning: This plugin is in development, so please let me know if you find any errors.
 
