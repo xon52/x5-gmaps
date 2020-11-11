@@ -1,23 +1,30 @@
 <template>
   <div class="wrapper">
-    <e-header />
+    <div class="center">
+      <img src="./img/logo.svg" width="300" @click.ctrl="testMode = !testMode" />
+      <h1>x5-gmaps Example</h1>
+    </div>
     <e-tutorials />
-    <e-examples />
+    <e-bug-test v-if="testMode" />
+    <e-examples v-else />
   </div>
 </template>
 
 <script>
 import EExamples from './Examples'
-import EHeader from './Header'
 import ETutorials from './Tutorials'
+import EBugTest from './BugTest'
 
 export default {
   name: 'Example-App',
   components: {
     EExamples,
-    EHeader,
-    ETutorials
-  }
+    ETutorials,
+    EBugTest
+  },
+  data: () => ({
+    testMode: false
+  })
 }
 </script>
 
@@ -25,6 +32,9 @@ export default {
 .wrapper {
   margin: 0 auto;
   max-width: 800px;
+}
+.center {
+  text-align: center;
 }
 </style>
 
