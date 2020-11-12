@@ -1,7 +1,12 @@
 <template>
   <div style="height: 500px">
     <gmaps-map :options="mapOptions">
-      <gmaps-marker v-for="(marker, markerIndex) in items" :key="'marker-' + markerIndex" :options="marker" />
+      <gmaps-marker
+        v-for="(marker, markerIndex) in items"
+        :key="'marker-' + markerIndex"
+        :icon="marker.icon"
+        :position="marker.position"
+      />
     </gmaps-map>
   </div>
 </template>

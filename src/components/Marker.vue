@@ -3,8 +3,8 @@ export default {
   name: 'gmapsMarker',
   inject: ['getMap', 'handleError'],
   props: {
-    icon: { type: String, default: null },
-    label: { type: String, default: null },
+    icon: { type: [String, Object], default: null },
+    label: { type: [String, Object], default: null },
     opacity: { type: [String, Number], default: null },
     options: { type: Object, default: () => ({}) },
     position: { type: Object, default: null },
