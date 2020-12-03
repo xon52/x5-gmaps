@@ -35,6 +35,17 @@ new Vue({
 })
 ```
 
+For Quasar, because you cannot use `Vue.use()`, in a boot file you can import the default export as 'install' and run that with the Vue instance and options as the parameters:
+
+```js
+import { default as install } from "x5-gmaps";
+
+export default async ({ Vue }) => {
+  install(Vue, "XXXXXX");
+  // install(Vue, { key: "XXXXXX", libraries: ["places"] });
+};
+```
+
 :warning: This plugin is not transpiled! If you want it compatible with IE, Edge, and Safari, you need to add this to your `vue.config.js` file:
 
 ```js
