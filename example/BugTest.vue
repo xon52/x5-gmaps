@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { gmapsMap, gmapsMarker } from '@/' // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsMarker, gmaps } from '@/' // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'BugTest',
@@ -32,7 +32,7 @@ export default {
     markerSize: null
   }),
   created() {
-    this.$GMaps().then((GMaps) => {
+    gmaps().then((GMaps) => {
       const markerSize = 30
 
       for (let i = 0; i < 5; i++)

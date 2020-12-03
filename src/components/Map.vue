@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { gmaps } from '../init.js'
+
 const defaultOptions = {
   center: { lat: -27.5, lng: 153 },
   zoom: 12
@@ -57,7 +59,7 @@ export default {
     }
   },
   mounted() {
-    this.$GMaps()
+    gmaps()
       .then((GMaps) => (this.GMaps = GMaps))
       .then(() => (this.map = new this.GMaps.Map(this.$refs.gmap, { ...defaultOptions, ...this.options })))
       .then(() => this.$emit('mounted', this.map))

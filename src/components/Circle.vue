@@ -1,4 +1,6 @@
 <script>
+import { gmaps } from '../init.js'
+
 // eslint:
 export default {
   name: 'gmapsCircle',
@@ -65,7 +67,7 @@ export default {
     }
   },
   mounted() {
-    this.$GMaps()
+    gmaps()
       .then((GMaps) => {
         this.circle = new GMaps.Circle({
           map: this.getMap(),

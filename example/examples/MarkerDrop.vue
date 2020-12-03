@@ -41,7 +41,7 @@ removeMarker(index) {
 
 <script>
 import ExampleWrapper from '../Wrapper'
-import { gmapsMap, gmapsMarker } from '@/' // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsMarker, gmaps } from '@/' // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleMarkerOptions',
@@ -73,7 +73,7 @@ export default {
     }
   },
   mounted() {
-    this.$GMaps().then((GMaps) => (this.bounce = GMaps.Animation.BOUNCE))
+    gmaps().then((GMaps) => (this.bounce = GMaps.Animation.BOUNCE))
   }
 }
 </script>

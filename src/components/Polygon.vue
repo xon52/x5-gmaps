@@ -1,4 +1,6 @@
 <script>
+import { gmaps } from '../init.js'
+
 export default {
   name: 'gmapsPolygon',
   inject: ['getMap', 'handleError'],
@@ -50,7 +52,7 @@ export default {
     }
   },
   mounted() {
-    this.$GMaps()
+    gmaps()
       .then((GMaps) => {
         this.polygon = new GMaps.Polygon({
           map: this.getMap(),

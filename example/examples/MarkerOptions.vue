@@ -65,7 +65,7 @@ updatePosition(pos) {
 // Animation must be added after initiation
 // because it relies on GMaps to be already loaded
 mounted() {
-  this.$GMaps()
+  gmaps()
     .then(GMaps=>this.optionsA.animation = GMaps.Animation.BOUNCE)
 }
           </pre
@@ -77,7 +77,7 @@ mounted() {
 
 <script>
 import ExampleWrapper from '../Wrapper'
-import { gmapsMap, gmapsMarker } from '@/' // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsMarker, gmaps } from '@/' // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleMarkerOptions',
@@ -117,7 +117,7 @@ export default {
     }
   },
   mounted() {
-    this.$GMaps().then(GMaps => (this.optionsA.animation = GMaps.Animation.BOUNCE))
+    gmaps().then((GMaps) => (this.optionsA.animation = GMaps.Animation.BOUNCE))
   }
 }
 </script>

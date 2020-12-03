@@ -31,7 +31,7 @@ window.x5GMapsOnLoad = () => promises.forEach((p) => p.resolve(window.google.map
 // onError callback for Google Maps fail
 const onError = (e) => promises.forEach((p) => p.reject(e))
 // Exported promise to get map
-const getMap = () => {
+const gmaps = () => {
   // Early return if map already loaded
   if (loaded()) return Promise.resolve(window.google.maps)
   // If not loading, it was not initialised
@@ -53,4 +53,4 @@ const init = (options) => {
   }, 5000)
 }
 
-export { init, getMap }
+export { init, gmaps }

@@ -1,4 +1,6 @@
 <script>
+import { gmaps } from '../init.js'
+
 export default {
   name: 'gmapsHeatmap',
   inject: ['getMap', 'handleError'],
@@ -29,13 +31,13 @@ export default {
       return this.items.map(e => new GMaps.LatLng(e.lat, e.lng))
     },
     updateData() {
-      this.$GMaps()
+      gmaps()
         .then(GMaps => this.heatmap.setData(this.getData(GMaps)))
         .catch(e => this.handleError(e))
     }
   },
   mounted() {
-    this.$GMaps()
+    gmaps()
       .then(GMaps => {
         this.heatmap = new GMaps.visualization.HeatmapLayer({
           map: this.getMap(),
