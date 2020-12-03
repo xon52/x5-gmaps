@@ -1,4 +1,6 @@
 <script>
+import { gmaps } from '../init.js'
+
 export default {
   name: 'gmapsMarker',
   inject: ['getMap', 'handleError'],
@@ -46,7 +48,7 @@ export default {
       throw new Error(
         'x5-gmaps: A position is required by every marker. Set this as either a position prop, or a position property of the options prop.'
       )
-    this.$GMaps()
+    gmaps()
       .then((GMaps) => (this.GMaps = GMaps))
       .then(() => (this.marker = new this.GMaps.Marker({ map: this.getMap(), ...this._options })))
       .then(() =>

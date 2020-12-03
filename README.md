@@ -417,7 +417,31 @@ This component supports the following events:
 <hr>
 <br>
 
-## Google Places Library (and `$GMaps()`)
+## Accessing the Google Maps API
+
+Unfortunately, Vue has to load first to load the Google Maps API using this package; which means if you try and access the Google Maps API too early, it will fail. The solution used is wrapping the call in a promise. The two ways to access this are: `this.$GMaps()` (from within your Vue component), or you can import the promise `gmaps` (e.g. `import { gmaps } from 'x5-gmaps'`).
+
+The return of this promise is the `maps` object of the `google` object most of Google's examples use.
+
+```js
+// Example
+import { gmaps } from 'x5-gmaps'
+
+export default {
+  data: () => ({
+    GooglePlacesService: null,
+  }),
+  mounted() {
+    gmaps().then((maps) => {
+      PlacesService = new maps.places.AutocompleteService()
+    })
+  },
+}
+```
+
+### :information_source: `$GMaps()` is the little promise that returns the Google `maps` object once the Google Maps code has successfully loaded. This is the little trick with getting it to work with Vue and is what you need to access the `maps` object references in all of the Google Maps documentation.
+
+## Google Places Library
 
 As mentioned above, additional libraries can be used in conjunction with this package, and as an example, this is how you would include the [Places Library](https://developers.google.com/maps/documentation/javascript/places).
 
@@ -427,8 +451,6 @@ Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] })
 ```
 
 ### :warning: This is an example taken from a project of mine; you may be able to find a more efficient way to do this. It is focused around using the [AutocompleteService](https://developers.google.com/maps/documentation/javascript/places-autocomplete).
-
-### :information_source: `$GMaps()` is the little promise that returns the Google `maps` object once the Google Maps code has successfully loaded. This is the little trick with getting it to work with Vue and is what you need to access the `maps` object references in all of the Google Maps documentation.
 
 ```html
 <template>
@@ -493,7 +515,7 @@ While you shouldn't see these for too long while the map loads (if at all), ther
 </template>
 ```
 
-<!-- TODO: Advanced usage: Component creation, this.$GMaps() etc -->
+<!-- TODO: Advanced usage: Component creation, import gmaps etc -->
 
 <br>
 

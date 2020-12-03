@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { gmaps } from '../init.js'
 import createPopupClass from './popupClass.js'
 
 export default {
@@ -28,7 +29,7 @@ export default {
   },
   mounted() {
     const Popup = createPopupClass()
-    this.$GMaps()
+    gmaps()
       .then(GMaps => (this.popup = new Popup(this.position, this.$el, GMaps)))
       .then(() => this.popup.setMap(this.getMap()))
       .catch(e => this.handleError(e))

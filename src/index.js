@@ -1,4 +1,5 @@
-import { init, getMap } from './init.js'
+import { init, gmaps } from './init.js'
+export { gmaps }
 export { default as gmapsCircle } from './components/Circle.vue'
 export { default as gmapsHeatmap } from './components/Heatmap.vue'
 export { default as gmapsInfoWindow } from './components/InfoWindow.vue'
@@ -14,7 +15,7 @@ const install = (Vue, options) => {
   if (!options) throw new Error(`x5-gmaps :: (Google API) 'key' is required for plugin install.`)
   if (typeof options === 'string') init({ key: options })
   else init(options)
-  Vue.prototype.$GMaps = () => getMap()
+  Vue.prototype.$GMaps = () => gmaps()
 }
 
 export default install

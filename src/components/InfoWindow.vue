@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { gmaps } from '../init.js'
+
 export default {
   name: 'gmapsInfoWindow',
   inject: ['getMap', 'handleError'],
@@ -25,7 +27,7 @@ export default {
   },
   mounted() {
     if (!this.options.position) return this.handleError('InfoWindow options require a position property.')
-    this.$GMaps()
+    gmaps()
       .then(GMaps => (this.infoW = new GMaps.InfoWindow({ content: this.$el, ...this.options })))
       .then(() => this.infoW.addListener('closeclick', () => this.$emit('closed')))
       .then(() => this.open())

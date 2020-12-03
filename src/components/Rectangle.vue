@@ -1,4 +1,6 @@
 <script>
+import { gmaps } from '../init.js'
+
 export default {
   name: 'gmapsRectangle',
   inject: ['getMap', 'handleError'],
@@ -55,7 +57,7 @@ export default {
     }
   },
   mounted() {
-    this.$GMaps()
+    gmaps()
       .then((GMaps) => {
         this.rectangle = new GMaps.Rectangle({
           map: this.getMap(),

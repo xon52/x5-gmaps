@@ -1,4 +1,6 @@
 <script>
+import { gmaps } from '../init.js'
+
 export default {
   name: 'gmapsPolyline',
   inject: ['getMap', 'handleError'],
@@ -45,7 +47,7 @@ export default {
     }
   },
   mounted() {
-    this.$GMaps()
+    gmaps()
       .then((GMaps) => {
         this.polyline = new GMaps.Polyline({
           map: this.getMap(),
