@@ -27,25 +27,25 @@ export default {
   methods: {
     getData(GMaps) {
       if (this.weightProp)
-        return this.items.map(e => ({ location: new GMaps.LatLng(e.lat, e.lng), weight: e[this.weightProp] }))
-      return this.items.map(e => new GMaps.LatLng(e.lat, e.lng))
+        return this.items.map((e) => ({ location: new GMaps.LatLng(e.lat, e.lng), weight: e[this.weightProp] }))
+      return this.items.map((e) => new GMaps.LatLng(e.lat, e.lng))
     },
     updateData() {
       gmaps()
-        .then(GMaps => this.heatmap.setData(this.getData(GMaps)))
-        .catch(e => this.handleError(e))
+        .then((GMaps) => this.heatmap.setData(this.getData(GMaps)))
+        .catch((e) => this.handleError(e))
     }
   },
   mounted() {
     gmaps()
-      .then(GMaps => {
+      .then((GMaps) => {
         this.heatmap = new GMaps.visualization.HeatmapLayer({
           map: this.getMap(),
           data: this.getData(GMaps),
           options: { ...this._options }
         })
       })
-      .catch(e => this.handleError(e))
+      .catch((e) => this.handleError(e))
   },
   watch: {
     items() {

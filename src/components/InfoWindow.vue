@@ -28,10 +28,10 @@ export default {
   mounted() {
     if (!this.options.position) return this.handleError('InfoWindow options require a position property.')
     gmaps()
-      .then(GMaps => (this.infoW = new GMaps.InfoWindow({ content: this.$el, ...this.options })))
+      .then((GMaps) => (this.infoW = new GMaps.InfoWindow({ content: this.$el, ...this.options })))
       .then(() => this.infoW.addListener('closeclick', () => this.$emit('closed')))
       .then(() => this.open())
-      .catch(e => this.handleError(e))
+      .catch((e) => this.handleError(e))
   },
   beforeDestroy() {
     if (this.infoW) this.infoW.close()

@@ -30,9 +30,9 @@ export default {
   mounted() {
     const Popup = createPopupClass()
     gmaps()
-      .then(GMaps => (this.popup = new Popup(this.position, this.$el, GMaps)))
+      .then((GMaps) => (this.popup = new Popup(this.position, this.$el, GMaps)))
       .then(() => this.popup.setMap(this.getMap()))
-      .catch(e => this.handleError(e))
+      .catch((e) => this.handleError(e))
   },
   beforeDestroy() {
     if (this.popup) this.popup.setMap(null)
