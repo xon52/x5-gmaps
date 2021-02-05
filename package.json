@@ -7,7 +7,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode production",
-    "deploy": "rimraf dist && webpack && npx publish"
+    "deploy": "rimraf dist && webpack && npm publish"
   },
   "main": "dist",
   "files": [
