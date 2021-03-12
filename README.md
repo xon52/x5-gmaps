@@ -38,12 +38,12 @@ new Vue({
 For Quasar, because you cannot use `Vue.use()`, in a boot file you can import the default export as 'install' and run that with the Vue instance and options as the parameters:
 
 ```js
-import { default as install } from "x5-gmaps";
+import { default as install } from 'x5-gmaps'
 
 export default async ({ Vue }) => {
-  install(Vue, "XXXXXX");
+  install(Vue, 'XXXXXX')
   // install(Vue, { key: "XXXXXX", libraries: ["places"] });
-};
+}
 ```
 
 :warning: This plugin is not transpiled! If you want it compatible with IE, Edge, and Safari, you need to add this to your `vue.config.js` file:
@@ -135,16 +135,17 @@ This component supports the following events:
 - `@right-click` _returns event_
 - ~~`@positionChanged`~~ (depreciated) _returns new position_
 
-| Props     |      Type       | Default | Description                                                                                                                     |
-| :-------- | :-------------: | :-----: | :------------------------------------------------------------------------------------------------------------------------------ |
-| options\* |     Object      |    -    | An object of Google Maps Marker options                                                                                         |
-| icon      | String / Object |    -    | Marker icon URL / [Icon Interface](https://developers.google.com/maps/documentation/javascript/reference/marker#Icon)           |
-| label     | String / Object |    -    | Marker label text / [Label Interface](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel) |
-| opacity   |     Number      |  `1.0`  | Opacity of the marker                                                                                                           |
-| position  |     Object      |    -    | An object that has `lat` and `lng` properties                                                                                   |
-| title     |     String      |    -    | Marker title (shown on hover)                                                                                                   |
-| visible   |     Boolean     | `true`  | If marker is visible                                                                                                            |
-| zIndex    |     Number      |    -    | Override position in DOM                                                                                                        |
+| Props       |      Type       | Default | Description                                                                                                                     |
+| :---------- | :-------------: | :-----: | :------------------------------------------------------------------------------------------------------------------------------ |
+| options\*   |     Object      |    -    | An object of Google Maps Marker options                                                                                         |
+| icon        | String / Object |    -    | Marker icon URL / [Icon Interface](https://developers.google.com/maps/documentation/javascript/reference/marker#Icon)           |
+| label       | String / Object |    -    | Marker label text / [Label Interface](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel) |
+| opacity     |     Number      |  `1.0`  | Opacity of the marker                                                                                                           |
+| position    |     Object      |    -    | An object that has `lat` and `lng` properties                                                                                   |
+| sensitivity |     Number      | `0.001` | Changes movement sensitivity to save processing when there are a lot of items on the map                                        |
+| title       |     String      |    -    | Marker title (shown on hover)                                                                                                   |
+| visible     |     Boolean     | `true`  | If marker is visible                                                                                                            |
+| zIndex      |     Number      |    -    | Override position in DOM                                                                                                        |
 
 _\* If you want to change values on the fly, use the named props instead of within the options prop. Changing named props will trigger an update._
 

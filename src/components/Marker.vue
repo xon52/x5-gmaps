@@ -13,7 +13,7 @@ export default {
     title: { type: String, default: null },
     visible: { type: Boolean, default: null },
     zIndex: { type: [String, Number], default: null },
-    sensitivity: { type: [Number], default: 0.001 }
+    sensitivity: { type: Number, default: 0.001 }
   },
   data: () => ({
     marker: null,
@@ -40,7 +40,8 @@ export default {
       if (!oldPosition) return
       const newPosition = this.marker.getPosition().toJSON()
 
-      return Math.abs(newPosition.lat - oldPosition.lat) > this.options.sensitivity || Math.abs(newPosition.lng - oldPosition.lng) > this.options.sensitivity
+      return Math.abs(newPosition.lat - oldPosition.lat) > this.options.sensitivity ||
+        Math.abs(newPosition.lng - oldPosition.lng) > this.options.sensitivity
         ? newPosition
         : false
     }
