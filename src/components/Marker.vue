@@ -12,7 +12,8 @@ export default {
     position: { type: Object, default: null },
     title: { type: String, default: null },
     visible: { type: Boolean, default: null },
-    zIndex: { type: [String, Number], default: null }
+    zIndex: { type: [String, Number], default: null },
+    sensitivity: { type: [Number], default: 0.001 }
   },
   data: () => ({
     marker: null,
@@ -28,6 +29,7 @@ export default {
       if (this.title) options.title = this.title
       if (this.visible) options.visible = this.visible
       if (this.zIndex) options.zIndex = +this.zIndex
+      if (this.sensitivity) options.sensitivity = this.sensitivity
       return options
     }
   },
@@ -38,7 +40,7 @@ export default {
       if (!oldPosition) return
       const newPosition = this.marker.getPosition().toJSON()
 
-      return Math.abs(newPosition.lat - oldPosition.lat) > 0.001 || Math.abs(newPosition.lng - oldPosition.lng) > 0.001
+      return Math.abs(newPosition.lat - oldPosition.lat) > this.options.sensitivity || Math.abs(newPosition.lng - oldPosition.lng) > this.options.sensitivity
         ? newPosition
         : false
     }
