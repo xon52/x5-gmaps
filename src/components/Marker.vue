@@ -35,19 +35,18 @@ export default {
   },
   methods: {
     changedPosition() {
-      const oldPosition = this.options.position
+      const oldPosition = this._options.position
       // This function is fired when a marker is replaced by Vue (and options is undefined)
       if (!oldPosition) return
       const newPosition = this.marker.getPosition().toJSON()
-
-      return Math.abs(newPosition.lat - oldPosition.lat) > this.options.sensitivity ||
-        Math.abs(newPosition.lng - oldPosition.lng) > this.options.sensitivity
+      return Math.abs(newPosition.lat - oldPosition.lat) > this._options.sensitivity ||
+        Math.abs(newPosition.lng - oldPosition.lng) > this._options.sensitivity
         ? newPosition
         : false
     }
   },
   mounted() {
-    if (!this.position && !this.options.position)
+    if (!this._options.position)
       throw new Error(
         'x5-gmaps: A position is required by every marker. Set this as either a position prop, or a position property of the options prop.'
       )
