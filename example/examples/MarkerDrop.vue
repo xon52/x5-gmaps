@@ -11,7 +11,7 @@
     <template #code>
       <div>
         <pre>
-&lt;gmaps-map @click="addMarker" />
+&lt;gmaps-map @click="addMarker">
   &lt;gmaps-marker
     v-for="(m, i) in markers"
     :options="m"
