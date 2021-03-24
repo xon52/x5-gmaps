@@ -82,7 +82,7 @@ Some pre-built components have been provided for general use, or as examples for
 
 ## Map
 
-![Map](./example/img/readme-map.png)
+![Map](./demo/public/img/readme-map.png)
 
 Maps can take many [options](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions). `zoom` is defaulted to `12` and `center` is defaulted to Brisbane (as these options are required).
 
@@ -123,7 +123,7 @@ The default template for the slot also has a slot prop of `map` which can be ref
 
 ## Marker
 
-![Marker](./example/img/readme-marker.png)
+![Marker](./demo/public/img/readme-marker.png)
 
 Markers are placed within Maps and can take many [options](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions). A `position` option is required within the options prop or as its own prop.
 
@@ -176,7 +176,7 @@ _\* If you want to change values on the fly, use the named props instead of with
 
 ## InfoWindow
 
-![InfoWindow](./example/img/readme-info-window.png)
+![InfoWindow](./demo/public/img/readme-info-window.png)
 
 InfoWindows are placed with Maps can take a few [options](https://developers.google.com/maps/documentation/javascript/reference/info-window#InfoWindowOptions). A `position` option is required.
 
@@ -213,7 +213,7 @@ This component only supports a `@closed` event _(for when someone closes the win
 
 ## Popup
 
-![Popup](./example/img/readme-popup.png)
+![Popup](./demo/public/img/readme-popup.png)
 
 A Popup is a custom [DOM Element](https://developers.google.com/maps/documentation/javascript/reference/overlay-view). It is here primarily as an example of what is needed when creating your own map objects, but serves as a cleaner InfoWindow for Vue.
 
@@ -253,7 +253,7 @@ All events are registered from the markup/component you place inside it rather t
 
 ## Heatmap
 
-![Heatmap](./example/img/readme-heatmap.png)
+![Heatmap](./demo/public/img/readme-heatmap.png)
 
 Heatmaps are placed within Maps and have several props which are derived from Google's [Heatmap Options](https://developers.google.com/maps/documentation/javascript/reference/visualization#HeatmapLayerOptions). Some are named differently as they have been enhanced/simplified.
 
@@ -298,8 +298,8 @@ This component does not have any events.
 
 ## Polylines / Polygons
 
-![Polyline](./example/img/readme-polyline.png)
-![Polygon](./example/img/readme-polygon.png)
+![Polyline](./demo/public/img/readme-polyline.png)
+![Polygon](./demo/public/img/readme-polygon.png)
 
 Polylines/polygons are placed within Maps and have several props which are derived from Google's [Polyline Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolylineOptions) and [Polygon Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolygonOptions).
 
@@ -362,7 +362,7 @@ This component supports the following events:
 
 ## Rectangles / Circles
 
-![Rectangles/Circles](./example/img/readme-shapes.png)
+![Rectangles/Circles](./demo/public/img/readme-shapes.png)
 
 Rectangles/circles are placed within Maps and have several props which are derived from Google's [Rectangle Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#RectangleOptions) and [Circle Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#CircleOptions).
 
