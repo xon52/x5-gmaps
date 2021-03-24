@@ -1,18 +1,29 @@
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
-  entry: './src',
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.vue', '.json']
+  },
+  entry: './lib/index.ts',
   output: {
     filename: 'index.js',
     libraryTarget: 'umd',
-    library: 'x5-gmaps',
+    library: 'x5-gmaps'
   },
   mode: 'production',
   module: {
     rules: [
       {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+          configFile: 'tsconfig-lib.json'
+        }
+      },
+      {
         test: /\.vue$/,
-        use: 'vue-loader',
+        use: 'vue-loader'
       },
       {
         test: /\.s[ac]ss$/i,
@@ -22,13 +33,13 @@ module.exports = {
           // Translates CSS into CommonJS
           'css-loader',
           // Compiles Sass to CSS
-          'sass-loader',
-        ],
-      },
-    ],
+          'sass-loader'
+        ]
+      }
+    ]
   },
   externals: {
-    vue: 'vue',
+    vue: 'vue'
   },
-  plugins: [new VueLoaderPlugin()],
-}
+  plugins: [new VueLoaderPlugin()]
+};

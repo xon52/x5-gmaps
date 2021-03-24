@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "paths": {
+      "@/*": [
+        "demo/src/*"
+      ]
+    },
+    "outDir": "./docs",
+    "rootDir": "./demo/src"
+  },
+  "include": [
+    "demo/src/**/*.ts",
+    "demo/src/**/*.tsx",
+    "demo/src/**/*.vue"
+  ]
+}

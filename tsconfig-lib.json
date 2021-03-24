@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": false,
+    "paths": {
+      "@/*": [
+        "lib/*"
+      ]
+    },
+    "outDir": "./dist",
+    "rootDir": "./lib"
+  },
+  "include": [
+    "lib/**/*.ts",
+    "lib/**/*.tsx",
+    "lib/**/*.vue"
+  ]
+}
