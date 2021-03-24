@@ -82,8 +82,8 @@ mounted() {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsMarker, gmaps } from 'x5-gmaps';
-// import { gmapsMap, gmaps } from 'x5-gmaps';
+import { gmapsMap, gmapsMarker, gmaps } from 'lib/'; // import from 'x5-gmaps' for plugin
+// import { gmapsMap, gmaps } from 'lib/'; // import from 'x5-gmaps' for plugin
 // import gmapsMarker from '../../../../lib/components/Marker';
 
 export default {

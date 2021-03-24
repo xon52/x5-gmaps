@@ -2,11 +2,6 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "emitDeclarationOnly": false,
-    "paths": {
-      "@/*": [
-        "lib/*"
-      ]
-    },
     "outDir": "./dist",
     "rootDir": "./lib"
   },

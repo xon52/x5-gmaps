@@ -69,7 +69,7 @@ locationError(error) {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap } from 'x5-gmaps';
+import { gmapsMap } from 'lib/'; // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleMapOptions',

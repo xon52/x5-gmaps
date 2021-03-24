@@ -79,7 +79,7 @@ radius: 5000
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsRectangle, gmapsCircle } from 'x5-gmaps';
+import { gmapsMap, gmapsRectangle, gmapsCircle } from 'lib/'; // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleShape',

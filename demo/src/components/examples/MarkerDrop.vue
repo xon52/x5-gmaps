@@ -45,7 +45,7 @@ removeMarker(index) {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsMarker, gmaps } from 'x5-gmaps';
+import { gmapsMap, gmapsMarker, gmaps } from 'lib/'; // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleMarkerOptions',

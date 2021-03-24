@@ -35,7 +35,7 @@ items = [
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsHeatmap } from 'x5-gmaps';
+import { gmapsMap, gmapsHeatmap } from 'lib/'; // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleHeatmap',

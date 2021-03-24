@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { gmapsMap, gmapsMarker, gmaps } from 'x5-gmaps'
+import { gmapsMap, gmapsMarker, gmaps } from 'lib/'; // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'BugTest',
@@ -33,7 +33,7 @@ export default {
   }),
   created() {
     gmaps().then((GMaps) => {
-      const markerSize = 30
+      const markerSize = 30;
 
       for (let i = 0; i < 5; i++)
         this.items.push({
@@ -42,13 +42,14 @@ export default {
             lng: 153 + Math.random() / 10 - 0.05
           },
           icon: {
-            url: 'https://cdn0.iconfinder.com/data/icons/entypo/89/small18-128.png',
+            url:
+              'https://cdn0.iconfinder.com/data/icons/entypo/89/small18-128.png',
             size: new GMaps.Size(markerSize, markerSize),
             scaledSize: new GMaps.Size(markerSize, markerSize),
             anchor: new GMaps.Point(markerSize / 2, 0)
           }
-        })
-    })
+        });
+    });
   }
-}
+};
 </script>

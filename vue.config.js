@@ -25,6 +25,11 @@ module.exports = {
           }
         ]
       })
-    ]
+    ],
+    resolve: {
+      alias: {
+        lib: __dirname + '/lib'
+      }
+    }
   }
 };

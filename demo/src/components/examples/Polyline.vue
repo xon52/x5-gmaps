@@ -82,7 +82,7 @@ icons: [
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsPolyline, gmapsPolygon } from 'x5-gmaps';
+import { gmapsMap, gmapsPolyline, gmapsPolygon } from 'lib/'; // import from 'x5-gmaps' for plugin
 
 const icon = {
   path: 'M -2,0 0,-2 2,0 0,2 z',
