@@ -1,4 +1,3 @@
-<script lang="ts">
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
 
 @Component
@@ -93,4 +92,3 @@ export default class GmapsMarker extends Vue {
     return null;
   }
 }
-</script>

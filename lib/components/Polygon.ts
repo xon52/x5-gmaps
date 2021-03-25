@@ -1,4 +1,3 @@
-<script lang="ts">
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
 
 @Component
@@ -94,4 +93,3 @@ export default class GmapsPolygon extends Vue {
     return null;
   }
 }
-</script>

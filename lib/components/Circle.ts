@@ -1,4 +1,3 @@
-<script lang="ts">
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
 
 @Component
@@ -116,4 +115,3 @@ export default class GmapsCircle extends Vue {
     return null;
   }
 }
-</script>
