@@ -7,9 +7,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "link": "npm link && npm link x5-gmaps",
-    "deploy": "rimraf dist && webpack",
-    "publish": "npm publish"
+    "build:lib": "rimraf dist && webpack && npm publish --dry-run",
+    "deploy": "npm publish"
   },
   "main": "dist",
   "files": [
