@@ -6,6 +6,7 @@ export default class GmapsRectangle extends Vue {
 
   @Inject('getMap') private getMap!: () => google.maps.Map;
 
+  @Prop({ default: 0.001 }) readonly sensitivity!: string | number;
   @Prop({ required: true }) readonly bounds!: google.maps.LatLngBoundsLiteral;
   @Prop({ default: true }) readonly clickable!: boolean;
   @Prop({ default: false }) readonly draggable!: boolean;
@@ -58,10 +59,10 @@ export default class GmapsRectangle extends Vue {
     };
     const newBounds = this.rectangle.getBounds().toJSON();
     if (
-      Math.abs(newBounds.north - oldBounds.north) > 0.001 ||
-      Math.abs(newBounds.south - oldBounds.south) > 0.001 ||
-      Math.abs(newBounds.east - oldBounds.east) > 0.001 ||
-      Math.abs(newBounds.west - oldBounds.west) > 0.001
+      Math.abs(newBounds.north - oldBounds.north) > this.sensitivity ||
+      Math.abs(newBounds.south - oldBounds.south) > this.sensitivity ||
+      Math.abs(newBounds.east - oldBounds.east) > this.sensitivity ||
+      Math.abs(newBounds.west - oldBounds.west) > this.sensitivity
     ) {
       this.tempBounds = newBounds;
       this.$emit('bounds-changed', newBounds);

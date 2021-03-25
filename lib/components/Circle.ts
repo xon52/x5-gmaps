@@ -6,6 +6,7 @@ export default class GmapsCircle extends Vue {
 
   @Inject('getMap') private getMap!: () => google.maps.Map;
 
+  @Prop({ default: 0.001 }) readonly sensitivity!: string | number;
   @Prop({ required: true }) readonly center!: google.maps.LatLngLiteral;
   @Prop({ required: true }) readonly radius!: string | number;
   @Prop({ default: true }) readonly clickable!: boolean;
@@ -56,8 +57,8 @@ export default class GmapsCircle extends Vue {
     const oldCenter = this.tempCenter || -1;
     const newCenter = this.circle.getCenter().toJSON();
     if (
-      Math.abs(newCenter.lat - oldCenter.lat) > 0.0001 ||
-      Math.abs(newCenter.lng - oldCenter.lng) > 0.0001
+      Math.abs(newCenter.lat - oldCenter.lat) > this.sensitivity ||
+      Math.abs(newCenter.lng - oldCenter.lng) > this.sensitivity
     ) {
       this.tempCenter = newCenter;
       this.$emit('center-changed', newCenter);
