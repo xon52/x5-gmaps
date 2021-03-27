@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
-    <h2 v-if="title" class="title">{{ title }}</h2>
+    <h2 v-if="title" class="title">
+      {{ title }}
+    </h2>
     <div class="description">
       <slot name="description" />
     </div>

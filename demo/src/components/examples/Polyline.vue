@@ -12,7 +12,7 @@
       <button class="instructions-action" @click="generatePoints">
         Regenerate points
       </button>
-      <label><input type="checkbox" v-model="editable" /> Editable</label>
+      <label><input v-model="editable" type="checkbox" /> Editable</label>
     </div>
     <template #description>
       <p>We can also add polylines.</p>

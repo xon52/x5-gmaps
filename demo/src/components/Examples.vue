@@ -3,16 +3,16 @@
     <h2>Examples</h2>
     <ul>
       <li v-for="(e, i) in examples" :key="i">
-        • <a @click="select(i)" :title="e.desc">{{ e.name }}</a>
+        • <a :title="e.desc" @click="select(i)">{{ e.name }}</a>
       </li>
     </ul>
-    <component v-if="selected !== null" :is="examples[selected].component" />
+    <component :is="examples[selected].component" v-if="selected !== null" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Example-App',
+  name: 'ExampleApp',
   data: () => ({
     selected: null,
     examples: [
@@ -59,6 +59,11 @@ export default {
         name: 'Rectangles and Circles',
         component: () => import('./examples/Shape'),
         desc: 'Rectangle and circle map components'
+      },
+      {
+        name: 'GeoJSON Data',
+        component: () => import('./examples/GeoJson'),
+        desc: 'An example using the data property of the map for GeoJSON data.'
       }
     ]
   }),

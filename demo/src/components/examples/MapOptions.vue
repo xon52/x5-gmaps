@@ -1,19 +1,31 @@
 <template>
   <example-wrapper title="Map with options and events">
     <div class="instructions">
-      <p class="instructions-title">Move the map to see a live update of its center.</p>
+      <p class="instructions-title">
+        Move the map to see a live update of its center.
+      </p>
       <button class="instructions-action" @click="reset">Reset</button>
       <span>Center: {{ center }}</span>
     </div>
     <template #description>
       <p>
         You can add many
-        <a href="https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions" target="_blank">options</a>
-        for the map in an options property object.<br />e.g. All controls turned off
+        <a
+          href="https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions"
+          target="_blank"
+        >
+          options
+        </a>
+        for the map in an options property object.<br />e.g. All controls turned
+        off
       </p>
     </template>
     <template #map>
-      <gmaps-map ref="map" :options="mapOptions" @centerChanged="centerChanged" />
+      <gmaps-map
+        ref="map"
+        :options="mapOptions"
+        @centerChanged="centerChanged"
+      />
     </template>
     <template #code>
       <div>
@@ -48,7 +60,7 @@ centerChanged(center) {
 </template>
 
 <script>
-import ExampleWrapper from '../Wrapper'
+import ExampleWrapper from '../Wrapper';
 import { gmapsMap } from 'lib'; // import from 'x5-gmaps' for plugin
 
 export default {
@@ -69,11 +81,11 @@ export default {
   }),
   methods: {
     centerChanged(center) {
-      this.center = center.toJSON()
+      this.center = center.toJSON();
     },
     reset() {
-      this.mapOptions = { ...this.mapOptions }
+      this.mapOptions = { ...this.mapOptions };
     }
   }
-}
+};
 </script>
