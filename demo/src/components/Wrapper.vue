@@ -49,6 +49,7 @@ export default {
 }
 .sides {
   border: 2px ridge silver;
+  background-color: rgb(229, 227, 223);
 }
 .code {
   padding: 0 20px;
