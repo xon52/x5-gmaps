@@ -82,8 +82,8 @@ import ExampleWrapper from '../Wrapper';
 import { gmapsMap, gmapsData, gmapsDataGeoJson } from 'lib'; // import from 'x5-gmaps' for plugin
 import { mapOptions } from '../../helpers';
 
-import geoJson from '../../../public/data/geoJsonData.json';
-import geoJsonL from '../../../public/data/geoJsonDataL.json';
+import geoJson from '../../../public/assets/geoJsonData.js'; // Can be JSON - just JS because of Webpack build
+import geoJsonL from '../../../public/assets/geoJsonDataL.js'; // Can be JSON - just JS because of Webpack build
 
 export default {
   name: 'ExampleGeoJson',

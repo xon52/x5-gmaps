@@ -15,6 +15,7 @@
     "dist"
   ],
   "devDependencies": {
+    "@types/geojson": "^7946.0.7",
     "@types/googlemaps": "^3.43.3",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",

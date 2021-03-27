@@ -23,35 +23,35 @@ npm install x5-gmaps
 This plugin can be installed like any Vue plugin:
 
 ```js
-import x5GMaps from 'x5-gmaps'
+import x5GMaps from 'x5-gmaps';
 // Option 1: Just your key
-Vue.use(x5GMaps, 'YOUR_GOOGLE_KEY')
+Vue.use(x5GMaps, 'YOUR_GOOGLE_KEY');
 // Option 2: With libraries
-Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] })
+Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] });
 
 new Vue({
   el: '#app',
-  render: (h) => h(App),
-})
+  render: h => h(App)
+});
 ```
 
 For Quasar, because you cannot use `Vue.use()`, in a boot file you can import the default export as 'install' and run that with the Vue instance and options as the parameters:
 
 ```js
-import { default as install } from 'x5-gmaps'
+import { default as install } from 'x5-gmaps';
 
 export default async ({ Vue }) => {
-  install(Vue, 'XXXXXX')
+  install(Vue, 'XXXXXX');
   // install(Vue, { key: "XXXXXX", libraries: ["places"] });
-}
+};
 ```
 
 :warning: This plugin is not transpiled! If you want it compatible with IE, Edge, and Safari, you need to add this to your `vue.config.js` file:
 
 ```js
 module.exports = {
-  transpileDependencies: ['x5-gmaps'],
-}
+  transpileDependencies: ['x5-gmaps']
+};
 ```
 
 <br>
@@ -67,11 +67,11 @@ module.exports = {
 ```
 
 ```js
-import { gmapsMap, gmapsMarker } from 'x5-gmaps'
+import { gmapsMap, gmapsMarker } from 'x5-gmaps';
 
 export default {
-  components: { gmapsMap, gmapsMarker },
-}
+  components: { gmapsMap, gmapsMarker }
+};
 ```
 
 <br>
@@ -107,17 +107,17 @@ The default template for the slot also has a slot prop of `map` which can be ref
 </template>
 
 <script>
-  import { gmapsMap } from 'x5-gmaps'
+  import { gmapsMap } from 'x5-gmaps';
 
   export default {
     components: { gmapsMap },
     data: () => ({
       mapOptions: {
         center: { lat: -27.47, lng: 153.025 },
-        zoom: 12,
-      },
-    }),
-  }
+        zoom: 12
+      }
+    })
+  };
 </script>
 ```
 
@@ -194,20 +194,20 @@ This component only supports a `@closed` event _(for when someone closes the win
 </template>
 
 <script>
-  import { gmapsMap, gmapsInfoWindow } from 'x5-gmaps'
+  import { gmapsMap, gmapsInfoWindow } from 'x5-gmaps';
 
   export default {
     components: { gmapsMap, gmapsInfoWindow },
     data: () => ({
       options: {
-        position: { lat: -27.46, lng: 153.02 },
+        position: { lat: -27.46, lng: 153.02 }
       },
       mapOptions: {
         center: { lat: -27.47, lng: 153.025 },
-        zoom: 12,
-      },
-    }),
-  }
+        zoom: 12
+      }
+    })
+  };
 </script>
 ```
 
@@ -236,7 +236,7 @@ All events are registered from the markup/component you place inside it rather t
 </template>
 
 <script>
-  import { gmapsMap, gmapsPopup } from 'x5-gmaps'
+  import { gmapsMap, gmapsPopup } from 'x5-gmaps';
 
   export default {
     components: { gmapsMap, gmapsPopup },
@@ -244,10 +244,10 @@ All events are registered from the markup/component you place inside it rather t
       position: { lat: -27.46, lng: 153.02 },
       mapOptions: {
         center: { lat: -27.47, lng: 153.025 },
-        zoom: 12,
-      },
-    }),
-  }
+        zoom: 12
+      }
+    })
+  };
 </script>
 ```
 
@@ -257,15 +257,15 @@ All events are registered from the markup/component you place inside it rather t
 
 Heatmaps are placed within Maps and have several props which are derived from Google's [Heatmap Options](https://developers.google.com/maps/documentation/javascript/reference/visualization#HeatmapLayerOptions). Some are named differently as they have been enhanced/simplified.
 
-| Props        |      Type      |   Default    | Description                                                                           |
-| :----------- | :------------: | :----------: | :------------------------------------------------------------------------------------ |
-| items        | Array\<Object> | **required** | An array of objects that has `lat` and `lng` properties                               |
-| colors       | Array\<String> |      -       | An array of one or more colors to color heatmap _e.g. ['red','#0F0','rgba(0,0,0,0)`]_ |
-| dissipating  |    Boolean     |    `true`    | Specifies whether heatmaps dissipate on zoom                                          |
-| opacity      |     Number     |    `0.6`     | Opacity of the heatmap                                                                |
-| maxIntensity |     Number     |      -       | Number of points in one spot to reach "maximum heat" color                            |
-| radius       |     Number     |      -       | The radius of influence for each data point, in pixels                                |
-| weightProp   |     String     |      -       | The property of items that should be used as the weight (Numbers > 0)                 |
+| Props        |     Type     |   Default    | Description                                                                           |
+| :----------- | :----------: | :----------: | :------------------------------------------------------------------------------------ |
+| items        | Array/Object | **required** | An array of objects that has `lat` and `lng` properties                               |
+| colors       | Array/String |      -       | An array of one or more colors to color heatmap _e.g. ['red','#0F0','rgba(0,0,0,0)`]_ |
+| dissipating  |   Boolean    |    `true`    | Specifies whether heatmaps dissipate on zoom                                          |
+| opacity      |    Number    |    `0.6`     | Opacity of the heatmap                                                                |
+| maxIntensity |    Number    |      -       | Number of points in one spot to reach "maximum heat" color                            |
+| radius       |    Number    |      -       | The radius of influence for each data point, in pixels                                |
+| weightProp   |    String    |      -       | The property of items that should be used as the weight (Numbers > 0)                 |
 
 This component does not have any events.
 
@@ -402,12 +402,17 @@ This component supports the following events:
 <template>
   <gmaps-map>
     <gmaps-rectangle :bounds="bounds" :strokeColor="blue" :fillColor="red" />
-    <gmaps-circle :center="center" :radius="radius" :strokeColor="green" :fillColor="yellow" />
+    <gmaps-circle
+      :center="center"
+      :radius="radius"
+      :strokeColor="green"
+      :fillColor="yellow"
+    />
   </gmaps-map>
 </template>
 
 <script>
-  import { gmapsMap, gmapsRectangle, gmapsCircle } from 'x5-gmaps'
+  import { gmapsMap, gmapsRectangle, gmapsCircle } from 'x5-gmaps';
 
   export default {
     components: { gmapsMap, gmapsPolyline, gmapsPolygon },
@@ -416,12 +421,65 @@ This component supports the following events:
         east: 153.12,
         north: -27.44,
         west: 153.0,
-        south: -27.58,
+        south: -27.58
       },
       center: { lat: -27.479, lng: 152.937 },
-      radius: 5000,
-    }),
-  }
+      radius: 5000
+    })
+  };
+</script>
+```
+
+## Data / GeoJSON
+
+![Data / GeoJSON](./demo/public/img/readme-geojson.png)
+
+[GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) is an open standard format designed for representing simple geographical features, along with their non-spatial attributes.
+It can be used in Google Maps, and now in this libary using two new components: _GmapsData_, and _GmapsDataGeoJson_.
+Because of how Google implements this feature, this library limits you to only one _GmapsData_ element per map. That element will take any global styles and emit all the event listeners. The _GmapsDataGeoJson_ is the element where actual GeoJSON data can be added, along with any overriding styles.
+The full [Google Maps API for Data](https://developers.google.com/maps/documentation/javascript/reference/data) has not been incorporated (no drawing yet), but it's certainly able to display any GeoJSON you have.
+
+_GmapsData_ supports the following events:
+`@click`, `contextmenu`, `@dblclick`, `mousedown`, `mouseout`, `mouseover`, `mouseup`, `rightclick`
+(which are most of those [available](https://developers.google.com/maps/documentation/javascript/reference/data#Data-Events))
+Each returns Google's `Data.MouseEvent` which includes the feature hit and latLng.
+
+_GmapsData_ presently only takes an `options` prop which is of type [Data.StyleOptions](https://developers.google.com/maps/documentation/javascript/reference/data#Data.StyleOptions). This will effectively be the default style for all Features imported into the data. To override this, you need to set the options for the individual Feature in the _GmapsDataGeoJson_ component.
+
+_GmapsDataGeoJson_ does not have events (all events are emited together from the _GmapsData_ if you include it).
+
+_GmapsData_ also only takes an `options` prop which is of type [Data.StyleOptions](https://developers.google.com/maps/documentation/javascript/reference/data#Data.StyleOptions). This is the override style for the Feature(s) defined in this component..
+
+| Props   |                                                       Type                                                        | Default | Description                                                              |
+| :------ | :---------------------------------------------------------------------------------------------------------------: | :-----: | :----------------------------------------------------------------------- |
+| geoJson |                                                      Object                                                       |    -    | A parsed GeoJSON object                                                  |
+| options | [Data.StyleOptions](https://developers.google.com/maps/documentation/javascript/reference/data#Data.StyleOptions) |    -    | This is the override style for the Feature(s) defined in this component. |
+
+```html
+<template>
+  <gmaps-map>
+    <gmaps-data>
+      <gmaps-data-geo-json :geo-json="geoJson" />
+      <gmaps-data-geo-json :geo-json="geoJson2" :options="geoJson2Style" />
+    </gmaps-data>
+  </gmaps-map>
+</template>
+
+<script>
+  import { gmapsMap, gmapsData, gmapsDataGeoJson } from 'x5-gmaps';
+
+  import geoJson from '../../../public/data/geoJsonData.json';
+  import geoJsonL from '../../../public/data/geoJsonDataL.json';
+
+  export default {
+    name: 'ExampleGeoJson',
+    components: { gmapsMap, gmapsData, gmapsDataGeoJson },
+    data: () => ({
+      geoJson,
+      geoJsonL,
+      geoJsonLStyle: { fillColor: 'black' }
+    })
+  };
 </script>
 ```
 
@@ -437,18 +495,18 @@ The return of this promise is the `maps` object of the `google` object most of G
 
 ```js
 // Example
-import { gmaps } from 'x5-gmaps'
+import { gmaps } from 'x5-gmaps';
 
 export default {
   data: () => ({
-    GooglePlacesService: null,
+    GooglePlacesService: null
   }),
   mounted() {
-    gmaps().then((maps) => {
-      PlacesService = new maps.places.AutocompleteService()
-    })
-  },
-}
+    gmaps().then(maps => {
+      PlacesService = new maps.places.AutocompleteService();
+    });
+  }
+};
 ```
 
 ### :information_source: `$GMaps()` is the little promise that returns the Google `maps` object once the Google Maps code has successfully loaded. This is the little trick with getting it to work with Vue and is what you need to access the `maps` object references in all of the Google Maps documentation.
@@ -459,7 +517,7 @@ As mentioned above, additional libraries can be used in conjunction with this pa
 
 ```js
 // main.js
-Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] })
+Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] });
 ```
 
 ### :warning: This is an example taken from a project of mine; you may be able to find a more efficient way to do this. It is focused around using the [AutocompleteService](https://developers.google.com/maps/documentation/javascript/places-autocomplete).
@@ -472,31 +530,31 @@ Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] })
 <script>
   // I leave these as external variables so they can be used inside
   // my arrow functions without confusing the "this" context.
-  let PlacesService
-  let PlacesServiceOK
+  let PlacesService;
+  let PlacesServiceOK;
 
   export default {
     methods: {
       query(input) {
         return new Promise((resolve, reject) => {
           PlacesService.getPlacePredictions({ input }, (results, status) => {
-            if (status !== PlacesServiceOK) reject(new Error(status))
-            else resolve(results)
-          })
-        })
-      },
+            if (status !== PlacesServiceOK) reject(new Error(status));
+            else resolve(results);
+          });
+        });
+      }
     },
     // The `maps` object from Google is only available after the pages
     // has been loaded; which hopefully happens before mounted() but
     // that is not guaranteed. That is why I use the `$GMaps()` promise
     // which returns the `maps` object once the Google code has loaded.
     mounted() {
-      this.$GMaps().then((maps) => {
-        PlacesServiceOK = maps.places.PlacesServiceStatus.OK
-        PlacesService = new maps.places.AutocompleteService()
-      })
-    },
-  }
+      this.$GMaps().then(maps => {
+        PlacesServiceOK = maps.places.PlacesServiceStatus.OK;
+        PlacesService = new maps.places.AutocompleteService();
+      });
+    }
+  };
 </script>
 ```
 
@@ -526,8 +584,6 @@ While you shouldn't see these for too long while the map loads (if at all), ther
   </gmaps-map>
 </template>
 ```
-
-<!-- TODO: Advanced usage: Component creation, import gmaps etc -->
 
 <br>
 

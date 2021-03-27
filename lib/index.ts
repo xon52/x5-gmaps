@@ -3,6 +3,8 @@ import { init, gmaps } from './init';
 import { OptionsInterface } from './types/OptionsInterface';
 import gmapsMap from './components/Map.vue';
 import gmapsCircle from './components/Circle';
+import gmapsData from './components/Data.vue';
+import gmapsDataGeoJson from './components/DataGeoJson';
 import gmapsInfoWindow from './components/InfoWindow.vue';
 import gmapsMarker from './components/Marker';
 import gmapsPolygon from './components/Polygon';
@@ -26,6 +28,8 @@ export {
   gmaps,
   gmapsMap,
   gmapsCircle,
+  gmapsData,
+  gmapsDataGeoJson,
   gmapsHeatmap,
   gmapsInfoWindow,
   gmapsMarker,
