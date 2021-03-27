@@ -33,15 +33,12 @@
     </template>
     <template #map>
       <gmaps-map :options="mapOptions">
-        <gmaps-popup
-          :position="{ lat: -27.46, lng: 153.02 }"
-          background="#BBF0FF"
-        >
+        <gmaps-popup :position="{ lat: -25, lng: 130 }" background="#BBF0FF">
           {{ text }}
         </gmaps-popup>
-        <gmaps-popup :position="{ lat: -27.5, lng: 153.02 }" height="100px;">
-          <button @click="text = 'Aussie Aussie Aussie'">Anything can</button
-          ><br />
+        <gmaps-popup :position="{ lat: -30, lng: 138 }" height="100px;">
+          <button @click="text = 'Aussie Aussie Aussie'">Anything can</button>
+          <br />
           <button @click="text = 'Oi Oi Oi'">Go here</button>
         </gmaps-popup>
       </gmaps-map>
@@ -51,13 +48,13 @@
         <pre>
 &lt;gmaps-map>
   &lt;gmaps-popup
-    :position="{ lat: -27.46, lng: 153.02 }"
+    :position="{ lat: -25, lng: 130 }"
     background="#BBF0FF">
     <span v-pre>{{ text }}</span>
   &lt;/gmaps-popup>
 
   &lt;gmaps-popup
-    :position="{ lat: -27.5, lng: 153.02 }"
+    :position="{ lat: -30, lng: 138 }"
     height="100px;">
     &lt;button @click="text = 'Aussie Aussie Aussie'">
       Anything can
@@ -71,8 +68,8 @@
 
 ...
 
-optionsA = { position: { lat: -27.46, lng: 153.02 } }
-optionsB = { position: { lat: -27.5, lng: 153.02 } }
+optionsA = { position: { lat: -25, lng: 130 } }
+optionsB = { position: { lat: -30, lng: 138 } }
 
 ...
 
@@ -87,22 +84,14 @@ openB() {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsPopup } from 'lib/'; // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsPopup } from 'lib'; // import from 'x5-gmaps' for plugin
+import { mapOptions } from '../../helpers';
 
 export default {
   name: 'ExamplePopup',
   components: { ExampleWrapper, gmapsMap, gmapsPopup },
   data: () => ({
-    mapOptions: {
-      center: { lat: -27.47, lng: 153.025 },
-      zoom: 12,
-      fullscreenControl: false,
-      mapTypeControl: false,
-      rotateControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      zoomControl: false
-    },
+    mapOptions,
     text: 'This is just text'
   })
 };

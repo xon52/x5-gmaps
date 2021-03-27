@@ -49,13 +49,13 @@ centerChanged(center) {
 
 <script>
 import ExampleWrapper from '../Wrapper'
-import { gmapsMap } from 'lib/'; // import from 'x5-gmaps' for plugin
+import { gmapsMap } from 'lib'; // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleMapOptions',
   components: { ExampleWrapper, gmapsMap },
   data: () => ({
-    center: null,
+    center: { lat: -27.47, lng: 153.025 },
     mapOptions: {
       center: { lat: -27.47, lng: 153.025 },
       zoom: 12,

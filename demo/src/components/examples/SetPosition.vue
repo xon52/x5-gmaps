@@ -34,19 +34,6 @@
 
 ...
 
-mapOptions = {
-    center: { lat: -27.47, lng: 153.025 },
-    zoom: 14,
-    fullscreenControl: false,
-    mapTypeControl: false,
-    rotateControl: false,
-    scaleControl: false,
-    streetViewControl: false,
-    zoomControl: false
-}
-
-...
-
 getLocation() {
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(this.setLocation, this.locationError)
   else alert('Geolocation is not supported by this browser.')
@@ -69,23 +56,15 @@ locationError(error) {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap } from 'lib/'; // import from 'x5-gmaps' for plugin
+import { gmapsMap } from 'lib'; // import from 'x5-gmaps' for plugin
+import { mapOptions } from '../../helpers';
 
 export default {
   name: 'ExampleMapOptions',
   components: { ExampleWrapper, gmapsMap },
   data: () => ({
     center: null,
-    mapOptions: {
-      center: { lat: -27.47, lng: 153.025 },
-      zoom: 12,
-      fullscreenControl: false,
-      mapTypeControl: false,
-      rotateControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      zoomControl: false
-    }
+    mapOptions
   }),
   methods: {
     getLocation() {
@@ -99,7 +78,8 @@ export default {
     setLocation(pos) {
       this.mapOptions = {
         ...this.mapOptions,
-        center: { lat: pos.coords.latitude, lng: pos.coords.longitude }
+        center: { lat: pos.coords.latitude, lng: pos.coords.longitude },
+        zoom: 11
       };
       this.center = { lat: pos.coords.latitude, lng: pos.coords.longitude };
     },

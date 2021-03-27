@@ -1,7 +1,8 @@
 <template>
   <example-wrapper title="Drop a Marker on the map">
     <div class="instructions">
-      <p class="instructions-title">Click on the map to add a marker</p>
+      <p class="instructions-title">Click on the map to add a marker.</p>
+      <p class="instructions-title">Click on a marker to remove it.</p>
     </div>
     <template #map>
       <gmaps-map :options="mapOptions" @click="addMarker">
@@ -45,22 +46,14 @@ removeMarker(index) {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsMarker, gmaps } from 'lib/'; // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsMarker } from 'lib'; // import from 'x5-gmaps' for plugin
+import { mapOptions } from '../../helpers';
 
 export default {
   name: 'ExampleMarkerOptions',
   components: { ExampleWrapper, gmapsMap, gmapsMarker },
   data: () => ({
-    mapOptions: {
-      center: { lat: -27.47, lng: 153.025 },
-      zoom: 12,
-      fullscreenControl: false,
-      mapTypeControl: false,
-      rotateControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      zoomControl: false
-    },
+    mapOptions,
     markers: []
   }),
   methods: {

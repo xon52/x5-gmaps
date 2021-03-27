@@ -34,11 +34,11 @@
 ...
 
 items = [
-  { lat: 12, lng: 107, weight: 249 },
-  { lat: -10, lng: 61, weight: 834 },
+  { lat: -32, lng: 125, weight: 249 },
+  { lat: -34, lng: 128, weight: 834 },
   ...,
-  { lat: -50, lng: 150, weight: 20 },
-  { lat: 74, lng: -75, weight: 563 },
+  { lat: -28, lng: 126, weight: 20 },
+  { lat: -30, lng: 130, weight: 563 },
 ]
         </pre>
       </div>
@@ -48,29 +48,21 @@ items = [
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsHeatmap } from 'lib/'; // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsHeatmap } from 'lib'; // import from 'x5-gmaps' for plugin
+import { mapOptions } from '../../helpers';
 
 export default {
   name: 'ExampleHeatmapWeighted',
   components: { ExampleWrapper, gmapsMap, gmapsHeatmap },
   data: () => ({
-    mapOptions: {
-      center: { lat: 20, lng: 0 },
-      zoom: 1,
-      fullscreenControl: false,
-      mapTypeControl: false,
-      rotateControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      zoomControl: false
-    },
+    mapOptions,
     items: []
   }),
   created() {
-    for (let i = 0; i < 200; i++)
+    for (let i = 0; i < 50; i++)
       this.items.push({
-        lat: -50 + Math.random() * 130,
-        lng: -180 + Math.random() * 360,
+        lat: -38 + Math.random() * 30,
+        lng: 118 + Math.random() * 30,
         weight: Math.ceil(Math.random() * 1000)
       });
   }

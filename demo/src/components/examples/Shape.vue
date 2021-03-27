@@ -67,10 +67,10 @@ bounds: {
 },
 
 center: {
-  lat: -27.479,
-  lng: 152.937
+  lat: -28,
+  lng: 125
 },
-radius: 5000
+radius: 500000
         </pre>
       </div>
     </template>
@@ -79,32 +79,24 @@ radius: 5000
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsRectangle, gmapsCircle } from 'lib/'; // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsRectangle, gmapsCircle } from 'lib'; // import from 'x5-gmaps' for plugin
+import { mapOptions } from '../../helpers';
 
 export default {
   name: 'ExampleShape',
   components: { ExampleWrapper, gmapsMap, gmapsRectangle, gmapsCircle },
   data: () => ({
-    mapOptions: {
-      center: { lat: -27.5, lng: 153 },
-      zoom: 11,
-      fullscreenControl: false,
-      mapTypeControl: false,
-      rotateControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      zoomControl: false
-    },
+    mapOptions,
     draggable: false,
     editable: false,
     bounds: {
-      east: 153.12,
-      north: -27.44,
-      west: 153.0,
-      south: -27.58
+      east: 145,
+      north: -20,
+      west: 132,
+      south: -27
     },
-    center: { lat: -27.479, lng: 152.937 },
-    radius: 5000
+    center: { lat: -28, lng: 125 },
+    radius: 500000
   }),
   methods: {
     radiusChanged(e) {

@@ -26,11 +26,11 @@
 ...
 
 items = [
-  { lat: -27.41, lng: 153.01 },
-  { lat: -27.42, lng: 153.02 },
+  { lat: -32, lng: 125 },
+  { lat: -34, lng: 128 },
   ...,
-  { lat: -27.48, lng: 153.08 },
-  { lat: -27.49, lng: 153.09 },
+  { lat: -28, lng: 126 },
+  { lat: -30, lng: 130 },
 ]
         </pre>
       </div>
@@ -40,29 +40,21 @@ items = [
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsMarker } from 'lib/'; // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsMarker } from 'lib'; // import from 'x5-gmaps' for plugin
+import { mapOptions } from '../../helpers';
 
 export default {
   name: 'ExampleMarker',
   components: { ExampleWrapper, gmapsMap, gmapsMarker },
   data: () => ({
-    mapOptions: {
-      center: { lat: -27.5, lng: 153 },
-      zoom: 11,
-      fullscreenControl: false,
-      mapTypeControl: false,
-      rotateControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      zoomControl: false
-    },
+    mapOptions,
     items: []
   }),
   created() {
     for (let i = 0; i < 20; i++)
       this.items.push({
-        lat: -27.5 + Math.random() / 10 - 0.05,
-        lng: 153 + Math.random() / 10 - 0.05
+        lat: -34 + Math.random() * 15,
+        lng: 120 + Math.random() * 25
       });
   }
 };
