@@ -6,9 +6,13 @@ All notable changes to this project will be documented in this file.
 <hr>
 <br>
 
-## [0.4.1] - Data Component for GeoJSON support
+## [0.4.2] - Fix for map breaking if loaded immediately
 
-### Summary
+<br>
+<hr>
+<br>
+
+## [0.4.1] - Data Component for GeoJSON support
 
 Addition of two new components to include GeoJSON data.
 
@@ -31,8 +35,6 @@ Addition of two new components to include GeoJSON data.
 <br>
 
 ## [0.4.0] - Typescript support
-
-### Summary
 
 A major upgrade to include Typescript support. While there should be no noticeable change for anyone not using Typescript, almost every line of the entire library had to be rewritten 😣
 

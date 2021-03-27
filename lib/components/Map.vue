@@ -21,6 +21,7 @@
 
 <script lang="ts">
 import { Component, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
+import { gmaps } from '../index';
 
 const defaultOptions = {
   center: { lat: -27.5, lng: 153 },
@@ -53,36 +54,40 @@ export default class GmapsMap extends Vue {
   }
 
   mounted() {
-    this.map = new window.google.maps.Map(this.$refs.gmap as Element, {
-      ...defaultOptions,
-      ...this.options
-    });
-    this.$emit('mounted', this.map);
-    this.map.addListener('bounds_changed', () =>
-      this.$emit('bounds-changed', this.map!.getBounds())
-    );
-    this.map.addListener('center_changed', () =>
-      this.$emit('center-changed', this.map!.getCenter())
-    );
-    this.map.addListener('click', e => this.$emit('click', e));
-    this.map.addListener('dblclick', e => this.$emit('double-click', e));
-    this.map.addListener('rightclick', e => this.$emit('right-click', e));
-    this.map.addListener('zoom_changed', () =>
-      this.$emit('zoom-changed', this.map!.getZoom())
-    );
-    // TODO: Remove in major release
-    this.map.addListener('bounds_changed', () =>
-      this.$emit('boundsChanged', this.map!.getBounds())
-    ); // eslint-disable-line
-    this.map.addListener('center_changed', () =>
-      this.$emit('centerChanged', this.map!.getCenter())
-    ); // eslint-disable-line
-    this.map.addListener('dblclick', e => this.$emit('doubleClick', e)); // eslint-disable-line
-    this.map.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
-    this.map.addListener('zoom_changed', () =>
-      this.$emit('zoomChanged', this.map!.getZoom())
-    ); // eslint-disable-line
-    setTimeout(() => (this.loading = false), 100);
+    gmaps()
+      .then((maps: any) => {
+        this.map = new maps.Map(this.$refs.gmap as Element, {
+          ...defaultOptions,
+          ...this.options
+        });
+        this.$emit('mounted', this.map);
+        this.map!.addListener('bounds_changed', () =>
+          this.$emit('bounds-changed', this.map!.getBounds())
+        );
+        this.map!.addListener('center_changed', () =>
+          this.$emit('center-changed', this.map!.getCenter())
+        );
+        this.map!.addListener('click', e => this.$emit('click', e));
+        this.map!.addListener('dblclick', e => this.$emit('double-click', e));
+        this.map!.addListener('rightclick', e => this.$emit('right-click', e));
+        this.map!.addListener('zoom_changed', () =>
+          this.$emit('zoom-changed', this.map!.getZoom())
+        );
+        // TODO: Remove in major release
+        this.map!.addListener('bounds_changed', () =>
+          this.$emit('boundsChanged', this.map!.getBounds())
+        ); // eslint-disable-line
+        this.map!.addListener('center_changed', () =>
+          this.$emit('centerChanged', this.map!.getCenter())
+        ); // eslint-disable-line
+        this.map!.addListener('dblclick', e => this.$emit('doubleClick', e)); // eslint-disable-line
+        this.map!.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
+        this.map!.addListener('zoom_changed', () =>
+          this.$emit('zoomChanged', this.map!.getZoom())
+        ); // eslint-disable-line
+        setTimeout(() => (this.loading = false), 100);
+      })
+      .catch((e: Error) => this._handleError(e as Error));
   }
 
   beforeDestroy() {

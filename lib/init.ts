@@ -30,7 +30,7 @@ const loaded = () => !!window.google && !!window.google.maps;
 // Loading flag to allow for multiple inits
 let loading = false;
 // Exported promise to get map
-const gmaps = () => {
+const gmaps = (): any => {
   // Early return if map already loaded
   if (loaded()) return Promise.resolve(window.google.maps);
   // If not loading, it was not initialised
