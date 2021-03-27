@@ -13,7 +13,7 @@
       </slot>
     </template>
     <!-- Map -->
-    <div ref="gmap" class="gmaps-map">
+    <div v-show="!error" ref="gmap" class="gmaps-map">
       <slot v-if="!error && !loading && !!map" :map="map" />
     </div>
   </div>
@@ -39,15 +39,15 @@ export default class GmapsMap extends Vue {
   public getMap() {
     return this.map;
   }
+  private _handleError(e: Error) {
+    this.error = e.message;
+  }
 
   @Provide('getMap') private provideMap = () => this.getMap();
   @Provide('handleError') private handleError = (e: Error) =>
-    (this.error = e.message);
+    this._handleError(e);
 
-  @Watch('options', {
-    immediate: true,
-    deep: true
-  })
+  @Watch('options', { immediate: true, deep: true })
   optionsChanged(newVal: google.maps.MapOptions) {
     if (this.map) this.map.setOptions(newVal);
   }
