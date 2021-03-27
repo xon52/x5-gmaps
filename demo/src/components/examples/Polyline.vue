@@ -12,7 +12,7 @@
       <button class="instructions-action" @click="generatePoints">
         Regenerate points
       </button>
-      <label><input type="checkbox" v-model="editable" /> Editable</label>
+      <label><input v-model="editable" type="checkbox" /> Editable</label>
     </div>
     <template #description>
       <p>We can also add polylines.</p>
@@ -63,11 +63,11 @@ icon = {
 }
 
 items = [
-  { lat: -27.41, lng: 153.01 },
-  { lat: -27.42, lng: 153.02 },
+  { lat: -32, lng: 125 },
+  { lat: -34, lng: 128 },
   ...,
-  { lat: -27.48, lng: 153.08 },
-  { lat: -27.49, lng: 153.09 },
+  { lat: -28, lng: 126 },
+  { lat: -30, lng: 130 },
 ]
 
 icons: [
@@ -82,7 +82,8 @@ icons: [
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsPolyline, gmapsPolygon } from 'lib/'; // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsPolyline, gmapsPolygon } from 'lib'; // import from 'x5-gmaps' for plugin
+import { mapOptions } from '../../helpers';
 
 const icon = {
   path: 'M -2,0 0,-2 2,0 0,2 z',
@@ -95,16 +96,7 @@ export default {
   name: 'ExamplePolyline',
   components: { ExampleWrapper, gmapsMap, gmapsPolyline, gmapsPolygon },
   data: () => ({
-    mapOptions: {
-      center: { lat: -27.5, lng: 153 },
-      zoom: 11,
-      fullscreenControl: false,
-      mapTypeControl: false,
-      rotateControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      zoomControl: false
-    },
+    mapOptions,
     polygon: false,
     editable: false,
     items: [],
@@ -121,8 +113,8 @@ export default {
       const temp = [];
       for (let i = 0; i < 5; i++)
         temp.push({
-          lat: -27.6 + Math.random() / 5,
-          lng: 152.9 + Math.random() / 5
+          lat: -32 + Math.random() * 15,
+          lng: 120 + Math.random() * 25
         });
       this.items = temp;
     }

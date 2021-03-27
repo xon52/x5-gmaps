@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { gmapsMap, gmapsMarker, gmaps } from 'lib/'; // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsMarker, gmaps } from 'lib'; // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'BugTest',

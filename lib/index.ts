@@ -2,14 +2,16 @@ import { VueConstructor } from 'vue';
 import { init, gmaps } from './init';
 import { OptionsInterface } from './types/OptionsInterface';
 import gmapsMap from './components/Map.vue';
-import gmapsCircle from './components/Circle.vue';
+import gmapsCircle from './components/Circle';
+import gmapsData from './components/Data.vue';
+import gmapsDataGeoJson from './components/DataGeoJson';
 import gmapsInfoWindow from './components/InfoWindow.vue';
-import gmapsMarker from './components/Marker.vue';
-import gmapsPolygon from './components/Polygon.vue';
-import gmapsPolyline from './components/Polyline.vue';
+import gmapsMarker from './components/Marker';
+import gmapsPolygon from './components/Polygon';
+import gmapsPolyline from './components/Polyline';
 import gmapsPopup from './components/Popup.vue';
-import gmapsHeatmap from './components/Heatmap.vue';
-import gmapsRectangle from './components/Rectangle.vue';
+import gmapsHeatmap from './components/Heatmap';
+import gmapsRectangle from './components/Rectangle';
 import './scss/index.scss';
 
 const install = (Vue: VueConstructor, options: string | OptionsInterface) => {
@@ -26,6 +28,8 @@ export {
   gmaps,
   gmapsMap,
   gmapsCircle,
+  gmapsData,
+  gmapsDataGeoJson,
   gmapsHeatmap,
   gmapsInfoWindow,
   gmapsMarker,

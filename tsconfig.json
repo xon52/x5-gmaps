@@ -16,7 +16,8 @@
     "target": "esnext",
     "types": [
       "webpack-env",
-      "googlemaps"
+      "googlemaps",
+      "geojson"
     ],
     "lib": [
       "esnext",

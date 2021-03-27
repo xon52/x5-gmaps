@@ -27,6 +27,12 @@ module.exports = {
       {
         html: { void: 'any' }
       }
+    ],
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: 5
+      }
     ]
   }
 };

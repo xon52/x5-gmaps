@@ -2,7 +2,8 @@
   <example-wrapper title="Minimal Map">
     <template #description>
       <p>
-        This is just a map using the default center position and zoom level (which are the minimum required options)
+        This is just a map using the default center position and zoom level
+        (which are the minimum required options)
       </p>
     </template>
     <template #map>
@@ -19,11 +20,11 @@
 </template>
 
 <script>
-import ExampleWrapper from '../Wrapper'
-import { gmapsMap } from 'lib/'; // import from 'x5-gmaps' for plugin
+import ExampleWrapper from '../Wrapper';
+import { gmapsMap } from 'lib'; // import from 'x5-gmaps' for plugin
 
 export default {
   name: 'ExampleMap',
   components: { ExampleWrapper, gmapsMap }
-}
+};
 </script>

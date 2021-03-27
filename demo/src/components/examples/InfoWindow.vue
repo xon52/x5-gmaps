@@ -92,27 +92,19 @@ openB() {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsInfoWindow } from 'lib/'; // import from 'x5-gmaps' for plugin
+import { gmapsMap, gmapsInfoWindow } from 'lib'; // import from 'x5-gmaps' for plugin
+import { mapOptions } from '../../helpers';
 
 export default {
   name: 'ExampleInfoWindow',
   components: { ExampleWrapper, gmapsMap, gmapsInfoWindow },
   data: () => ({
-    mapOptions: {
-      center: { lat: -27.47, lng: 153.025 },
-      zoom: 12,
-      fullscreenControl: false,
-      mapTypeControl: false,
-      rotateControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      zoomControl: false
-    },
+    mapOptions,
     optionsA: {
-      position: { lat: -27.46, lng: 153.02 }
+      position: { lat: -21, lng: 130 }
     },
     optionsB: {
-      position: { lat: -27.5, lng: 153.02 }
+      position: { lat: -32, lng: 133 }
     },
     bClosed: false
   }),

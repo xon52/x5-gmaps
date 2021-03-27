@@ -45,12 +45,12 @@
 ...
 
 optionsA = {
-  position: { lat: -27.46, lng: 153.02 },
+  position: { lat: -25, lng: 130 },
   icon: require('../marker.png'),
   title: 'Marker A'
 }
 optionsB = {
-  position: { lat: -27.48, lng: 153.03 },
+  position: { lat: -30, lng: 138 },
   icon: require('../marker2.png'),
   title: 'Marker B',
   opacity: 0.7
@@ -59,8 +59,8 @@ optionsB = {
 ...
 
 increaseOpacity() {
-  const op = this.optionsB.opacity * 10
-  this.optionsB.opacity = Math.round(op > 9 ? 5 : op + 1) / 10
+  const op = this.optionsB.opacity;
+  this.optionsB.opacity = op > 0.9 ? 0.5 : op + 0.1;
 }
 updatePosition(pos) {
   this.positionA = pos
@@ -82,33 +82,23 @@ mounted() {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsMarker, gmaps } from 'lib/'; // import from 'x5-gmaps' for plugin
-// import { gmapsMap, gmaps } from 'lib/'; // import from 'x5-gmaps' for plugin
-// import gmapsMarker from '../../../../lib/components/Marker';
+import { gmapsMap, gmapsMarker } from 'lib'; // import from 'x5-gmaps' for plugin
+import { mapOptions } from '../../helpers';
 
 export default {
   name: 'ExampleMarkerOptions',
   components: { ExampleWrapper, gmapsMap, gmapsMarker },
   data: () => ({
-    mapOptions: {
-      center: { lat: -27.47, lng: 153.025 },
-      zoom: 12,
-      fullscreenControl: false,
-      mapTypeControl: false,
-      rotateControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      zoomControl: false
-    },
+    mapOptions,
     optionsA: {
-      position: { lat: -27.46, lng: 153.02 },
+      position: { lat: -25, lng: 130 },
       icon: require('../../../public/img/marker.png'),
       title: 'Marker A',
       draggable: true,
       animation: 1
     },
     optionsB: {
-      position: { lat: -27.48, lng: 153.03 },
+      position: { lat: -30, lng: 138 },
       icon: require('../../../public/img/marker2.png'),
       title: 'Marker B',
       opacity: 0.7
@@ -117,8 +107,8 @@ export default {
   }),
   methods: {
     increaseOpacity() {
-      const op = this.optionsB.opacity * 10;
-      this.optionsB.opacity = Math.round(op > 9 ? 5 : op + 1) / 10;
+      const op = this.optionsB.opacity;
+      this.optionsB.opacity = op > 0.9 ? 0.5 : op + 0.1;
     },
     updatePosition(pos) {
       this.positionA = pos;

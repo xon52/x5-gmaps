@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
-    <h2 v-if="title" class="title">{{ title }}</h2>
+    <h2 v-if="title" class="title">
+      {{ title }}
+    </h2>
     <div class="description">
       <slot name="description" />
     </div>
@@ -49,6 +51,7 @@ export default {
 }
 .sides {
   border: 2px ridge silver;
+  background-color: rgb(229, 227, 223);
 }
 .code {
   padding: 0 20px;
