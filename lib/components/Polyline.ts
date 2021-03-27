@@ -5,7 +5,6 @@ export default class GmapsPolyline extends Vue {
   name = 'gmapsPolyline';
 
   @Inject('getMap') private getMap!: () => google.maps.Map;
-  @Inject('handleError') private handleError!: (e: Error) => void;
 
   @Prop({ default: () => ({}) }) readonly options!: google.maps.PolylineOptions;
   @Prop({ default: true }) readonly clickable!: boolean;
@@ -40,10 +39,7 @@ export default class GmapsPolyline extends Vue {
     return options;
   }
 
-  @Watch('_options', {
-    immediate: true,
-    deep: true
-  })
+  @Watch('_options', { immediate: true, deep: true })
   _optionsChanged(newVal: google.maps.PolylineOptions) {
     if (this.polyline) this.polyline.setOptions(newVal);
   }

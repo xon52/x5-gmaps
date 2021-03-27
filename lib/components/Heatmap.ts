@@ -46,10 +46,7 @@ export default class GmapsHeatmap extends Vue {
     return options;
   }
 
-  @Watch('_options', {
-    immediate: true,
-    deep: true
-  })
+  @Watch('_options', { immediate: true, deep: true })
   _optionsChanged(newVal: google.maps.visualization.HeatmapLayerOptions) {
     if (this.heatmap) this.heatmap.setOptions(newVal);
   }

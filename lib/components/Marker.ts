@@ -7,9 +7,7 @@ export default class GmapsMarker extends Vue {
   @Inject('getMap') private getMap!: () => google.maps.Map;
   @Inject('handleError') private handleError!: (e: Error) => void;
 
-  @Prop({ default: () => ({}) }) readonly options:
-    | google.maps.MarkerOptions
-    | undefined;
+  @Prop({ default: () => ({}) }) readonly options!: google.maps.MarkerOptions;
   @Prop({ default: 0.001 }) readonly sensitivity!: string | number;
   @Prop({ default: true }) readonly visible!: boolean;
   @Prop({ default: undefined }) readonly icon!: string | google.maps.Icon;
@@ -33,10 +31,7 @@ export default class GmapsMarker extends Vue {
     return options;
   }
 
-  @Watch('_options', {
-    immediate: true,
-    deep: true
-  })
+  @Watch('_options', { immediate: true, deep: true })
   _optionsChanged(newVal: google.maps.MarkerOptions) {
     if (this.marker) this.marker.setOptions(newVal);
   }

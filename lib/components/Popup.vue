@@ -28,9 +28,7 @@ export default class GmapsPopup extends Vue {
 
   private popup: PopupType | undefined;
 
-  @Watch('position', {
-    deep: true
-  })
+  @Watch('position', { deep: true })
   positionChanged(newVal: google.maps.LatLngLiteral) {
     if (this.popup) this.popup.setPosition(newVal);
   }

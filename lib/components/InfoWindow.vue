@@ -23,10 +23,7 @@ export default class GmapsInfoWindow extends Vue {
     if (this.infoW) this.infoW.open(this.getMap());
   }
 
-  @Watch('options', {
-    immediate: true,
-    deep: true
-  })
+  @Watch('options', { immediate: true, deep: true })
   optionsChanged(newVal: google.maps.InfoWindowOptions) {
     if (this.infoW) this.infoW.setOptions(newVal);
   }
@@ -47,6 +44,7 @@ export default class GmapsInfoWindow extends Vue {
 
   beforeDestroy() {
     if (this.infoW) this.infoW.close();
+    if (this.infoW) window.google.maps.event.clearInstanceListeners(this.infoW);
   }
 
   render() {

@@ -5,7 +5,6 @@ export default class GmapsPolygon extends Vue {
   name = 'gmapsPolygon';
 
   @Inject('getMap') private getMap!: () => google.maps.Map;
-  @Inject('handleError') private handleError!: (e: Error) => void;
 
   @Prop({ default: () => ({}) }) readonly options!: google.maps.PolygonOptions;
   @Prop({ default: true }) readonly clickable!: boolean;
@@ -44,10 +43,7 @@ export default class GmapsPolygon extends Vue {
     return options;
   }
 
-  @Watch('_options', {
-    immediate: true,
-    deep: true
-  })
+  @Watch('_options', { immediate: true, deep: true })
   _optionsChanged(newVal: google.maps.PolygonOptions) {
     if (this.polygon) this.polygon.setOptions(newVal);
   }

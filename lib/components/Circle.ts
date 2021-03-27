@@ -43,10 +43,7 @@ export default class GmapsCircle extends Vue {
     };
   }
 
-  @Watch('_options', {
-    immediate: true,
-    deep: true
-  })
+  @Watch('_options', { immediate: true, deep: true })
   _optionsChanged(newVal: google.maps.CircleOptions) {
     if (this.circle) this.circle.setOptions(newVal);
   }
