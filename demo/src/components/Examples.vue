@@ -14,7 +14,7 @@
 export default {
   name: 'ExampleApp',
   data: () => ({
-    selected: null,
+    selected: 0,
     examples: [
       { name: 'Map', component: () => import('./examples/Map'), desc: 'The core map component' },
       {
