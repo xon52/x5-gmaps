@@ -25,6 +25,7 @@ const install = (Vue: VueConstructor, options: string | OptionsInterface) => {
 };
 
 export {
+  install,
   gmaps,
   gmapsMap,
   gmapsCircle,
