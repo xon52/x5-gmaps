@@ -2,14 +2,14 @@
 
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/x5-gmaps)
 
-This is a lightweight Google Maps plugin for Vue.
+This is a lightweight Google Maps plugin for _Vue 2_ **Now with Typescript! 🥳**
 
 ## Samples/examples/tutorials
 
-- [Tutorial creating a COVID Heatmap](https://medium.com/javascript-in-plain-english/making-a-covid-map-using-vue-google-maps-89eb70a9f089)
-- [Address Autocomplete Example](https://xon5.medium.com/vue-google-maps-and-autocomplete-e9bf0fa3c42e)
+- These use slightly older versions of this package but are similar enough for you to get the idea. Read below for the latest on how to use each component.
 
-:warning: This plugin is in development, so please let me know if you find any errors.
+* [Tutorial creating a COVID Heatmap](https://medium.com/javascript-in-plain-english/making-a-covid-map-using-vue-google-maps-89eb70a9f089)
+* [Address Autocomplete Example](https://xon5.medium.com/vue-google-maps-and-autocomplete-e9bf0fa3c42e)
 
 ## Installation
 
@@ -35,10 +35,24 @@ new Vue({
 });
 ```
 
+If you're using Typescript, you will need to add the Types into your `tsconfig.json` file as you would any other library.
+
+```js
+{
+  "compilerOptions": {
+    "types": [
+      "x5-gmaps",
+      "googlemaps",
+      "geojson" // Only if you plan to use GeoJSON features
+    ]
+  }
+}
+```
+
 For Quasar, because you cannot use `Vue.use()`, in a boot file you can import the default export as 'install' and run that with the Vue instance and options as the parameters:
 
 ```js
-import { default as install } from 'x5-gmaps';
+import { install } from 'x5-gmaps';
 
 export default async ({ Vue }) => {
   install(Vue, 'XXXXXX');
@@ -84,7 +98,7 @@ Some pre-built components have been provided for general use, or as examples for
 
 ![Map](./demo/public/img/readme-map.png)
 
-Maps can take many [options](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions). `zoom` is defaulted to `12` and `center` is defaulted to Brisbane (as these options are required).
+Maps can take many [options](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions). `zoom` is defaulted to `12` and `center` is defaulted to Brisbane (as these options are required). The type of these is `google.maps.MapOptions`.
 
 This component supports the following events:
 
@@ -137,11 +151,11 @@ This component supports the following events:
 
 | Props       |      Type       | Default | Description                                                                                                                     |
 | :---------- | :-------------: | :-----: | :------------------------------------------------------------------------------------------------------------------------------ |
-| options\*   |     Object      |    -    | An object of Google Maps Marker options                                                                                         |
+| options\*   |     Object      |    -    | Type: `google.maps.MarkerOptions`                                                                                               |
 | icon        | String / Object |    -    | Marker icon URL / [Icon Interface](https://developers.google.com/maps/documentation/javascript/reference/marker#Icon)           |
 | label       | String / Object |    -    | Marker label text / [Label Interface](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel) |
 | opacity     |     Number      |  `1.0`  | Opacity of the marker                                                                                                           |
-| position    |     Object      |    -    | An object that has `lat` and `lng` properties                                                                                   |
+| position    |     Object      |    -    | `{ lat: number, lng: number }` (Type: `google.maps.LatLngLiteral`)                                                              |
 | sensitivity |     Number      | `0.001` | Changes movement sensitivity to save processing when there are a lot of items on the map                                        |
 | title       |     String      |    -    | Marker title (shown on hover)                                                                                                   |
 | visible     |     Boolean     | `true`  | If marker is visible                                                                                                            |
@@ -178,7 +192,7 @@ _\* If you want to change values on the fly, use the named props instead of with
 
 ![InfoWindow](./demo/public/img/readme-info-window.png)
 
-InfoWindows are placed with Maps can take a few [options](https://developers.google.com/maps/documentation/javascript/reference/info-window#InfoWindowOptions). A `position` option is required.
+InfoWindows are placed with Maps can take a few [options](https://developers.google.com/maps/documentation/javascript/reference/info-window#InfoWindowOptions) using the type `google.maps.InfoWindowOptions`. A `position` option `{ lat: number, lng: number }` (Type: `google.maps.LatLngLiteral`) is required.
 
 They are used to put HTML in and have a close/dismiss button built-in.
 
@@ -219,10 +233,12 @@ A Popup is a custom [DOM Element](https://developers.google.com/maps/documentati
 
 It takes the following props:
 
-- `position` (req'd)
-- `background` (style)
-- `height` (style)
-- `width` (style)
+| Props      |  Type  |  Default  | Description                                                        |
+| :--------- | :----: | :-------: | :----------------------------------------------------------------- |
+| position   | Object |     -     | `{ lat: number, lng: number }` (Type: `google.maps.LatLngLiteral`) |
+| background | String | `#EEEEEE` | Background style                                                   |
+| height     | String |  `200px`  | Height style                                                       |
+| width      | String |  `60px`   | Width style                                                        |
 
 All events are registered from the markup/component you place inside it rather than the popup itself.
 
@@ -259,7 +275,7 @@ Heatmaps are placed within Maps and have several props which are derived from Go
 
 | Props        |     Type     |   Default    | Description                                                                           |
 | :----------- | :----------: | :----------: | :------------------------------------------------------------------------------------ |
-| items        | Array/Object | **required** | An array of objects that has `lat` and `lng` properties                               |
+| items        | Array/Object | **required** | An array of `{ lat: number, lng: number }` (Type: `google.maps.LatLngLiteral`)        |
 | colors       | Array/String |      -       | An array of one or more colors to color heatmap _e.g. ['red','#0F0','rgba(0,0,0,0)`]_ |
 | dissipating  |   Boolean    |    `true`    | Specifies whether heatmaps dissipate on zoom                                          |
 | opacity      |    Number    |    `0.6`     | Opacity of the heatmap                                                                |
@@ -323,7 +339,7 @@ This component supports the following events:
 | fillOpacity    | Number  |    `0.3`     | _(Only polygons)_ The fill opacity between 0.0 and 1.0                                       |
 | geodesic       | Boolean |   `false`    | When true, lines will follow the curvature of the Earth                                      |
 | icons          |  Array  |      []      | _(Only polylines)_ Add icons along your path \*\*                                            |
-| path           |  Array  | **required** | Path points (objects with `lat` and `lng` properties)                                        |
+| path           |  Array  | **required** | Array of `{ lat: number, lng: number }` (Type: `google.maps.LatLngLiteral`)                  |
 | strokeColor    | String  |    black     | The stroke color \*\*\*                                                                      |
 | strokePosition | Number  |     `0`      | _(Only polygons)_ The stroke position along the path (0 = CENTER / 1 = INSIDE / 2 = OUTSIDE) |
 | strokeOpacity  | Number  |    `1.0`     | The stroke opacity between 0.0 and 1.0                                                       |
@@ -379,22 +395,22 @@ This component supports the following events:
 - `@mouseover` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
 - `@right-click` _returns [PolyMouseEvent](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolyMouseEvent)_
 
-| Props          |  Type   |   Default    | Description                                                                        |
-| :------------- | :-----: | :----------: | :--------------------------------------------------------------------------------- |
-| bounds         |  Array  | **required** | _(Only rectangles)_ Position of your rectangle `{ east, north, south, west }`      |
-| center         | Object  | **required** | _(Only circles)_ The center of the Circle (object with `lat` and `lng` properties) |
-| radius         | Number  | **required** | _(Only circles)_ The radius in meters on the Earth's surface                       |
-| clickable      | Boolean |    `true`    | Indicates whether this Polyline handles mouse events                               |
-| draggable      | Boolean |   `false`    | Allow the shape to be dragged over the map                                         |
-| editable       | Boolean |   `false`    | Allow editing the shape by dragging the control points                             |
-| fillColor      | String  |    black     | The fill color \*\*\*                                                              |
-| fillOpacity    | Number  |    `0.3`     | The fill opacity between 0.0 and 1.0                                               |
-| strokeColor    | String  |    black     | The stroke color \*\*\*                                                            |
-| strokePosition | Number  |     `0`      | The stroke position along the path (0 = CENTER / 1 = INSIDE / 2 = OUTSIDE)         |
-| strokeOpacity  | Number  |    `1.0`     | The stroke opacity between 0.0 and 1.0                                             |
-| strokeWeight   | Number  |      -       | The stroke width in pixels                                                         |
-| visible        | Boolean |    `true`    | Whether this polyline is visible on the map                                        |
-| zIndex         | Number  |     `0`      | The zIndex compared to other polys                                                 |
+| Props          |  Type   |   Default    | Description                                                                                                         |
+| :------------- | :-----: | :----------: | :------------------------------------------------------------------------------------------------------------------ |
+| bounds         |  Array  | **required** | _(Only rectangles)_ Position of rectangle: `{ east, north, south, west }` (Type: `google.maps.LatLngBoundsLiteral`) |
+| center         | Object  | **required** | _(Only circles)_ The center of circle: `{ lat: number, lng: number }` (Type: `google.maps.LatLngLiteral`)           |
+| radius         | Number  | **required** | _(Only circles)_ The radius in meters on the Earth's surface                                                        |
+| clickable      | Boolean |    `true`    | Indicates whether this Polyline handles mouse events                                                                |
+| draggable      | Boolean |   `false`    | Allow the shape to be dragged over the map                                                                          |
+| editable       | Boolean |   `false`    | Allow editing the shape by dragging the control points                                                              |
+| fillColor      | String  |    black     | The fill color \*\*\*                                                                                               |
+| fillOpacity    | Number  |    `0.3`     | The fill opacity between 0.0 and 1.0                                                                                |
+| strokeColor    | String  |    black     | The stroke color \*\*\*                                                                                             |
+| strokePosition | Number  |     `0`      | The stroke position along the path (0 = CENTER / 1 = INSIDE / 2 = OUTSIDE)                                          |
+| strokeOpacity  | Number  |    `1.0`     | The stroke opacity between 0.0 and 1.0                                                                              |
+| strokeWeight   | Number  |      -       | The stroke width in pixels                                                                                          |
+| visible        | Boolean |    `true`    | Whether this polyline is visible on the map                                                                         |
+| zIndex         | Number  |     `0`      | The zIndex compared to other polys                                                                                  |
 
 \*\*\* All CSS3 colors are supported except for extended named colors
 
@@ -445,18 +461,18 @@ _GmapsData_ supports the following events:
 `@click`, `contextmenu`, `@dblclick`, `mousedown`, `mouseout`, `mouseover`, `mouseup`, `rightclick`
 (which are most of those [available](https://developers.google.com/maps/documentation/javascript/reference/data#Data-Events))
 
-Each returns Google's `Data.MouseEvent` which includes the feature hit and latLng.
+Each returns Google's `google.maps.data.MouseEvent` which includes the feature hit and latLng.
 
-_GmapsData_ presently only takes an `options` prop which is of type [Data.StyleOptions](https://developers.google.com/maps/documentation/javascript/reference/data#Data.StyleOptions). This will effectively be the default style for all Features imported into the data. To override this, you need to set the options for the individual Feature in the _GmapsDataGeoJson_ component.
+_GmapsData_ presently only takes an `options` prop which is of type [google.maps.data.StyleOptions](https://developers.google.com/maps/documentation/javascript/reference/data#Data.StyleOptions). This will effectively be the default style for all Features imported into the data. To override this, you need to set the options for the individual Feature in the _GmapsDataGeoJson_ component.
 
 _GmapsDataGeoJson_ does not have events (all events are emited together from the _GmapsData_ if you include it).
 
-_GmapsData_ also only takes an `options` prop which is of type [Data.StyleOptions](https://developers.google.com/maps/documentation/javascript/reference/data#Data.StyleOptions). This is the override style for the Feature(s) defined in this component..
+_GmapsData_ also only takes an `options` prop which is of type [google.maps.data.StyleOptions](https://developers.google.com/maps/documentation/javascript/reference/data#Data.StyleOptions). This is the override style for the Feature(s) defined in this component..
 
-| Props   |                                                       Type                                                        | Default | Description                                                              |
-| :------ | :---------------------------------------------------------------------------------------------------------------: | :-----: | :----------------------------------------------------------------------- |
-| geoJson |                                                      Object                                                       |    -    | A parsed GeoJSON object                                                  |
-| options | [Data.StyleOptions](https://developers.google.com/maps/documentation/javascript/reference/data#Data.StyleOptions) |    -    | This is the override style for the Feature(s) defined in this component. |
+| Props   |                                                             Type                                                              | Default | Description                                                              |
+| :------ | :---------------------------------------------------------------------------------------------------------------------------: | :-----: | :----------------------------------------------------------------------- |
+| geoJson |                                                            Object                                                             |    -    | A parsed GeoJSON object                                                  |
+| options | [google.maps.data.StyleOptions](https://developers.google.com/maps/documentation/javascript/reference/data#Data.StyleOptions) |    -    | This is the override style for the Feature(s) defined in this component. |
 
 ```html
 <template>
@@ -492,7 +508,7 @@ _GmapsData_ also only takes an `options` prop which is of type [Data.StyleOption
 
 ## Accessing the Google Maps API
 
-Unfortunately, Vue has to load first to load the Google Maps API using this package; which means if you try and access the Google Maps API too early, it will fail. The solution used is wrapping the call in a promise. The two ways to access this are: `this.$GMaps()` (from within your Vue component), or you can import the promise `gmaps` (e.g. `import { gmaps } from 'x5-gmaps'`).
+While this should rarely be needed, if you need to access the Google Maps API, you must wait for it to be inserted and loaded. A promised is provided which should return that API when it's ready by importing `gmaps` (e.g. `import { gmaps } from 'x5-gmaps'`). Usually it should already be loaded and available via `window.google.maps`.
 
 The return of this promise is the `maps` object of the `google` object most of Google's examples use.
 
@@ -512,8 +528,6 @@ export default {
 };
 ```
 
-### :information_source: `$GMaps()` is the little promise that returns the Google `maps` object once the Google Maps code has successfully loaded. This is the little trick with getting it to work with Vue and is what you need to access the `maps` object references in all of the Google Maps documentation.
-
 ## Google Places Library
 
 As mentioned above, additional libraries can be used in conjunction with this package, and as an example, this is how you would include the [Places Library](https://developers.google.com/maps/documentation/javascript/places).
@@ -521,44 +535,6 @@ As mentioned above, additional libraries can be used in conjunction with this pa
 ```js
 // main.js
 Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] });
-```
-
-### :warning: This is an example taken from a project of mine; you may be able to find a more efficient way to do this. It is focused around using the [AutocompleteService](https://developers.google.com/maps/documentation/javascript/places-autocomplete).
-
-```html
-<template>
-  ...
-</template>
-
-<script>
-  // I leave these as external variables so they can be used inside
-  // my arrow functions without confusing the "this" context.
-  let PlacesService;
-  let PlacesServiceOK;
-
-  export default {
-    methods: {
-      query(input) {
-        return new Promise((resolve, reject) => {
-          PlacesService.getPlacePredictions({ input }, (results, status) => {
-            if (status !== PlacesServiceOK) reject(new Error(status));
-            else resolve(results);
-          });
-        });
-      }
-    },
-    // The `maps` object from Google is only available after the pages
-    // has been loaded; which hopefully happens before mounted() but
-    // that is not guaranteed. That is why I use the `$GMaps()` promise
-    // which returns the `maps` object once the Google code has loaded.
-    mounted() {
-      this.$GMaps().then(maps => {
-        PlacesServiceOK = maps.places.PlacesServiceStatus.OK;
-        PlacesService = new maps.places.AutocompleteService();
-      });
-    }
-  };
-</script>
 ```
 
 <hr>
@@ -591,10 +567,6 @@ While you shouldn't see these for too long while the map loads (if at all), ther
 <br>
 
 ---
-
-## Contributing
-
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for the process for submitting pull requests.
 
 ## Authors
 
