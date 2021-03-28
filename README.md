@@ -41,9 +41,7 @@ If you're using Typescript, you will need to add the Types into your `tsconfig.j
 {
   "compilerOptions": {
     "types": [
-      "x5-gmaps",
-      "googlemaps",
-      "geojson" // Only if you plan to use GeoJSON features
+      "x5-gmaps"
     ]
   }
 }
