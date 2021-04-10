@@ -19,18 +19,22 @@ export default class GmapsHeatmap extends Vue {
 
   private heatmap: google.maps.visualization.HeatmapLayer | undefined;
 
-  public getData() {
+  public getData(): (
+    | google.maps.LatLng
+    | google.maps.visualization.WeightedLocation
+  )[] {
     return this.items.map(e => {
       if (this.weightProp)
         return {
           location: new window.google.maps.LatLng(e.lat, e.lng),
+          // TODO: No idea how to remove this any
           weight: (e as any)[this.weightProp]
         };
       return new window.google.maps.LatLng(e.lat, e.lng);
     });
   }
 
-  public updateData() {
+  public updateData(): void {
     if (this.heatmap) this.heatmap.setData(this.getData());
   }
 
@@ -47,22 +51,22 @@ export default class GmapsHeatmap extends Vue {
   }
 
   @Watch('_options', { immediate: true, deep: true })
-  _optionsChanged(newVal: google.maps.visualization.HeatmapLayerOptions) {
+  _optionsChanged(newVal: google.maps.visualization.HeatmapLayerOptions): void {
     if (this.heatmap) this.heatmap.setOptions(newVal);
   }
 
-  mounted() {
+  mounted(): void {
     this.heatmap = new window.google.maps.visualization.HeatmapLayer({
       map: this.getMap(),
       ...this._options
     });
   }
 
-  beforeDestroy() {
+  beforeDestroy(): void {
     if (this.heatmap) this.heatmap.setMap(null);
   }
 
-  render() {
+  render(): null {
     return null;
   }
 }

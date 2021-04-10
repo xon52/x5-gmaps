@@ -13,7 +13,7 @@ export default class GmapsDataGeoJson extends Vue {
 
   private features: google.maps.Data.Feature[] = [];
 
-  public updateGeoJson() {
+  public updateGeoJson(): void {
     // Clear feature list
     this.clear();
     if (!this.geoJson) return;
@@ -22,35 +22,35 @@ export default class GmapsDataGeoJson extends Vue {
     this.updateStyles();
   }
 
-  public updateStyles() {
+  public updateStyles(): void {
     this.features.forEach(e =>
       this.getMap().data.overrideStyle(e, this.options)
     );
   }
 
-  public clear() {
+  public clear(): void {
     // TODO: Test whether this function can handle removing non-existent features
     this.features.forEach(e => this.getMap().data.remove(e));
   }
 
   @Watch('geoJson', { immediate: true, deep: true })
-  _geoJsonChanged() {
+  _geoJsonChanged(): void {
     this.updateGeoJson();
   }
   @Watch('styleOptions', { immediate: true, deep: true })
-  _styleOptionsChanged() {
+  _styleOptionsChanged(): void {
     this.updateStyles();
   }
 
-  mounted() {
+  mounted(): void {
     this.updateGeoJson();
   }
 
-  beforeDestroy() {
+  beforeDestroy(): void {
     this.clear();
   }
 
-  render() {
+  render(): null {
     return null;
   }
 }

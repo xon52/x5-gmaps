@@ -19,7 +19,7 @@ export default class GmapsMarker extends Vue {
 
   private marker: google.maps.Marker | undefined;
 
-  get _options() {
+  get _options(): google.maps.MarkerOptions {
     const options: google.maps.MarkerOptions = { ...this.options };
     if (this.visible) options.visible = this.visible;
     if (this.icon) options.icon = this.icon;
@@ -32,7 +32,7 @@ export default class GmapsMarker extends Vue {
   }
 
   @Watch('_options', { immediate: true, deep: true })
-  _optionsChanged(newVal: google.maps.MarkerOptions) {
+  _optionsChanged(newVal: google.maps.MarkerOptions): void {
     if (this.marker) this.marker.setOptions(newVal);
   }
 
@@ -47,7 +47,7 @@ export default class GmapsMarker extends Vue {
       : false;
   }
 
-  mounted() {
+  mounted(): void {
     // Early return for no position
     if (!this._options.position)
       return this.handleError(
@@ -77,13 +77,12 @@ export default class GmapsMarker extends Vue {
     this.marker.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
   }
 
-  beforeDestroy() {
-    if (this.marker)
-      window.google.maps.event.clearInstanceListeners(this.marker);
+  beforeDestroy(): void {
+    if (this.marker) google.maps.event.clearInstanceListeners(this.marker);
     if (this.marker) this.marker.setMap(null);
   }
 
-  render() {
+  render(): null {
     return null;
   }
 }

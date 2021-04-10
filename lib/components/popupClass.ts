@@ -4,7 +4,8 @@ export interface PopupType extends google.maps.OverlayView {
   setPosition: (position: google.maps.LatLngLiteral) => void;
 }
 
-export const createPopupClass = () => {
+// TODO: Can't figure out the type vs class definition here
+export const createPopupClass = (): any => {
   /**
    * A customized popup on the map.
    */
@@ -14,7 +15,7 @@ export const createPopupClass = () => {
 
     constructor(position: google.maps.LatLngLiteral, content: Element) {
       super();
-      this.position = new google.maps.LatLng(position);
+      this.position = new window.google.maps.LatLng(position);
       this.content = content as HTMLElement;
 
       // Optionally stop clicks, etc., from bubbling up to the map.
@@ -22,23 +23,23 @@ export const createPopupClass = () => {
     }
 
     /** Called when the popup is added to the map. */
-    onAdd() {
-      this.getPanes()!.floatPane.appendChild(this.content);
+    onAdd(): void {
+      const panes = this.getPanes();
+      if (panes) panes.floatPane.appendChild(this.content);
     }
 
     /** Called when the popup is removed from the map. */
-    onRemove() {
-      if (this.content.parentElement) {
+    onRemove(): void {
+      if (this.content.parentElement)
         this.content.parentElement.removeChild(this.content);
-      }
     }
 
     /** Called each frame when the popup needs to draw itself. */
     // TODO: This is called soooo much
-    draw() {
+    draw(): void {
       const divPosition = this.getProjection().fromLatLngToDivPixel(
         this.position
-      )!;
+      );
 
       // Hide the popup when it is far out of view.
       // TODO: Make this a prop
@@ -57,8 +58,8 @@ export const createPopupClass = () => {
     }
 
     // Custom
-    setPosition(position: google.maps.LatLngLiteral) {
-      this.position = new google.maps.LatLng(position);
+    setPosition(position: google.maps.LatLngLiteral): void {
+      this.position = new window.google.maps.LatLng(position);
       this.draw();
     }
   };

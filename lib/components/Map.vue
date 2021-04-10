@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { Component, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
-import { gmaps } from '../index';
+import { gmaps } from '../init';
 
 const defaultOptions = {
   center: { lat: -27.5, lng: 153 },
@@ -35,25 +35,26 @@ export default class GmapsMap extends Vue {
   @Prop({ default: () => ({}) }) readonly options!: google.maps.MapOptions;
 
   private error: string | null = null;
-  private loading: boolean = true;
+  private loading = true;
   private map: google.maps.Map | undefined;
-  public getMap() {
-    return this.map;
+  public getMap(): google.maps.Map {
+    if (this.map) return this.map;
+    throw new Error('Map not found.');
   }
-  private _handleError(e: Error) {
+  private _handleError(e: Error): void {
     this.error = e.message;
   }
 
-  @Provide('getMap') private provideMap = () => this.getMap();
-  @Provide('handleError') private handleError = (e: Error) =>
+  @Provide('getMap') private provideMap = (): google.maps.Map => this.getMap();
+  @Provide('handleError') private handleError = (e: Error): void =>
     this._handleError(e);
 
   @Watch('options', { immediate: true, deep: true })
-  optionsChanged(newVal: google.maps.MapOptions) {
+  optionsChanged(newVal: google.maps.MapOptions): void {
     if (this.map) this.map.setOptions(newVal);
   }
 
-  mounted() {
+  mounted(): void {
     gmaps()
       .then((maps: any) => {
         this.map = new maps.Map(this.$refs.gmap as Element, {
@@ -90,7 +91,7 @@ export default class GmapsMap extends Vue {
       .catch((e: Error) => this._handleError(e as Error));
   }
 
-  beforeDestroy() {
+  beforeDestroy(): void {
     if (this.map) window.google.maps.event.clearInstanceListeners(this.map);
   }
 }

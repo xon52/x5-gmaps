@@ -1,6 +1,6 @@
 {
   "name": "x5-gmaps",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "private": false,
   "description": "A lightweight Google Maps plugin for Vue",
   "author": "Keagan Chisnall",
@@ -10,7 +10,8 @@
     "build:lib": "rimraf dist && webpack && npm publish --dry-run",
     "deploy": "npm publish"
   },
-  "main": "dist",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
