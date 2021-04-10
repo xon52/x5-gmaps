@@ -22,11 +22,11 @@ export default class GmapsData extends Vue {
   @Watch('options', { immediate: true, deep: true })
   optionsChanged(
     newVal: google.maps.Data.StyleOptions | google.maps.Data.StylingFunction
-  ) {
+  ): void {
     this.getMap().data.setStyle(newVal);
   }
 
-  mounted() {
+  mounted(): void {
     // NOTE: This is to enforce only one GmapsData element per map
     if (this.getMap().data.getFeatureById('_gmapsDataCollection'))
       return this.handleError(
@@ -56,7 +56,7 @@ export default class GmapsData extends Vue {
     );
   }
 
-  beforeDestroy() {
+  beforeDestroy(): void {
     const mainFeature = this.getMap().data.getFeatureById(
       '_gmapsDataCollection'
     );

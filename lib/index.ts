@@ -14,14 +14,18 @@ import gmapsHeatmap from './components/Heatmap';
 import gmapsRectangle from './components/Rectangle';
 import './scss/index.scss';
 
-const install = (Vue: VueConstructor, options: string | OptionsInterface) => {
+const install = (
+  Vue: VueConstructor,
+  options: string | OptionsInterface
+): void => {
   if (!options)
     throw new Error(
       `x5-gmaps :: (Google API) 'key' is required for plugin install.`
     );
   if (typeof options === 'string') init({ key: options, libraries: [] });
   else init(options);
-  Vue.prototype.$GMaps = () => gmaps;
+  Vue.prototype.$GMaps = (): (() => Promise<typeof window.google.maps>) =>
+    gmaps;
 };
 
 export {

@@ -41,5 +41,8 @@ module.exports = {
   externals: {
     vue: 'vue'
   },
-  plugins: [new VueLoaderPlugin()]
+  plugins: [new VueLoaderPlugin()],
+  optimization: {
+    minimize: false
+  }
 };

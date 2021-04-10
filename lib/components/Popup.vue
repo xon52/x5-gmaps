@@ -29,21 +29,21 @@ export default class GmapsPopup extends Vue {
   private popup: PopupType | undefined;
 
   @Watch('position', { deep: true })
-  positionChanged(newVal: google.maps.LatLngLiteral) {
+  positionChanged(newVal: google.maps.LatLngLiteral): void {
     if (this.popup) this.popup.setPosition(newVal);
   }
 
-  mounted() {
+  mounted(): void {
     const Popup = createPopupClass();
     this.popup = new Popup(this.position, this.$el);
-    this.popup.setMap(this.getMap());
+    if (this.popup) this.popup.setMap(this.getMap());
   }
 
-  beforeDestroy() {
+  beforeDestroy(): void {
     if (this.popup) this.popup.setMap(null);
   }
 
-  render() {
+  render(): null {
     return null;
   }
 }

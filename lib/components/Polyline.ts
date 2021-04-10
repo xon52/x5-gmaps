@@ -21,7 +21,7 @@ export default class GmapsPolyline extends Vue {
 
   private polyline: google.maps.Polyline | undefined;
 
-  get _options() {
+  get _options(): google.maps.PolylineOptions {
     const options: google.maps.PolylineOptions = {
       ...this.options,
       geodesic: this.geodesic,
@@ -40,11 +40,11 @@ export default class GmapsPolyline extends Vue {
   }
 
   @Watch('_options', { immediate: true, deep: true })
-  _optionsChanged(newVal: google.maps.PolylineOptions) {
+  _optionsChanged(newVal: google.maps.PolylineOptions): void {
     if (this.polyline) this.polyline.setOptions(newVal);
   }
 
-  public changedPath() {
+  public changedPath(): void {
     if (this.polyline && this.polyline.getEditable()) {
       const result = this.polyline
         .getPath()
@@ -57,7 +57,7 @@ export default class GmapsPolyline extends Vue {
     }
   }
 
-  mounted() {
+  mounted(): void {
     this.polyline = new window.google.maps.Polyline({
       map: this.getMap(),
       ...this._options
@@ -77,11 +77,11 @@ export default class GmapsPolyline extends Vue {
     this.polyline.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
   }
 
-  beforeDestroy() {
+  beforeDestroy(): void {
     if (this.polyline) this.polyline.setMap(null);
   }
 
-  render() {
+  render(): null {
     return null;
   }
 }
