@@ -6,7 +6,7 @@ const baseURL = 'https://maps.googleapis.com/maps/api/js';
 const genURL = (options: string): string => `${baseURL}?${options}`;
 // All promises that need to be resolved once map is loaded
 const promises: {
-  resolve: (_: typeof window.google.maps) => void;
+  resolve: (_: typeof google.maps) => void;
   reject: (e: Error) => void;
 }[] = [];
 // onError callback for Google Maps fail
@@ -31,7 +31,7 @@ const loaded = (): boolean => !!window.google && !!window.google.maps;
 // Loading flag to allow for multiple inits
 let loading = false;
 // Exported promise to get map
-const gmaps = (): Promise<typeof window.google.maps> => {
+const gmaps = (): Promise<typeof google.maps> => {
   // Early return if map already loaded
   if (loaded()) return Promise.resolve(window.google.maps);
   // If not loading, it was not initialised

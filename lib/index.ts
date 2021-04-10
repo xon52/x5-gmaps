@@ -24,7 +24,7 @@ const install = (
     );
   if (typeof options === 'string') init({ key: options, libraries: [] });
   else init(options);
-  Vue.prototype.$GMaps = (): (() => Promise<typeof window.google.maps>) =>
+  Vue.prototype.$GMaps = (): (() => Promise<typeof google.maps>) =>
     gmaps;
 };
 
