@@ -1,10 +1,4 @@
-<template>
-  <div>
-    <slot />
-  </div>
-</template>
-
-<script lang="ts">
+import { CreateElement, VNode } from 'vue';
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
 
 @Component
@@ -62,5 +56,8 @@ export default class GmapsData extends Vue {
     );
     if (mainFeature) this.getMap().data.remove(mainFeature);
   }
+
+  public render(h: CreateElement): VNode {
+    return h('div', this.$slots.default);
+  }
 }
-</script>

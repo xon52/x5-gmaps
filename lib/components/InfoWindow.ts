@@ -1,11 +1,5 @@
-<template>
-  <div>
-    <slot><p>No data</p></slot>
-  </div>
-</template>
-
-<script lang="ts">
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
+import { CreateElement, VNode } from 'vue';
 
 @Component
 export default class GmapsInfoWindow extends Vue {
@@ -47,8 +41,7 @@ export default class GmapsInfoWindow extends Vue {
     if (this.infoW) window.google.maps.event.clearInstanceListeners(this.infoW);
   }
 
-  render(): null {
-    return null;
+  public render(h: CreateElement): VNode {
+    return h('div', this.$slots.default);
   }
 }
-</script>
