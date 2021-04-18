@@ -61,7 +61,7 @@ centerChanged(center) {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap } from 'x5-gmaps'
+import { gmapsMap } from 'x5-gmaps';
 
 export default {
   name: 'ExampleMapOptions',

@@ -82,7 +82,7 @@ icons: [
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsPolyline, gmapsPolygon } from 'x5-gmaps'
+import { gmapsMap, gmapsPolyline, gmapsPolygon } from 'x5-gmaps';
 import { mapOptions } from '../../helpers';
 
 const icon = {

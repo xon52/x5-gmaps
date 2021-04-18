@@ -79,14 +79,10 @@ methods: {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import {
-  gmapsMap,
-  gmapsData,
-  gmapsDataGeoJson
-} from 'x5-gmaps';
+import { gmapsMap, gmapsData, gmapsDataGeoJson } from 'x5-gmaps';
 import { mapOptions } from '../../helpers';
 
-import geoJson from '../../../public/assets/geoJsonData'; // Can be JSON - just JS because of Webpack build
+import geoJson from '../../../public/assets/geoJsonData.js'; // Can be JSON - just JS because of Webpack build
 import geoJsonL from '../../../public/assets/geoJsonDataL.js'; // Can be JSON - just JS because of Webpack build
 
 export default {

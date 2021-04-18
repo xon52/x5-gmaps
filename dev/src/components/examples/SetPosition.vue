@@ -56,7 +56,7 @@ locationError(error) {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap } from 'x5-gmaps'
+import { gmapsMap } from 'x5-gmaps';
 import { mapOptions } from '../../helpers';
 
 export default {

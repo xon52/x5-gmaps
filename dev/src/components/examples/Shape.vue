@@ -79,7 +79,7 @@ radius: 500000
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsRectangle, gmapsCircle } from 'x5-gmaps'
+import { gmapsMap, gmapsRectangle, gmapsCircle } from 'x5-gmaps';
 import { mapOptions } from '../../helpers';
 
 export default {

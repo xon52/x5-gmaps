@@ -1,8 +1,10 @@
 const { description } = require('../../package');
 
 module.exports = {
+  base: '/',
   title: 'x5-gmaps Docs',
   description: description,
+  dest: '../../',
   head: [
     ['meta', { name: 'theme-color', content: '#0086ff' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -11,7 +13,6 @@ module.exports = {
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }
     ]
   ],
-  base: '/',
 
   themeConfig: {
     docsDir: 'docs',

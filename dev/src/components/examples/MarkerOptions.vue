@@ -82,7 +82,7 @@ mounted() {
 
 <script>
 import ExampleWrapper from '../Wrapper';
-import { gmapsMap, gmapsMarker } from 'x5-gmaps'
+import { gmapsMap, gmapsMarker } from 'x5-gmaps';
 import { mapOptions } from '../../helpers';
 
 export default {

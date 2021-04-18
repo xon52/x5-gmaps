@@ -55,7 +55,6 @@ export default class GmapsMap extends Vue {
   }
 
   mounted(): void {
-    console.log('map', this);
     gmaps()
       .then((maps: any) => {
         this.map = new maps.Map(this.$refs.gmap as Element, {

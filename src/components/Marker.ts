@@ -48,7 +48,6 @@ export default class GmapsMarker extends Vue {
   }
 
   mounted(): void {
-    console.log('marker', this)
     // Early return for no position
     if (!this._options.position)
       return this.handleError(

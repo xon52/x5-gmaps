@@ -19,7 +19,7 @@ const esbrowserslist = fs
   .filter(entry => entry && entry.substring(0, 2) !== 'ie');
 
 // Extract babel preset-env config, to combine with esbrowserslist
-const babelPresetEnvConfig = require('../babel.config').presets.filter(
+const babelPresetEnvConfig = require('./babel.config').presets.filter(
   entry => entry[0] === '@babel/preset-env'
 )[0][1];
 
@@ -28,7 +28,7 @@ const argv = minimist(process.argv.slice(2));
 const projectRoot = path.resolve(__dirname, '.');
 
 const baseConfig = {
-  input: 'lib/src/entry.ts',
+  input: 'src/entry.ts',
   plugins: {
     preVue: [
       scss(),
@@ -61,7 +61,8 @@ const baseConfig = {
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
       babelHelpers: 'bundled'
-    }
+    },
+
   }
 };
 
@@ -86,7 +87,7 @@ const buildFormats = [];
 if (!argv.format || argv.format === 'es') {
   const esConfig = {
     ...baseConfig,
-    input: './lib/src/entry.esm.ts',
+    input: './src/entry.esm.ts',
     external,
     output: {
       file: './dist/x5-gmaps.esm.js',

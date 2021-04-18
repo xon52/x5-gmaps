@@ -9,7 +9,6 @@ Vue.use(x5GMaps, {
   key: process.env.VUE_APP_GOOGLE_KEY,
   libraries: ['visualization'],
 })
-console.log(process.env.VUE_APP_GOOGLE_KEY)
 // ------------------------------
 // x5-modal plugin install END
 // ------------------------------
