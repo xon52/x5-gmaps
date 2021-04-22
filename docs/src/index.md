@@ -1,15 +1,14 @@
 ---
 home: true
-heroImage: /logo.svg
-tagline: Documentation for the x5-gmaps library (Google Maps for Vue)
-actionText: Quick Start →
+heroImage: /img/logo.svg
+actionText: Get Started
 actionLink: /guide/
-features:
-- title: Feature 1 Title
-  details: Feature 1 Description
-- title: Feature 2 Title
-  details: Feature 2 Description
-- title: Feature 3 Title
-  details: Feature 3 Description
-footer: Made by Keagan Chisnall with ❤️
+footer: Made by Keagan Chisnall
 ---
+
+<img style="display:block; margin:0 auto;" src="https://img.shields.io/bundlephobia/minzip/x5-gmaps" alt="Bundle size"/>
+
+<br/>
+<br/>
+
+### x5-gmaps is a lightweight library to simplify the use of [Google Maps](https://developers.google.com/maps/) in [Vue.js](http://vuejs.org) 🤏🗺️🧩

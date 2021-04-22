@@ -61,8 +61,7 @@ const baseConfig = {
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
       babelHelpers: 'bundled'
-    },
-
+    }
   }
 };
 
@@ -71,7 +70,10 @@ const baseConfig = {
 const external = [
   // list external dependencies, exactly the way it is written in the import statement.
   // eg. 'jquery'
-  'vue'
+  '@types/geojson',
+  '@types/googlemaps',
+  'vue',
+  'vue-property-decorator'
 ];
 
 // UMD/IIFE shared settings: output.globals
@@ -79,7 +81,8 @@ const external = [
 const globals = {
   // Provide global variable names to replace your external imports
   // eg. jquery: '$'
-  vue: 'Vue'
+  vue: 'Vue',
+  'vue-property-decorator': 'vuePropertyDecorator'
 };
 
 // Customize configs for individual targets
