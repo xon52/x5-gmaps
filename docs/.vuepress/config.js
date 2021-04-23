@@ -10,7 +10,7 @@ module.exports = {
     ['link', { rel: 'mask-icon', href: '/logo.svg', color: '#0086ff' }]
   ],
   locales: {
-    '/': {
+    '/x5-gmaps/': {
       lang: 'en-US',
       title: 'x5-gmaps',
       description: 'Google Maps for Vue.js'
@@ -26,7 +26,7 @@ module.exports = {
     repoLabel: 'Github',
     smoothScroll: true,
     locales: {
-      '/': {
+      '/x5-gmaps/': {
         label: 'English',
         selectText: 'Languages',
         editLinkText: 'Edit this page on GitHub',
