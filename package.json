@@ -5,8 +5,8 @@
   "description": "A lightweight Google Maps plugin for Vue",
   "author": "Keagan Chisnall",
   "scripts": {
-    "docs:dev": "vuepress dev docs/src",
-    "docs:build": "vuepress build docs/src",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "link": "npm link && npm link x5-gmaps",
     "dev": "vue-cli-service serve dev/src/main.js",
     "prebuild": "rimraf dist",

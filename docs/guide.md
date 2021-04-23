@@ -18,6 +18,10 @@ export default {
 };
 ```
 
+### See <a href="/api/">Components</a> for other components to use.
+
+### Or <a href="/demo.md">Demo</a> for live examples.
+
 <br>
 
 ## Google Places Library

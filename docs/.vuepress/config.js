@@ -1,16 +1,8 @@
 module.exports = {
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@': '../'
-      }
-    }
-  },
-  base: '/',
+  base: '/x5-gmaps/',
   title: 'x5-gmaps Docs',
   description:
     'Documentation for the x5-gmaps lightweight Google Maps plugin for Vue.',
-  dest: '../../',
   head: [
     ['meta', { name: 'theme-color', content: '#0086ff' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -46,6 +38,10 @@ module.exports = {
           {
             text: 'Components',
             link: '/api/'
+          },
+          {
+            text: 'Demo',
+            link: '/demo.md'
           }
         ],
         sidebar: [
@@ -66,7 +62,8 @@ module.exports = {
               { title: 'Data (GeoJSON)', path: '/api/data.md' }
             ]
           },
-          { title: 'Advanced', path: '/advanced.md' }
+          { title: 'Advanced', path: '/advanced.md' },
+          { title: 'Demo', path: '/demo.md' }
         ]
       }
     }
