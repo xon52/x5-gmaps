@@ -5,8 +5,6 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/x5-gmaps)
 
 <br/>
-<hr/>
-<br/>
 
 ## Guide / Demo / Tutorials
 
@@ -70,8 +68,6 @@ export default {
 - [Rectangles / Circles](https://xon52.github.io/x5-gmaps/api/shapes.html)
 - [Data / GeoJSON](https://xon52.github.io/x5-gmaps/api/data.html)
 
-<br/>
-<hr/>
 <br/>
 
 ## Authors
