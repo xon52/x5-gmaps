@@ -9,13 +9,6 @@ module.exports = {
     ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon.png' }],
     ['link', { rel: 'mask-icon', href: '/logo.svg', color: '#0086ff' }]
   ],
-  locales: {
-    '/x5-gmaps/': {
-      lang: 'en-US',
-      title: 'x5-gmaps',
-      description: 'Google Maps for Vue.js'
-    }
-  },
 
   themeConfig: {
     docsDir: 'docs',
@@ -25,48 +18,41 @@ module.exports = {
     repo: 'xon52/x5-gmaps',
     repoLabel: 'Github',
     smoothScroll: true,
-    locales: {
-      '/x5-gmaps/': {
-        label: 'English',
-        selectText: 'Languages',
-        editLinkText: 'Edit this page on GitHub',
-        nav: [
-          {
-            text: 'Guide',
-            link: '/guide.md'
-          },
-          {
-            text: 'Components',
-            link: '/api/'
-          },
-          {
-            text: 'Demo',
-            link: '/demo.md'
-          }
-        ],
-        sidebar: [
-          { title: 'Installation', path: '/install.md' },
-          { title: 'Guide', path: '/guide.md' },
-          {
-            title: 'Components',
-            path: '/api/',
-            sidebarDepth: 0,
-            children: [
-              { title: 'Map', path: '/api/map.md' },
-              { title: 'Marker', path: '/api/marker.md' },
-              { title: 'Info Window', path: '/api/infoWindow.md' },
-              { title: 'Popup', path: '/api/popup.md' },
-              { title: 'Heatmap', path: '/api/heatmap.md' },
-              { title: 'Polylines', path: '/api/polylines.md' },
-              { title: 'Shapes', path: '/api/shapes.md' },
-              { title: 'Data (GeoJSON)', path: '/api/data.md' }
-            ]
-          },
-          { title: 'Advanced', path: '/advanced.md' },
-          { title: 'Demo', path: '/demo.md' }
-        ]
+    nav: [
+      {
+        text: 'Guide',
+        link: '/guide.md'
+      },
+      {
+        text: 'Components',
+        link: '/api/'
+      },
+      {
+        text: 'Demo',
+        link: '/demo.md'
       }
-    }
+    ],
+    sidebar: [
+      { title: 'Installation', path: '/install.md' },
+      { title: 'Guide', path: '/guide.md' },
+      {
+        title: 'Components',
+        path: '/api/',
+        sidebarDepth: 0,
+        children: [
+          { title: 'Map', path: '/api/map.md' },
+          { title: 'Marker', path: '/api/marker.md' },
+          { title: 'Info Window', path: '/api/infoWindow.md' },
+          { title: 'Popup', path: '/api/popup.md' },
+          { title: 'Heatmap', path: '/api/heatmap.md' },
+          { title: 'Polylines', path: '/api/polylines.md' },
+          { title: 'Shapes', path: '/api/shapes.md' },
+          { title: 'Data (GeoJSON)', path: '/api/data.md' }
+        ]
+      },
+      { title: 'Advanced', path: '/advanced.md' },
+      { title: 'Demo', path: '/demo.md' }
+    ]
   },
 
   /**
