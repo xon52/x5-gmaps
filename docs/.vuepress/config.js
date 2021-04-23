@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/',
+  base: '/x5-gmaps/',
   title: 'x5-gmaps Docs',
   description:
     'Documentation for the x5-gmaps lightweight Google Maps plugin for Vue.',
