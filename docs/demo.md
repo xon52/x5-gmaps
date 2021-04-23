@@ -1,6 +1,6 @@
 # Sandbox Demo
 
-### [codesandbox.io](https://codesandbox.io/s/x5-gmaps-demo-6xww1?file=/src/main.js)
+### [codesandbox.io](https://codesandbox.io/s/x5-gmaps-demo-6xww1)
 
 <iframe src="https://codesandbox.io/embed/x5-gmaps-demo-6xww1?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
