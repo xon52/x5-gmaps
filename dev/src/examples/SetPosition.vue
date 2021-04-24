@@ -9,7 +9,11 @@
         Move to my location
       </button>
       <p>
-        {{ `Lat: ${center.lat.toFixed(2)} | Lng: ${center.lng.toFixed(2)}` }}
+        {{
+          center
+            ? `Lat: ${center.lat.toFixed(2)} | Lng: ${center.lng.toFixed(2)}`
+            : 'Position not provided.'
+        }}
       </p>
     </div>
     <template #description>
@@ -40,7 +44,7 @@ export default {
   name: 'ExampleMapOptions',
   components: { ExampleWrapper, gmapsMap },
   data: () => ({
-    center: mapOptions.center,
+    center: null,
     mapOptions
   }),
   methods: {
