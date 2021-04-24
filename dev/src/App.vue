@@ -3,7 +3,7 @@
     <!-- Banner / Selector -->
     <div class="banner">
       <div class="logo">
-        <img src="../public/img/logo.svg" alt="Logo" />
+        <img src="../public/img/logo.png" alt="Logo" />
       </div>
       <div class="options">
         <select @change="handleSelect($event.target.value)">
