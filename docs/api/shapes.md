@@ -1,6 +1,6 @@
 ## Rectangles / Circles
 
-![Rectangles/Circles](/img/readme-shapes.png)
+![Rectangles/Circles](~@img/readme-shapes.png)
 
 Rectangles/circles are placed within Maps and have several props which are derived from Google's [Rectangle Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#RectangleOptions) and [Circle Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#CircleOptions).
 

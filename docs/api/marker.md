@@ -1,6 +1,6 @@
 ## Marker
 
-![Marker](/img/readme-marker.png)
+![Marker](~@img/readme-marker.png)
 
 Markers are placed within Maps and can take many [options](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions). A `position` option is required within the options prop or as its own prop.
 

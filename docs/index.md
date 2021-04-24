@@ -6,7 +6,7 @@ actionLink: /guide/
 footer: Made by Keagan Chisnall
 ---
 
-<img style="display:block; margin:0 auto;" src="https://img.shields.io/bundlephobia/minzip/x5-gmaps" alt="Bundle size"/>
+<img class="center" src="https://img.shields.io/bundlephobia/minzip/x5-gmaps" alt="Bundle size"/>
 
 <br/>
 <br/>

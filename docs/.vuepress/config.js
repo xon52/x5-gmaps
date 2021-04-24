@@ -1,4 +1,11 @@
 module.exports = {
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@img': '/docs/.vuepress/public/img'
+      }
+    }
+  },
   base: '/x5-gmaps/',
   title: 'x5-gmaps Docs',
   description:
