@@ -51,11 +51,11 @@ export default class GmapsCircle extends Vue {
   public changedCenter(): void {
     if (!this.circle) return;
     // This is fired when the component is replaced and may not have a tempCenter
-    const oldCenter = this.tempCenter || -1;
     const newCenter = this.circle.getCenter().toJSON();
     if (
-      Math.abs(newCenter.lat - oldCenter.lat) > this.sensitivity ||
-      Math.abs(newCenter.lng - oldCenter.lng) > this.sensitivity
+      !this.tempCenter ||
+      Math.abs(newCenter.lat - this.tempCenter.lat) > this.sensitivity ||
+      Math.abs(newCenter.lng - this.tempCenter.lng) > this.sensitivity
     ) {
       this.tempCenter = newCenter;
       this.$emit('center-changed', newCenter);
@@ -66,9 +66,8 @@ export default class GmapsCircle extends Vue {
   public changedRadius(): void {
     if (!this.circle) return;
     // This is fired when the component is replaced and may not have a tempCenter
-    const oldRadius = this.tempRadius || -1;
     const newRadius = this.circle.getRadius();
-    if (Math.abs(newRadius - oldRadius) > 1) {
+    if (!this.tempRadius || Math.abs(newRadius - this.tempRadius) > 1) {
       this.tempRadius = newRadius;
       this.$emit('radius-changed', newRadius);
       // TODO: Remove in major release

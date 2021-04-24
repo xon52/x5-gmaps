@@ -27,40 +27,11 @@
         @centerChanged="centerChanged"
       />
     </template>
-    <template #code>
-      <div>
-        <pre>
-&lt;gmaps-map
-  :options="mapOptions"
-  @centerChanged="centerChanged"
-/>
-
-...
-
-mapOptions = {
-    center: { lat: -27.47, lng: 153.025 },
-    zoom: 14,
-    fullscreenControl: false,
-    mapTypeControl: false,
-    rotateControl: false,
-    scaleControl: false,
-    streetViewControl: false,
-    zoomControl: false
-}
-
-...
-
-centerChanged(center) {
-  this.center = center.toJSON()
-}
-        </pre>
-      </div>
-    </template>
   </example-wrapper>
 </template>
 
 <script>
-import ExampleWrapper from '../Wrapper';
+import ExampleWrapper from './Wrapper';
 import { gmapsMap } from 'x5-gmaps';
 
 export default {

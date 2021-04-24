@@ -9,18 +9,11 @@
     <template #map>
       <gmaps-map />
     </template>
-    <template #code>
-      <div>
-        <pre>
-&lt;gmaps-map />
-        </pre>
-      </div>
-    </template>
   </example-wrapper>
 </template>
 
 <script>
-import ExampleWrapper from '../Wrapper';
+import ExampleWrapper from './Wrapper';
 import { gmapsMap } from 'x5-gmaps';
 
 export default {

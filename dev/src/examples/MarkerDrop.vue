@@ -14,40 +14,13 @@
         />
       </gmaps-map>
     </template>
-    <template #code>
-      <div>
-        <pre>
-&lt;gmaps-map @click="addMarker" />
-  &lt;gmaps-marker
-    v-for="(m, i) in markers"
-    :options="m"
-    :key="i"
-     @click="removeMarker(i)"
-  />
-&lt;/gmaps-map>
-
-...
-
-addMarker($event) {
-  // Stop last marker from bouncing
-  if (this.markers.length) this.markers[this.markers.length - 1].animation = null
-  // Add new marker with a bounce
-  const position = $event.latLng.toJSON()
-  this.markers.push({ position, animation: this.bounce })
-},
-removeMarker(index) {
-  this.markers.splice(index, 1)
-}
-        </pre>
-      </div>
-    </template>
   </example-wrapper>
 </template>
 
 <script>
-import ExampleWrapper from '../Wrapper';
+import ExampleWrapper from './Wrapper';
 import { gmapsMap, gmapsMarker } from 'x5-gmaps';
-import { mapOptions } from '../../helpers';
+import { mapOptions } from './helpers';
 
 export default {
   name: 'ExampleMarkerOptions',

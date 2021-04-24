@@ -1,5 +1,7 @@
 # Change Log
 
+## [0.5.1] - Fix for circle center change not registering
+
 ## [0.5.0] - Rollup & VuePress
 
 - Replaced: Single README file with [VuePress](https://vuepress.vuejs.org/) docs
