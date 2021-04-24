@@ -40,7 +40,7 @@
         >
           <p>
             Even a whole Vue component<img
-              src="../../../public/img/marker2.png"
+              src="../../public/img/marker2.png"
               height="20px"
             />
           </p>
@@ -53,47 +53,13 @@
         </gmaps-info-window>
       </gmaps-map>
     </template>
-    <template #code>
-      <div>
-        <pre>
-&lt;gmaps-map>
-  &lt;gmaps-info-window :options="optionsA">
-    &lt;p>
-      Any &lt;span style="background:yellow;">HTML&lt;/span> can&lt;br />go in
-      &lt;strong>these&lt;/strong>.
-    &lt;/p>
-  &lt;/gmaps-info-window>
-
-  &lt;gmaps-info-window
-    ref="b"
-    :options="optionsB"
-    style="background:#BBF0FF;"
-    @closed="bClosed = true">
-    &lt;p>Even a whole Vue component&lt;img src="./marker2.png" height="20px" />&lt;/p>
-    &lt;p>&lt;em>(but they're locked in the white Google bubble with a close button)&lt;/em>&lt;/p>
-  &lt;/gmaps-info-window>
-&lt;/gmaps-map>
-
-...
-
-optionsA = { position: { lat: -27.46, lng: 153.02 } }
-optionsB = { position: { lat: -27.5, lng: 153.02 } }
-
-...
-
-openB() {
-  this.$refs.b.open()
-}
-        </pre>
-      </div>
-    </template>
   </example-wrapper>
 </template>
 
 <script>
-import ExampleWrapper from '../Wrapper';
+import ExampleWrapper from './Wrapper';
 import { gmapsMap, gmapsInfoWindow } from 'x5-gmaps';
-import { mapOptions } from '../../helpers';
+import { mapOptions } from './helpers';
 
 export default {
   name: 'ExampleInfoWindow',

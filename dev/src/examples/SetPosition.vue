@@ -8,7 +8,9 @@
       <button class="instructions-action" @click="getLocation">
         Move to my location
       </button>
-      <span>Center: {{ center }}</span>
+      <p>
+        {{ `Lat: ${center.lat.toFixed(2)} | Lng: ${center.lng.toFixed(2)}` }}
+      </p>
     </div>
     <template #description>
       <p>
@@ -26,44 +28,19 @@
     <template #map>
       <gmaps-map ref="map" :options="mapOptions" />
     </template>
-    <template #code>
-      <div>
-        <pre>
-&lt;gmaps-map  :options="mapOptions" />
-&lt;button @click="getLocation">Move to my location&lt;/button>
-
-...
-
-getLocation() {
-  if (navigator.geolocation) navigator.geolocation.getCurrentPosition(this.setLocation, this.locationError)
-  else alert('Geolocation is not supported by this browser.')
-},
-setLocation(pos) {
-  this.mapOptions = { ...this.mapOptions, center: { lat: pos.coords.latitude, lng: pos.coords.longitude } }
-  this.center = { lat: pos.coords.latitude, lng: pos.coords.longitude }
-},
-locationError(error) {
-  if (error.PERMISSION_DENIED) alert('User denied the request for Geolocation.')
-  else if (error.POSITION_UNAVAILABLE) alert('Location information is unavailable.')
-  else if (error.TIMEOUT) alert('The request to get user location timed out.')
-  else alert('An unknown error occurred.')
-}
-        </pre>
-      </div>
-    </template>
   </example-wrapper>
 </template>
 
 <script>
-import ExampleWrapper from '../Wrapper';
+import ExampleWrapper from './Wrapper';
 import { gmapsMap } from 'x5-gmaps';
-import { mapOptions } from '../../helpers';
+import { mapOptions } from './helpers';
 
 export default {
   name: 'ExampleMapOptions',
   components: { ExampleWrapper, gmapsMap },
   data: () => ({
-    center: null,
+    center: mapOptions.center,
     mapOptions
   }),
   methods: {

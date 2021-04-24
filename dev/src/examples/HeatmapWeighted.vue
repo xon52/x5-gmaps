@@ -19,37 +19,13 @@
         />
       </gmaps-map>
     </template>
-    <template #code>
-      <div>
-        <pre>
-&lt;gmaps-map>
-  &lt;gmaps-heatmap
-    :dissipating="false"
-    :items="items"
-    max-intensity="800"
-    radius="10"
-    weight-prop="weight" />
-&lt;/gmaps-map>
-
-...
-
-items = [
-  { lat: -32, lng: 125, weight: 249 },
-  { lat: -34, lng: 128, weight: 834 },
-  ...,
-  { lat: -28, lng: 126, weight: 20 },
-  { lat: -30, lng: 130, weight: 563 },
-]
-        </pre>
-      </div>
-    </template>
   </example-wrapper>
 </template>
 
 <script>
-import ExampleWrapper from '../Wrapper';
+import ExampleWrapper from './Wrapper';
 import { gmapsMap, gmapsHeatmap } from 'x5-gmaps';
-import { mapOptions } from '../../helpers';
+import { mapOptions } from './helpers';
 
 export default {
   name: 'ExampleHeatmapWeighted',

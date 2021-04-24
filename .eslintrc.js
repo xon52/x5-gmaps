@@ -20,12 +20,13 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
-    'vue/html-self-closing': [
+    '@typescript-eslint/explicit-function-return-type': [
       'error',
       {
-        html: { void: 'any' }
+        allowExpressions: true
       }
     ],
+    'vue/html-self-closing': 'off',
     'vue/max-attributes-per-line': [
       'error',
       {
