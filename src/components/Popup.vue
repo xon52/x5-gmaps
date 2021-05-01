@@ -1,9 +1,14 @@
 <template>
-  <div class="gmaps-popup-container" @click.prevent="$emit('click')">
+  <div
+    class="gmaps-popup-container"
+    @click.prevent="$emit('click')"
+  >
     <div class="gmaps-popup-bubble-anchor" :style="`color: ${background};`">
       <div
         class="gmaps-popup-bubble"
-        :style="`background: ${background}; maxWidth:${width}; maxHeight:${height};`"
+        :style="
+          `background: ${background}; maxWidth:${width}; maxHeight:${height};`
+        "
       >
         <slot />
       </div>
@@ -29,17 +34,17 @@ export default class GmapsPopup extends Vue {
   private popup: PopupType | undefined;
 
   @Watch('position', { deep: true })
-  positionChanged(newVal: google.maps.LatLngLiteral): void {
+  positionChanged(newVal: google.maps.LatLngLiteral) {
     if (this.popup) this.popup.setPosition(newVal);
   }
 
-  mounted(): void {
+  mounted() {
     const Popup = createPopupClass();
     this.popup = new Popup(this.position, this.$el);
     if (this.popup) this.popup.setMap(this.getMap());
   }
 
-  beforeDestroy(): void {
+  beforeDestroy() {
     if (this.popup) this.popup.setMap(null);
   }
 
@@ -48,7 +53,6 @@ export default class GmapsPopup extends Vue {
   }
 }
 </script>
-
 
 <style lang="scss">
 @import '../scss/popup.scss';

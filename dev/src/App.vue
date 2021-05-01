@@ -6,7 +6,7 @@
         <img src="../public/img/logo.png" alt="Logo" />
       </div>
       <div class="options">
-        <select @change="handleSelect($event.target.value)">
+        <select v-model="selected" @change="handleSelect($event.target.value)">
           <option
             v-for="(e, i) in examples"
             :key="i"
@@ -26,13 +26,13 @@
 </template>
 
 <script>
-import examples from './examples';
+import examples from './examples/examples';
 
 export default {
   name: 'ExampleApp',
   data: () => ({
     examples,
-    selected: 0
+    selected: 6
   }),
   methods: {
     handleSelect(i) {

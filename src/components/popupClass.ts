@@ -23,28 +23,36 @@ export const createPopupClass = (): any => {
     }
 
     /** Called when the popup is added to the map. */
-    onAdd(): void {
+    onAdd() {
       const panes = this.getPanes();
+      this.content.addEventListener('touchstart', () => null, {
+        passive: true
+      });
+      this.content.addEventListener('touchmove', () => null, {
+        passive: true
+      });
       if (panes) panes.floatPane.appendChild(this.content);
     }
 
     /** Called when the popup is removed from the map. */
-    onRemove(): void {
+    onRemove() {
       if (this.content.parentElement)
         this.content.parentElement.removeChild(this.content);
     }
 
     /** Called each frame when the popup needs to draw itself. */
     // TODO: This is called soooo much
-    draw(): void {
-      const divPosition = this.getProjection().fromLatLngToDivPixel(
-        this.position
-      );
+    draw() {
+      const projection = this.getProjection();
+      if (!projection) return this.onRemove();
+      const divPosition = projection.fromLatLngToDivPixel(this.position);
 
       // Hide the popup when it is far out of view.
       // TODO: Make this a prop
       const display =
-        Math.abs(divPosition.x) < 4000 && Math.abs(divPosition.y) < 4000
+        divPosition &&
+        Math.abs(divPosition.x) < 4000 &&
+        Math.abs(divPosition.y) < 4000
           ? 'block'
           : 'none';
       if (display === 'block') {
@@ -58,7 +66,7 @@ export const createPopupClass = (): any => {
     }
 
     // Custom
-    setPosition(position: google.maps.LatLngLiteral): void {
+    setPosition(position: google.maps.LatLngLiteral) {
       this.position = new window.google.maps.LatLng(position);
       this.draw();
     }

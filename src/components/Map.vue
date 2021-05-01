@@ -34,27 +34,27 @@ export default class GmapsMap extends Vue {
 
   @Prop({ default: () => ({}) }) readonly options!: google.maps.MapOptions;
 
-  private error: string | null = null;
-  private loading = true;
+  error: string | null = null;
+  loading = true;
   private map: google.maps.Map | undefined;
   public getMap(): google.maps.Map {
     if (this.map) return this.map;
     throw new Error('Map not found.');
   }
-  private _handleError(e: Error): void {
+  private _handleError(e: Error) {
     this.error = e.message;
   }
 
-  @Provide('getMap') private provideMap = (): google.maps.Map => this.getMap();
-  @Provide('handleError') private handleError = (e: Error): void =>
+  @Provide('getMap') provideMap = (): google.maps.Map => this.getMap();
+  @Provide('handleError') handleError = (e: Error) =>
     this._handleError(e);
 
   @Watch('options', { immediate: true, deep: true })
-  optionsChanged(newVal: google.maps.MapOptions): void {
+  optionsChanged(newVal: google.maps.MapOptions) {
     if (this.map) this.map.setOptions(newVal);
   }
 
-  mounted(): void {
+  mounted() {
     gmaps()
       .then((maps: any) => {
         this.map = new maps.Map(this.$refs.gmap as Element, {
@@ -91,7 +91,7 @@ export default class GmapsMap extends Vue {
       .catch((e: Error) => this._handleError(e as Error));
   }
 
-  beforeDestroy(): void {
+  beforeDestroy() {
     if (this.map) window.google.maps.event.clearInstanceListeners(this.map);
   }
 }

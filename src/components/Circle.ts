@@ -44,11 +44,11 @@ export default class GmapsCircle extends Vue {
   }
 
   @Watch('_options', { immediate: true, deep: true })
-  _optionsChanged(newVal: google.maps.CircleOptions): void {
+  _optionsChanged(newVal: google.maps.CircleOptions) {
     if (this.circle) this.circle.setOptions(newVal);
   }
 
-  public changedCenter(): void {
+  public changedCenter() {
     if (!this.circle) return;
     // This is fired when the component is replaced and may not have a tempCenter
     const newCenter = this.circle.getCenter().toJSON();
@@ -63,7 +63,7 @@ export default class GmapsCircle extends Vue {
       this.$emit('centerChanged', newCenter); // eslint-disable-line
     }
   }
-  public changedRadius(): void {
+  public changedRadius() {
     if (!this.circle) return;
     // This is fired when the component is replaced and may not have a tempCenter
     const newRadius = this.circle.getRadius();
@@ -75,7 +75,7 @@ export default class GmapsCircle extends Vue {
     }
   }
 
-  mounted(): void {
+  mounted() {
     this.circle = new window.google.maps.Circle({
       map: this.getMap(),
       ...this._options
@@ -104,7 +104,7 @@ export default class GmapsCircle extends Vue {
     this.circle.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
   }
 
-  beforeDestroy(): void {
+  beforeDestroy() {
     if (this.circle) this.circle.setMap(null);
   }
 

@@ -32,7 +32,7 @@ export default class GmapsMarker extends Vue {
   }
 
   @Watch('_options', { immediate: true, deep: true })
-  _optionsChanged(newVal: google.maps.MarkerOptions): void {
+  _optionsChanged(newVal: google.maps.MarkerOptions) {
     if (this.marker) this.marker.setOptions(newVal);
   }
 
@@ -47,7 +47,7 @@ export default class GmapsMarker extends Vue {
       : false;
   }
 
-  mounted(): void {
+  mounted() {
     // Early return for no position
     if (!this._options.position)
       return this.handleError(
@@ -77,7 +77,7 @@ export default class GmapsMarker extends Vue {
     this.marker.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
   }
 
-  beforeDestroy(): void {
+  beforeDestroy() {
     if (this.marker) google.maps.event.clearInstanceListeners(this.marker);
     if (this.marker) this.marker.setMap(null);
   }

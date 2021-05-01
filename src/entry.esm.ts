@@ -2,6 +2,7 @@ import { VueConstructor, PluginFunction } from 'vue';
 import { init, gmaps } from './init';
 import gmapsMap from './components/Map.vue';
 import gmapsCircle from './components/Circle';
+import gmapsCluster from './components/Cluster.vue';
 import gmapsData from './components/Data';
 import gmapsDataGeoJson from './components/DataGeoJson';
 import gmapsInfoWindow from './components/InfoWindow';
@@ -32,6 +33,7 @@ export {
   gmaps,
   gmapsMap,
   gmapsCircle,
+  gmapsCluster,
   gmapsData,
   gmapsDataGeoJson,
   gmapsHeatmap,

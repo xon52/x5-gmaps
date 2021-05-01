@@ -44,11 +44,11 @@ export default class GmapsRectangle extends Vue {
     immediate: true,
     deep: true
   })
-  _optionsChanged(newVal: google.maps.RectangleOptions): void {
+  _optionsChanged(newVal: google.maps.RectangleOptions) {
     if (this.rectangle) this.rectangle.setOptions(newVal);
   }
 
-  public changedBounds(): void {
+  public changedBounds() {
     if (!this.rectangle) return;
     // This is fired when the component is replaced and may not have a tempBounds
     const oldBounds = this.tempBounds || {
@@ -71,7 +71,7 @@ export default class GmapsRectangle extends Vue {
     }
   }
 
-  mounted(): void {
+  mounted() {
     this.rectangle = new window.google.maps.Rectangle({
       map: this.getMap(),
       ...this._options
@@ -101,7 +101,7 @@ export default class GmapsRectangle extends Vue {
     this.rectangle.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
   }
 
-  beforeDestroy(): void {
+  beforeDestroy() {
     if (this.rectangle) this.rectangle.setMap(null);
   }
 
