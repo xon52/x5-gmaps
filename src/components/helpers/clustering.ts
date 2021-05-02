@@ -1,12 +1,4 @@
-export interface X5Pos {
-  lat: number;
-  lng: number;
-}
-
-export interface ClusterGroup {
-  pos: X5Pos;
-  items: X5Pos[];
-}
+import { ClusterGroup, X5Pos } from 'src/types/x5gmaps';
 
 // https://developers.google.com/maps/documentation/javascript/examples/map-coordinates
 const getMapTile = (pos: X5Pos, zoom: number, size: number) => {
@@ -21,7 +13,7 @@ const getMapTile = (pos: X5Pos, zoom: number, size: number) => {
 };
 
 // Get average position
-const getAveragePosition = (items: X5Pos[]) => {
+export const getAveragePosition = (items: X5Pos[]) => {
   const _count = items.length;
   const _init = { lat: 0, lng: 0 };
   const _posTot = items.reduce(
@@ -35,6 +27,11 @@ const getAveragePosition = (items: X5Pos[]) => {
   return pos;
 };
 
+// Get weight
+const getWeight = (cluster: number, total: number) => {
+  return Math.round((cluster / total) * 100);
+};
+
 // Organise a given set of items into tiles of given size and appropriate for a given zoom
 export const organiseClusters = (
   items: X5Pos[],
@@ -44,12 +41,10 @@ export const organiseClusters = (
 ) => {
   const result: Record<string, ClusterGroup> = {};
   // If zoom exceeds maxZoom, do not cluster
-  if (zoom > maxZoom) {
+  if (zoom >= maxZoom) {
     items.forEach((item, index) => {
       result[index] = { pos: item, items: [item] };
     });
-
-    console.log('Organised - no cluster');
     // Otherwise, cluster
   } else {
     // Cluster by tile
@@ -60,10 +55,11 @@ export const organiseClusters = (
         result[index] = { pos: { lat: 0, lng: 0 }, items: [] };
       result[index].items.push(item);
     });
-    // Set average positions
-    for (const [key, value] of Object.entries(result))
+    // Set average positions and weights
+    for (const [key, value] of Object.entries(result)) {
       result[key].pos = getAveragePosition(value.items);
-    console.log('Organised - cluster');
+      result[key].weight = getWeight(value.items.length, items.length);
+    }
   }
   return result;
 };

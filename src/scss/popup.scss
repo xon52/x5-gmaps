@@ -35,6 +35,7 @@
   transform: translate(-50%, 0);
   /* The tip is a https://css-tricks.com/snippets/css/css-triangle/ */
   width: 0;
+  cursor: pointer;
 }
 /* JavaScript will position this div at the bottom of the popup tip. */
 .gmaps-popup-container {

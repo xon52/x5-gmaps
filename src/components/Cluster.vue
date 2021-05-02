@@ -1,37 +1,62 @@
 <template>
   <div>
-    <gmaps-heatmap :items="items" />
-    <template v-for="({ pos, items }, key) in clusters">
-      <gmaps-popup v-if="items.length > 1" :key="key" :position="pos">
-        {{ items.length }}
-      </gmaps-popup>
-      <gmaps-marker v-else :key="key" :position="pos" />
+    <template v-for="({ pos, items, weight }, key) in clusters">
+      <gmaps-cluster-pin
+        v-if="items.length > 1"
+        :key="key"
+        :count="items.length"
+        :position="pos"
+        :background="getColor(weight)"
+        @click="clusterClickHandler(key)"
+      />
+      <gmaps-marker
+        v-else
+        :key="key"
+        :position="pos"
+        :title="items[0].title || items[0].id"
+        @click="$emit('click', items[0].id || $event)"
+      />
     </template>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
-import { expandBounds } from './helpers/map';
-import { ClusterGroup, organiseClusters } from './helpers/clustering';
+import { ClusterGroup, ClusterOptions, X5Pos } from '../types/x5gmaps';
+import { expandBounds, getBounds } from './helpers/map';
+import { organiseClusters, getAveragePosition } from './helpers/clustering';
 import gmapsMarker from './Marker';
-import gmapsHeatmap from './Heatmap';
-import gmapsPopup from './Popup.vue';
+import gmapsClusterPin from './ClusterPin.vue';
 
-@Component({ components: { gmapsMarker, gmapsPopup, gmapsHeatmap } })
+const defaultOptions: ClusterOptions = {
+  minZoom: 1,
+  maxZoom: 6,
+  tileSize: 0.55, // TODO: Seems to break the click to zoom above this number??
+  highPercentage: 10,
+  lowPercentage: 3
+};
+
+@Component({ components: { gmapsMarker, gmapsClusterPin } })
 export default class GmapsCluster extends Vue {
   name = 'gmapsCluster';
 
   @Inject('getMap') private getMap!: () => google.maps.Map;
 
-  @Prop({ required: true }) readonly items!: Array<{
-    lat: number;
-    lng: number;
-  }>;
-  @Prop({ default: 1 }) readonly minZoom!: number;
-  @Prop({ default: 6 }) readonly maxZoom!: number;
-  @Prop({ default: 0.5 }) readonly tileSize!: number;
+  @Prop({ required: true }) readonly items!: X5Pos[];
+  @Prop({ default: () => ({}) }) readonly options!: ClusterOptions;
 
+  @Watch('options', { immediate: true })
+  optionsChanged(newOptions: ClusterOptions) {
+    this.clusterOptions = { ...defaultOptions, ...newOptions };
+    this.refresh(true);
+  }
+
+  @Watch('items', { immediate: true })
+  itemsChanged() {
+    this.refresh(true);
+  }
+
+  clusterOptions: ClusterOptions = { ...defaultOptions };
   eventListener: google.maps.MapsEventListener[] = [];
   all: Record<string, ClusterGroup> = {};
   lastBounds = new window.google.maps.LatLngBounds();
@@ -44,6 +69,7 @@ export default class GmapsCluster extends Vue {
     if (zoom !== this.lastZoom) return true;
     return false;
   }
+
   shouldFilter(force: boolean, zoom: number, bounds: google.maps.LatLngBounds) {
     if (force) return true;
     if (zoom !== this.lastZoom) return true;
@@ -59,16 +85,16 @@ export default class GmapsCluster extends Vue {
     if (this.shouldOrganise(force, _zoom)) {
       this.all = organiseClusters(
         this.items,
-        Math.max(_zoom, this.minZoom),
-        this.maxZoom,
-        this.tileSize
+        Math.max(_zoom, this.clusterOptions.minZoom!),
+        this.clusterOptions.maxZoom!,
+        this.clusterOptions.tileSize!
       );
     }
     // Filter
     if (this.shouldFilter(force, _zoom, _bounds)) {
       // Update what is visible in new bounds
       const _filtered: Record<string, ClusterGroup> = {};
-      const _expansion = _zoom > this.maxZoom ? 0.5 : 0.2;
+      const _expansion = _zoom > this.clusterOptions.maxZoom! ? 0.5 : 0.2;
       const _newBounds = expandBounds(_bounds, _expansion);
       const _rand = Math.floor(Math.random() * 10000);
       for (const [key, value] of Object.entries(this.all)) {
@@ -80,6 +106,32 @@ export default class GmapsCluster extends Vue {
       this.lastBounds = _newBounds;
       this.clusters = _filtered;
     }
+  }
+
+  getColor(weight: number) {
+    if (
+      !this.clusterOptions.highPercentage &&
+      !this.clusterOptions.lowPercentage
+    )
+      return;
+    if (
+      this.clusterOptions.highPercentage &&
+      weight >= this.clusterOptions.highPercentage
+    )
+      return '#FBB3BD';
+    if (
+      this.clusterOptions.lowPercentage &&
+      weight <= this.clusterOptions.lowPercentage
+    )
+      return '#CCF1FF';
+    return '#F1E0B0';
+  }
+
+  clusterClickHandler(key: string) {
+    const _clusterBounds = getBounds(this.clusters[key].items);
+    const _clusterCenter = getAveragePosition(this.clusters[key].items);
+    this.getMap().fitBounds(_clusterBounds, 1);
+    this.getMap().setCenter(_clusterCenter);
   }
 
   mounted() {

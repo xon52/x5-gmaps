@@ -1,4 +1,4 @@
-import { VueConstructor, PluginFunction } from 'vue';
+import { VueConstructor, PluginFunction } from 'Vue';
 import { init, gmaps } from './init';
 import gmapsMap from './components/Map.vue';
 import gmapsCircle from './components/Circle';
@@ -12,7 +12,7 @@ import gmapsPolyline from './components/Polyline';
 import gmapsPopup from './components/Popup.vue';
 import gmapsHeatmap from './components/Heatmap';
 import gmapsRectangle from './components/Rectangle';
-import { OptionsInterface } from './types/OptionsInterface';
+import { OptionsInterface } from './types/x5gmaps';
 
 // install function executed by Vue.use()
 const install: PluginFunction<any> = function installX5Gmaps(

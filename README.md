@@ -2,7 +2,11 @@
 
 ### This is a lightweight library to simplify the use of [Google Maps](https://developers.google.com/maps/) in [Vue.js](http://vuejs.org) 🤏🗺️🧩
 
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/x5-gmaps)
+<p>
+  <a href="https://npmjs.com/package/x5-gmaps"><img class="center" src="https://img.shields.io/bundlephobia/minzip/x5-gmaps" alt="Bundle size"/></a>
+  <a href="https://npmjs.com/package/x5-gmaps"><img src="https://img.shields.io/npm/dm/x5-gmaps.svg?style=flat" alt="NPM downloads"></a>
+  <a href="https://npmjs.com/package/x5-gmaps"><img src="https://img.shields.io/npm/l/x5-gmaps.svg?style=flat" alt="License"></a>
+</p>
 
 <br/>
 
@@ -70,10 +74,14 @@ export default {
 
 <br/>
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
 ## Authors
 
 - [Keagan Chisnall](https://github.com/xon52)
 
-## License
+## Support
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+- <a href="https://www.buymeacoffee.com/chisnallio" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>

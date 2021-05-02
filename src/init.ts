@@ -1,4 +1,4 @@
-import { OptionsInterface } from "./types/OptionsInterface";
+import { OptionsInterface } from "./types/x5gmaps";
 
 // Google Maps base URL
 const baseURL = 'https://maps.googleapis.com/maps/api/js';
