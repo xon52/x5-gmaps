@@ -61,10 +61,10 @@ The only props the cluster component currently takes are `items` and `options`. 
 
 | Props          |  Type  | Default | Description                                                                    |
 | :------------- | :----: | :-----: | :----------------------------------------------------------------------------- |
-| minZoom        | Number |   `1`   | Zoom level _further_ clustering is disabled                                    |
-| maxZoom        | Number |   `6`   | Zoom level clustering is disabled                                              |
+| minZoom        | Number |  `-1`   | Zoom level _further_ clustering is disabled (-1 to always cluster)             |
+| maxZoom        | Number |   `8`   | Zoom level clustering is disabled                                              |
 | lowPercentage  | Number |   `3`   | Percentage of items in a cluster in a cluster to mark it as low (_blue color_) |
 | highPercentage | Number |  `10`   | Percentage of items in a cluster to mark it as high (_red color_)              |
-| tileSize\*     | Number | `0.55`  | Factor of clustering size                                                      |
+| tileSize\*     | Number |  `0.5`  | Factor of clustering size                                                      |
 
 _\* There is a known issue with this that appears to break the click to zoom function if it is higher than `0.55`_ 🤷‍♂️.

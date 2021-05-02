@@ -23,15 +23,15 @@
 <script lang="ts">
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
 import { ClusterGroup, ClusterOptions, X5Pos } from '../types/x5gmaps';
-import { expandBounds, getBounds } from './helpers/map';
+import { getBounds } from './helpers/map';
 import { organiseClusters, getAveragePosition } from './helpers/clustering';
 import gmapsMarker from './Marker';
 import gmapsClusterPin from './ClusterPin.vue';
 
 const defaultOptions: ClusterOptions = {
-  minZoom: 1,
-  maxZoom: 6,
-  tileSize: 0.55, // TODO: Seems to break the click to zoom above this number??
+  minZoom: -1,
+  maxZoom: 8,
+  tileSize: 0.5, // TODO: Seems to break the click to zoom above this number??
   highPercentage: 10,
   lowPercentage: 3
 };
@@ -94,16 +94,13 @@ export default class GmapsCluster extends Vue {
     if (this.shouldFilter(force, _zoom, _bounds)) {
       // Update what is visible in new bounds
       const _filtered: Record<string, ClusterGroup> = {};
-      const _expansion = _zoom > this.clusterOptions.maxZoom! ? 0.5 : 0.2;
-      const _newBounds = expandBounds(_bounds, _expansion);
       const _rand = Math.floor(Math.random() * 10000);
       for (const [key, value] of Object.entries(this.all)) {
-        if (_newBounds.contains(value.pos))
-          _filtered[`${key}-${_rand}`] = value;
+        if (_bounds.contains(value.pos)) _filtered[`${key}-${_rand}`] = value;
       }
       // Update variables
       this.lastZoom = _zoom;
-      this.lastBounds = _newBounds;
+      this.lastBounds = _bounds;
       this.clusters = _filtered;
     }
   }
