@@ -34,7 +34,7 @@ export default class GmapsHeatmap extends Vue {
     });
   }
 
-  public updateData(): void {
+  public updateData() {
     if (this.heatmap) this.heatmap.setData(this.getData());
   }
 
@@ -51,18 +51,18 @@ export default class GmapsHeatmap extends Vue {
   }
 
   @Watch('_options', { immediate: true, deep: true })
-  _optionsChanged(newVal: google.maps.visualization.HeatmapLayerOptions): void {
+  _optionsChanged(newVal: google.maps.visualization.HeatmapLayerOptions) {
     if (this.heatmap) this.heatmap.setOptions(newVal);
   }
 
-  mounted(): void {
+  mounted() {
     this.heatmap = new window.google.maps.visualization.HeatmapLayer({
       map: this.getMap(),
       ...this._options
     });
   }
 
-  beforeDestroy(): void {
+  beforeDestroy() {
     if (this.heatmap) this.heatmap.setMap(null);
   }
 

@@ -44,11 +44,11 @@ export default class GmapsPolygon extends Vue {
   }
 
   @Watch('_options', { immediate: true, deep: true })
-  _optionsChanged(newVal: google.maps.PolygonOptions): void {
+  _optionsChanged(newVal: google.maps.PolygonOptions) {
     if (this.polygon) this.polygon.setOptions(newVal);
   }
 
-  private changedPath(): void {
+  private changedPath() {
     if (this.polygon && this.polygon.getEditable()) {
       const result = this.polygon
         .getPath()
@@ -61,7 +61,7 @@ export default class GmapsPolygon extends Vue {
     }
   }
 
-  mounted(): void {
+  mounted() {
     this.polygon = new window.google.maps.Polygon({
       map: this.getMap(),
       ...this._options
@@ -81,7 +81,7 @@ export default class GmapsPolygon extends Vue {
     this.polygon.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
   }
 
-  beforeDestroy(): void {
+  beforeDestroy() {
     if (this.polygon) this.polygon.setMap(null);
   }
 

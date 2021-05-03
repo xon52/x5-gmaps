@@ -36,6 +36,12 @@ export default [
     desc: 'Drop a marker where you click'
   },
   {
+    id: 'marker-cluster',
+    name: 'Marker Cluster',
+    component: () => import('./MarkerCluster.vue'),
+    desc: 'Cluster a collection of markers on the map'
+  },
+  {
     id: 'info-windows',
     name: 'InfoWindows',
     component: () => import('./InfoWindow.vue'),

@@ -13,16 +13,16 @@ export default class GmapsInfoWindow extends Vue {
 
   private infoW: google.maps.InfoWindow | undefined;
 
-  public open(): void {
+  public open() {
     if (this.infoW) this.infoW.open(this.getMap());
   }
 
   @Watch('options', { immediate: true, deep: true })
-  optionsChanged(newVal: google.maps.InfoWindowOptions): void {
+  optionsChanged(newVal: google.maps.InfoWindowOptions) {
     if (this.infoW) this.infoW.setOptions(newVal);
   }
 
-  mounted(): void {
+  mounted() {
     if (!this.options.position)
       return this.handleError(
         new Error('InfoWindow options require a position property.')
@@ -36,7 +36,7 @@ export default class GmapsInfoWindow extends Vue {
     this.open();
   }
 
-  beforeDestroy(): void {
+  beforeDestroy() {
     if (this.infoW) this.infoW.close();
     if (this.infoW) window.google.maps.event.clearInstanceListeners(this.infoW);
   }

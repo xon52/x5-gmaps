@@ -1,30 +1,27 @@
 <template>
-  <div class="gmaps-popup-container" @click.prevent="$emit('click')">
-    <div class="gmaps-popup-bubble-anchor" :style="`color: ${background};`">
-      <div
-        class="gmaps-popup-bubble"
-        :style="{ background, maxWidth: width, maxHeight: height }"
-      >
-        <slot />
-      </div>
+  <div class="gmaps-cluster-pin" @click.prevent="$emit('click')">
+    <div class="gmaps-cluster-center" :style="{ ['--background']: background }">
+      <span>
+        {{ count }}
+      </span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { X5Pos } from 'src/types/x5gmaps';
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
 import { createPopupClass, PopupType } from './popupClass';
 
 @Component
-export default class GmapsPopup extends Vue {
-  name = 'gmapsPopup';
+export default class GmapsClusterPin extends Vue {
+  name = 'gmapsClusterPin';
 
   @Inject('getMap') private getMap!: () => google.maps.Map;
 
-  @Prop({ required: true }) readonly position!: google.maps.LatLngLiteral;
+  @Prop({ required: true }) readonly position!: X5Pos;
+  @Prop({ required: true }) readonly count!: number;
   @Prop({ default: '#EEEEEE' }) readonly background!: string;
-  @Prop({ default: '200px' }) readonly width!: string;
-  @Prop({ default: '60px' }) readonly height!: string;
 
   private popup: PopupType | undefined;
 
@@ -42,9 +39,13 @@ export default class GmapsPopup extends Vue {
   beforeDestroy() {
     if (this.popup) this.popup.setMap(null);
   }
+
+  render(): null {
+    return null;
+  }
 }
 </script>
 
 <style lang="scss">
-@import '../scss/popup.scss';
+@import '../scss/cluster.scss';
 </style>

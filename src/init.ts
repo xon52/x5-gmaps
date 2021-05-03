@@ -1,4 +1,4 @@
-import { OptionsInterface } from "./types/OptionsInterface";
+import { OptionsInterface } from "./types/x5gmaps";
 
 // Google Maps base URL
 const baseURL = 'https://maps.googleapis.com/maps/api/js';
@@ -10,16 +10,16 @@ const promises: {
   reject: (e: Error) => void;
 }[] = [];
 // onError callback for Google Maps fail
-const onError = (e: Error): void => promises.forEach(p => p.reject(e));
+const onError = (e: Error) => promises.forEach(p => p.reject(e));
 // onLoad callback for Google Maps load
-const onLoad = (): void => promises.forEach(p => p.resolve(google.maps));
+const onLoad = () => promises.forEach(p => p.resolve(google.maps));
 // Insert the Google Maps script into the DOM
-const loadAPI = (options: string): void => {
+const loadAPI = (options: string) => {
   const script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = genURL(options);
-  script.onerror = (): void => onError(new Error('Error loading script'));
-  script.onload = (): void => onLoad();
+  script.onerror = () => onError(new Error('Error loading script'));
+  script.onload = () => onLoad();
   const head = document.querySelector('head');
   if (head) head.appendChild(script);
 };
@@ -40,7 +40,7 @@ const gmaps = (): Promise<typeof google.maps> => {
   return new Promise((resolve, reject) => promises.push({ resolve, reject }));
 };
 // Exported initialisation
-const init = (options: OptionsInterface): void => {
+const init = (options: OptionsInterface) => {
   // Early return if map already loaded
   if (loaded()) throw new Error('x5GMaps :: Plugin already initialised');
   // Initiate map loading with given key, any options, and a promise resolve callback
