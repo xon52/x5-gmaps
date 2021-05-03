@@ -32,7 +32,7 @@ export default {
   name: 'ExampleApp',
   data: () => ({
     examples,
-    selected: 6
+    selected: 3
   }),
   methods: {
     handleSelect(i) {
