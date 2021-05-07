@@ -4,6 +4,7 @@ Some pre-built components have been provided for general use, or as examples for
 
 - [Map](/api/map.md)
 - [Marker](/api/marker.md)
+- [Marker Cluster](/api/cluster.md)
 - [InfoWindow](/api/infowindow.md)
 - [Popup](/api/popup.md)
 - [Heatmap](/api/heatmap.md)

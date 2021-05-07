@@ -49,6 +49,7 @@ module.exports = {
         children: [
           { title: 'Map', path: '/api/map.md' },
           { title: 'Marker', path: '/api/marker.md' },
+          { title: 'Marker Cluster', path: '/api/cluster.md' },
           { title: 'Info Window', path: '/api/infoWindow.md' },
           { title: 'Popup', path: '/api/popup.md' },
           { title: 'Heatmap', path: '/api/heatmap.md' },

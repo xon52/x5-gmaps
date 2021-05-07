@@ -3,7 +3,7 @@
     <template v-for="({ pos, items, weight }, key) in clusters">
       <gmaps-cluster-pin
         v-if="items.length > 1"
-        :key="key"
+        :key="`c-${key}`"
         :count="items.length"
         :position="pos"
         :background="getColor(weight)"
@@ -11,7 +11,7 @@
       />
       <gmaps-marker
         v-else
-        :key="key"
+        :key="`m-${key}`"
         :position="pos"
         :title="items[0].title || items[0].id"
         @click="$emit('click', items[0].id || $event)"
