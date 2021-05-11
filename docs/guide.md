@@ -18,9 +18,9 @@ export default {
 };
 ```
 
-### See <a href="/api/">Components</a> for other components to use.
+### See [Components](/api/) for other components to use.
 
-### Or <a href="/demo.md">Demo</a> for live examples.
+### Or [Demo](/demo.md) for live examples.
 
 <br>
 
