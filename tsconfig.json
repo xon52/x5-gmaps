@@ -21,6 +21,7 @@
       "googlemaps",
       "geojson"
     ],
+    "typeRoots": ["node_modules/@types"],
     "lib": [
       "esnext",
       "dom",

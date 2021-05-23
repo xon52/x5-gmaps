@@ -62,7 +62,7 @@ export default class GmapsPolygon extends Vue {
   }
 
   mounted() {
-    this.polygon = new window.google.maps.Polygon({
+    this.polygon = new globalThis.google.maps.Polygon({
       map: this.getMap(),
       ...this._options
     });

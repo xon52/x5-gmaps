@@ -55,7 +55,7 @@ export default class GmapsMarker extends Vue {
           'x5-gmaps: A position is required by every marker. Set this as either a position prop, or a position property of the options prop.'
         )
       );
-    this.marker = new window.google.maps.Marker({
+    this.marker = new globalThis.google.maps.Marker({
       map: this.getMap(),
       ...this._options
     });

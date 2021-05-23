@@ -92,7 +92,7 @@ export default class GmapsMap extends Vue {
   }
 
   beforeDestroy() {
-    if (this.map) window.google.maps.event.clearInstanceListeners(this.map);
+    if (this.map) globalThis.google.maps.event.clearInstanceListeners(this.map);
   }
 }
 </script>

@@ -27,7 +27,7 @@ export default class GmapsInfoWindow extends Vue {
       return this.handleError(
         new Error('InfoWindow options require a position property.')
       );
-    this.infoW = new window.google.maps.InfoWindow({
+    this.infoW = new globalThis.google.maps.InfoWindow({
       content: this.$el,
       ...this.options
     });
@@ -38,7 +38,7 @@ export default class GmapsInfoWindow extends Vue {
 
   beforeDestroy() {
     if (this.infoW) this.infoW.close();
-    if (this.infoW) window.google.maps.event.clearInstanceListeners(this.infoW);
+    if (this.infoW) globalThis.google.maps.event.clearInstanceListeners(this.infoW);
   }
 
   public render(h: CreateElement): VNode {

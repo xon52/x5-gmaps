@@ -26,11 +26,11 @@ export default class GmapsHeatmap extends Vue {
     return this.items.map(e => {
       if (this.weightProp)
         return {
-          location: new window.google.maps.LatLng(e.lat, e.lng),
+          location: new globalThis.google.maps.LatLng(e.lat, e.lng),
           // TODO: No idea how to remove this any
           weight: (e as any)[this.weightProp]
         };
-      return new window.google.maps.LatLng(e.lat, e.lng);
+      return new globalThis.google.maps.LatLng(e.lat, e.lng);
     });
   }
 
@@ -56,7 +56,7 @@ export default class GmapsHeatmap extends Vue {
   }
 
   mounted() {
-    this.heatmap = new window.google.maps.visualization.HeatmapLayer({
+    this.heatmap = new globalThis.google.maps.visualization.HeatmapLayer({
       map: this.getMap(),
       ...this._options
     });
