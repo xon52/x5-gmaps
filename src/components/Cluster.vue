@@ -71,6 +71,7 @@ export default class GmapsCluster extends Vue {
   }
 
   shouldFilter(force: boolean, zoom: number, bounds: google.maps.LatLngBounds) {
+    if (!bounds) return false;
     if (force) return true;
     if (zoom !== this.lastZoom) return true;
     if (!this.lastBounds.contains(bounds.getNorthEast())) return true;
@@ -95,9 +96,8 @@ export default class GmapsCluster extends Vue {
       // Update what is visible in new bounds
       const _filtered: Record<string, ClusterGroup> = {};
       const _rand = Math.floor(Math.random() * 10000);
-      for (const [key, value] of Object.entries(this.all)) {
-        if (_bounds.contains(value.pos)) _filtered[`${key}-${_rand}`] = value;
-      }
+      for (const [key, value] of Object.entries(this.all))
+        if (_bounds?.contains(value.pos)) _filtered[`${key}-${_rand}`] = value;
       // Update variables
       this.lastZoom = _zoom;
       this.lastBounds = _bounds;
