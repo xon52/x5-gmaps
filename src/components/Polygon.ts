@@ -49,7 +49,7 @@ export default class GmapsPolygon extends Vue {
   }
 
   private changedPath() {
-    if (this.polygon && this.polygon.getEditable()) {
+    if (this.polygon && (this.polygon.getEditable() || this.polygon.getDraggable())) {
       const result = this.polygon
         .getPath()
         .getArray()
