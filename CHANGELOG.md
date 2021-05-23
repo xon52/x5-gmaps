@@ -3,6 +3,7 @@
 ## [0.5.4] - Fixed dependencies mistake, polygon changedPath event, cluster component error
 
 ## [0.5.3] - Replaced Window with GlobalThis
+
 ## [0.5.2] - Added clustering component
 
 ## [0.5.1] - Fix for circle center change not registering
