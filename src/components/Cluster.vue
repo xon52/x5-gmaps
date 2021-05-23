@@ -59,7 +59,7 @@ export default class GmapsCluster extends Vue {
   clusterOptions: ClusterOptions = { ...defaultOptions };
   eventListener: google.maps.MapsEventListener[] = [];
   all: Record<string, ClusterGroup> = {};
-  lastBounds = new window.google.maps.LatLngBounds();
+  lastBounds = new globalThis.google.maps.LatLngBounds();
   lastZoom = 0;
   clusters: Record<string, ClusterGroup> = {};
   clustered = false;

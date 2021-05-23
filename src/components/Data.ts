@@ -29,7 +29,7 @@ export default class GmapsData extends Vue {
         )
       );
     this.getMap().data.add(
-      new window.google.maps.Data.Feature({ id: '_gmapsDataCollection' })
+      new globalThis.google.maps.Data.Feature({ id: '_gmapsDataCollection' })
     );
     // NOTE: Events occur on the whole data object, not individual features
     this.getMap().data.addListener('click', e => this.$emit('click', e));

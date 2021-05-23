@@ -58,7 +58,7 @@ export default class GmapsPolyline extends Vue {
   }
 
   mounted() {
-    this.polyline = new window.google.maps.Polyline({
+    this.polyline = new globalThis.google.maps.Polyline({
       map: this.getMap(),
       ...this._options
     });

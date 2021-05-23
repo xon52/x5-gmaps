@@ -72,7 +72,7 @@ export default class GmapsRectangle extends Vue {
   }
 
   mounted() {
-    this.rectangle = new window.google.maps.Rectangle({
+    this.rectangle = new globalThis.google.maps.Rectangle({
       map: this.getMap(),
       ...this._options
     });

@@ -15,7 +15,7 @@ export const createPopupClass = (): any => {
 
     constructor(position: google.maps.LatLngLiteral, content: Element) {
       super();
-      this.position = new window.google.maps.LatLng(position);
+      this.position = new globalThis.google.maps.LatLng(position);
       this.content = content as HTMLElement;
 
       // Optionally stop clicks, etc., from bubbling up to the map.
@@ -67,7 +67,7 @@ export const createPopupClass = (): any => {
 
     // Custom
     setPosition(position: google.maps.LatLngLiteral) {
-      this.position = new window.google.maps.LatLng(position);
+      this.position = new globalThis.google.maps.LatLng(position);
       this.draw();
     }
   };

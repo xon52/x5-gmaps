@@ -76,7 +76,7 @@ export default class GmapsCircle extends Vue {
   }
 
   mounted() {
-    this.circle = new window.google.maps.Circle({
+    this.circle = new globalThis.google.maps.Circle({
       map: this.getMap(),
       ...this._options
     });
