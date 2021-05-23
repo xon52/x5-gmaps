@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.5.4] - Fixed dependencies mistake, polygon changedPath event, cluster component error
+
+## [0.5.3] - Replaced Window with GlobalThis
 ## [0.5.2] - Added clustering component
 
 ## [0.5.1] - Fix for circle center change not registering
@@ -26,19 +29,3 @@
 - Changed: Library now uses the `@Component` format of Vue 2 which is needed for Typescript
 - Changed: Some internal scripts for generating the library and documentation
 - Changed: Almost every single line of code in the library (good luck tracking changes 😥)
-
-<!-- Template
-## [1.0.0] - Title
-
-Description
-
-### Added
-### Changed
-### Deprecated
-### Removed
-### Fixed
-### Security
-
--------------------------------------------------
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
--->
