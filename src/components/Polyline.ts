@@ -45,7 +45,7 @@ export default class GmapsPolyline extends Vue {
   }
 
   public changedPath() {
-    if (this.polyline && this.polyline.getEditable()) {
+    if (this.polyline && (this.polyline.getEditable() || this.polyline.getDraggable())) {
       const result = this.polyline
         .getPath()
         .getArray()
