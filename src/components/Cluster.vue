@@ -27,13 +27,13 @@
 
 <script lang="ts">
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
-import { ClusterGroup, ClusterItem, ClusterOptions } from '../types/x5gmaps';
+import { X5ClusterGroup, X5ClusterItem, X5ClusterOptions } from '../types/x5gmaps';
 import { getBounds } from './helpers/map';
 import { organiseClusters, getAveragePosition } from './helpers/clustering';
 import gmapsMarker from './Marker';
 import gmapsClusterPin from './ClusterPin.vue';
 
-const defaultOptions: ClusterOptions = {
+const defaultOptions: X5ClusterOptions = {
   minZoom: -1,
   maxZoom: 8,
   tileSize: 0.5, // TODO: Seems to break the click to zoom above this number??
@@ -47,11 +47,11 @@ export default class GmapsCluster extends Vue {
 
   @Inject('getMap') private getMap!: () => google.maps.Map;
 
-  @Prop({ required: true }) readonly items!: ClusterItem[];
-  @Prop({ default: () => ({}) }) readonly options!: ClusterOptions;
+  @Prop({ required: true }) readonly items!: X5ClusterItem[];
+  @Prop({ default: () => ({}) }) readonly options!: X5ClusterOptions;
 
   @Watch('options', { immediate: true })
-  optionsChanged(newOptions: ClusterOptions) {
+  optionsChanged(newOptions: X5ClusterOptions) {
     this.clusterOptions = { ...defaultOptions, ...newOptions };
     this.refresh(true);
   }
@@ -61,12 +61,12 @@ export default class GmapsCluster extends Vue {
     this.refresh(true);
   }
 
-  clusterOptions: ClusterOptions = { ...defaultOptions };
+  clusterOptions: X5ClusterOptions = { ...defaultOptions };
   eventListener: google.maps.MapsEventListener[] = [];
-  all: Record<string, ClusterGroup> = {};
+  all: Record<string, X5ClusterGroup> = {};
   lastBounds = new globalThis.google.maps.LatLngBounds();
   lastZoom = 0;
-  clusters: Record<string, ClusterGroup> = {};
+  clusters: Record<string, X5ClusterGroup> = {};
   clustered = false;
 
   shouldOrganise(force: boolean, zoom: number) {
@@ -99,7 +99,7 @@ export default class GmapsCluster extends Vue {
     // Filter
     if (this.shouldFilter(force, _zoom, _bounds)) {
       // Update what is visible in new bounds
-      const _filtered: Record<string, ClusterGroup> = {};
+      const _filtered: Record<string, X5ClusterGroup> = {};
       const _rand = Math.floor(Math.random() * 10000);
       for (const [key, value] of Object.entries(this.all))
         if (_bounds?.contains(value.pos)) _filtered[`${key}-${_rand}`] = value;
