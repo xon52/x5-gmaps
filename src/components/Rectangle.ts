@@ -57,7 +57,7 @@ export default class GmapsRectangle extends Vue {
       east: -1,
       west: -1
     };
-    const newBounds = this.rectangle.getBounds().toJSON();
+    const newBounds = this.rectangle.getBounds()!.toJSON();
     if (
       Math.abs(newBounds.north - oldBounds.north) > this.sensitivity ||
       Math.abs(newBounds.south - oldBounds.south) > this.sensitivity ||
@@ -77,28 +77,40 @@ export default class GmapsRectangle extends Vue {
       ...this._options
     });
     this.rectangle.addListener('bounds_changed', () => this.changedBounds());
-    this.rectangle.addListener('click', e => this.$emit('click', e));
-    this.rectangle.addListener('dblclick', e => this.$emit('double-click', e));
-    this.rectangle.addListener('drag', e =>
-      this.$emit('drag', e.latLng.toJSON())
+    this.rectangle.addListener('click', (e: google.maps.MapMouseEvent) =>
+      this.$emit('click', e)
     );
-    this.rectangle.addListener('dragend', e =>
-      this.$emit('drag-end', e.latLng.toJSON())
+    this.rectangle.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('double-click', e)
     );
-    this.rectangle.addListener('dragstart', e =>
-      this.$emit('drag-start', e.latLng.toJSON())
+    this.rectangle.addListener('drag', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag', e.latLng ? e.latLng.toJSON() : null)
     );
-    this.rectangle.addListener('mouseover', e => this.$emit('mouseover', e));
-    this.rectangle.addListener('rightclick', e => this.$emit('right-click', e));
+    this.rectangle.addListener('dragend', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag-end', e.latLng ? e.latLng.toJSON() : null)
+    );
+    this.rectangle.addListener('dragstart', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag-start', e.latLng ? e.latLng.toJSON() : null)
+    );
+    this.rectangle.addListener('mouseover', (e: google.maps.MapMouseEvent) =>
+      this.$emit('mouseover', e)
+    );
+    this.rectangle.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('right-click', e)
+    );
     // TODO: Remove in major release
-    this.rectangle.addListener('dblclick', e => this.$emit('doubleClick', e)); // eslint-disable-line
-    this.rectangle.addListener('dragend', e =>
-      this.$emit('dragEnd', e.latLng.toJSON())
+    this.rectangle.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('doubleClick', e)
     ); // eslint-disable-line
-    this.rectangle.addListener('dragstart', e =>
-      this.$emit('dragStart', e.latLng.toJSON())
+    this.rectangle.addListener('dragend', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dragEnd', e.latLng ? e.latLng.toJSON() : null)
     ); // eslint-disable-line
-    this.rectangle.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
+    this.rectangle.addListener('dragstart', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dragStart', e.latLng ? e.latLng.toJSON() : null)
+    ); // eslint-disable-line
+    this.rectangle.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('rightClick', e)
+    ); // eslint-disable-line
   }
 
   beforeDestroy() {

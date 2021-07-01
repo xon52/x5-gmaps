@@ -46,8 +46,7 @@ export default class GmapsMap extends Vue {
   }
 
   @Provide('getMap') provideMap = (): google.maps.Map => this.getMap();
-  @Provide('handleError') handleError = (e: Error) =>
-    this._handleError(e);
+  @Provide('handleError') handleError = (e: Error) => this._handleError(e);
 
   @Watch('options', { immediate: true, deep: true })
   optionsChanged(newVal: google.maps.MapOptions) {
@@ -68,9 +67,15 @@ export default class GmapsMap extends Vue {
         this.map!.addListener('center_changed', () =>
           this.$emit('center-changed', this.map!.getCenter())
         );
-        this.map!.addListener('click', e => this.$emit('click', e));
-        this.map!.addListener('dblclick', e => this.$emit('double-click', e));
-        this.map!.addListener('rightclick', e => this.$emit('right-click', e));
+        this.map!.addListener('click', (e: google.maps.MapMouseEvent) =>
+          this.$emit('click', e)
+        );
+        this.map!.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+          this.$emit('double-click', e)
+        );
+        this.map!.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+          this.$emit('right-click', e)
+        );
         this.map!.addListener('zoom_changed', () =>
           this.$emit('zoom-changed', this.map!.getZoom())
         );
@@ -81,8 +86,12 @@ export default class GmapsMap extends Vue {
         this.map!.addListener('center_changed', () =>
           this.$emit('centerChanged', this.map!.getCenter())
         ); // eslint-disable-line
-        this.map!.addListener('dblclick', e => this.$emit('doubleClick', e)); // eslint-disable-line
-        this.map!.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
+        this.map!.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+          this.$emit('doubleClick', e)
+        ); // eslint-disable-line
+        this.map!.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+          this.$emit('rightClick', e)
+        ); // eslint-disable-line
         this.map!.addListener('zoom_changed', () =>
           this.$emit('zoomChanged', this.map!.getZoom())
         ); // eslint-disable-line
@@ -96,7 +105,6 @@ export default class GmapsMap extends Vue {
   }
 }
 </script>
-
 
 <style lang="scss">
 @import '../scss/map.scss';

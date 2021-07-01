@@ -3,7 +3,7 @@ export interface X5Pos {
   lng: number;
 }
 
-export interface ClusterItem extends X5Pos {
+export interface X5ClusterItem extends X5Pos {
   id?: string;
   title?: string;
   visible?: boolean;
@@ -13,13 +13,13 @@ export interface ClusterItem extends X5Pos {
   zIndex?: string | number;
 }
 
-export interface ClusterGroup {
+export interface X5ClusterGroup {
   pos: X5Pos;
-  items: ClusterItem[];
+  items: X5ClusterItem[];
   weight?: number;
 }
 
-export interface ClusterOptions {
+export interface X5ClusterOptions {
   minZoom?: number;
   maxZoom?: number;
   tileSize?: number;
@@ -27,7 +27,7 @@ export interface ClusterOptions {
   lowPercentage?: number;
 }
 
-export interface OptionsInterface {
+export interface X5OptionsInterface {
   key: string;
   libraries: Array<string>;
 }

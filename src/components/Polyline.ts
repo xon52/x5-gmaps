@@ -45,7 +45,10 @@ export default class GmapsPolyline extends Vue {
   }
 
   public changedPath() {
-    if (this.polyline && (this.polyline.getEditable() || this.polyline.getDraggable())) {
+    if (
+      this.polyline &&
+      (this.polyline.getEditable() || this.polyline.getDraggable())
+    ) {
       const result = this.polyline
         .getPath()
         .getArray()
@@ -62,19 +65,37 @@ export default class GmapsPolyline extends Vue {
       map: this.getMap(),
       ...this._options
     });
-    this.polyline.addListener('click', e => this.$emit('click', e));
-    this.polyline.addListener('dblclick', e => this.$emit('double-click', e));
-    this.polyline.addListener('dragend', e => this.$emit('drag-end', e));
-    this.polyline.addListener('dragstart', e => this.$emit('drag-start', e));
-    this.polyline.addListener('rightclick', e => this.$emit('right-click', e));
+    this.polyline.addListener('click', (e: google.maps.MapMouseEvent) =>
+      this.$emit('click', e)
+    );
+    this.polyline.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('double-click', e)
+    );
+    this.polyline.addListener('dragend', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag-end', e)
+    );
+    this.polyline.addListener('dragstart', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag-start', e)
+    );
+    this.polyline.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('right-click', e)
+    );
     // NOTE: path events insert_at and set_at only fired once so mouse up was more reliable (but mouse up doesn't trigger for remove event)
     this.polyline.addListener('mouseup', () => this.changedPath());
     this.polyline.getPath().addListener('remove_at', () => this.changedPath());
     // TODO: Remove in major release
-    this.polyline.addListener('dblclick', e => this.$emit('doubleClick', e)); // eslint-disable-line
-    this.polyline.addListener('dragend', e => this.$emit('dragEnd', e)); // eslint-disable-line
-    this.polyline.addListener('dragstart', e => this.$emit('dragStart', e)); // eslint-disable-line
-    this.polyline.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
+    this.polyline.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('doubleClick', e)
+    ); // eslint-disable-line
+    this.polyline.addListener('dragend', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dragEnd', e)
+    ); // eslint-disable-line
+    this.polyline.addListener('dragstart', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dragStart', e)
+    ); // eslint-disable-line
+    this.polyline.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('rightClick', e)
+    ); // eslint-disable-line
   }
 
   beforeDestroy() {

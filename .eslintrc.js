@@ -18,6 +18,7 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    '@typescript-eslint/no-this-alias': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -29,5 +30,10 @@ module.exports = {
         singleline: 5
       }
     ]
+  },
+  // Fix for globals not being recognised
+  globals: {
+    google: false,
+    globalThis: false
   }
 };

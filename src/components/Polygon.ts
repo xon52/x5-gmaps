@@ -49,7 +49,10 @@ export default class GmapsPolygon extends Vue {
   }
 
   private changedPath() {
-    if (this.polygon && (this.polygon.getEditable() || this.polygon.getDraggable())) {
+    if (
+      this.polygon &&
+      (this.polygon.getEditable() || this.polygon.getDraggable())
+    ) {
       const result = this.polygon
         .getPath()
         .getArray()
@@ -66,19 +69,37 @@ export default class GmapsPolygon extends Vue {
       map: this.getMap(),
       ...this._options
     });
-    this.polygon.addListener('click', e => this.$emit('click', e));
-    this.polygon.addListener('dblclick', e => this.$emit('double-click', e));
-    this.polygon.addListener('dragend', e => this.$emit('drag-end', e));
-    this.polygon.addListener('dragstart', e => this.$emit('drag-start', e));
-    this.polygon.addListener('rightclick', e => this.$emit('right-click', e));
+    this.polygon.addListener('click', (e: google.maps.MapMouseEvent) =>
+      this.$emit('click', e)
+    );
+    this.polygon.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('double-click', e)
+    );
+    this.polygon.addListener('dragend', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag-end', e)
+    );
+    this.polygon.addListener('dragstart', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag-start', e)
+    );
+    this.polygon.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('right-click', e)
+    );
     // NOTE: path events insert_at and set_at only fired once so mouse up was more reliable (but mouse up doesn't trigger for remove event)
     this.polygon.addListener('mouseup', () => this.changedPath());
     this.polygon.getPath().addListener('remove_at', () => this.changedPath());
     // TODO: Remove in major release
-    this.polygon.addListener('dblclick', e => this.$emit('doubleClick', e)); // eslint-disable-line
-    this.polygon.addListener('dragend', e => this.$emit('dragEnd', e)); // eslint-disable-line
-    this.polygon.addListener('dragstart', e => this.$emit('dragStart', e)); // eslint-disable-line
-    this.polygon.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
+    this.polygon.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('doubleClick', e)
+    ); // eslint-disable-line
+    this.polygon.addListener('dragend', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dragEnd', e)
+    ); // eslint-disable-line
+    this.polygon.addListener('dragstart', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dragStart', e)
+    ); // eslint-disable-line
+    this.polygon.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('rightClick', e)
+    ); // eslint-disable-line
   }
 
   beforeDestroy() {

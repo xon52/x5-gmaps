@@ -12,12 +12,12 @@ import gmapsPolyline from './components/Polyline';
 import gmapsPopup from './components/Popup.vue';
 import gmapsHeatmap from './components/Heatmap';
 import gmapsRectangle from './components/Rectangle';
-import { OptionsInterface } from './types/x5gmaps';
+import { X5OptionsInterface } from './types/x5gmaps';
 
 // install function executed by Vue.use()
 const install: PluginFunction<any> = function installX5Gmaps(
   Vue: VueConstructor,
-  options: string | OptionsInterface
+  options: string | X5OptionsInterface
 ) {
   if (!options)
     throw new Error(

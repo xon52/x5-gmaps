@@ -67,14 +67,28 @@ export default class GmapsMarker extends Vue {
         this.$emit('position-changed', position);
       }
     });
-    this.marker.addListener('click', e => this.$emit('click', e));
-    this.marker.addListener('dblclick', e => this.$emit('double-click', e));
-    this.marker.addListener('rightclick', e => this.$emit('right-click', e));
-    this.marker.addListener('mouseover', e => this.$emit('mouseover', e));
-    this.marker.addListener('mouseout', e => this.$emit('mouseout', e));
+    this.marker.addListener('click', (e: google.maps.MapMouseEvent) =>
+      this.$emit('click', e)
+    );
+    this.marker.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('double-click', e)
+    );
+    this.marker.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('right-click', e)
+    );
+    this.marker.addListener('mouseover', (e: google.maps.MapMouseEvent) =>
+      this.$emit('mouseover', e)
+    );
+    this.marker.addListener('mouseout', (e: google.maps.MapMouseEvent) =>
+      this.$emit('mouseout', e)
+    );
     // TODO: Remove in major release
-    this.marker.addListener('dblclick', e => this.$emit('doubleClick', e)); // eslint-disable-line
-    this.marker.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
+    this.marker.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('doubleClick', e)
+    ); // eslint-disable-line
+    this.marker.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('rightClick', e)
+    ); // eslint-disable-line
   }
 
   beforeDestroy() {

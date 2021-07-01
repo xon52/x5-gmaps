@@ -56,8 +56,8 @@ export const createPopupClass = (): any => {
           ? 'block'
           : 'none';
       if (display === 'block') {
-        this.content.style.left = divPosition.x + 'px';
-        this.content.style.top = divPosition.y + 'px';
+        this.content.style.left = divPosition!.x + 'px';
+        this.content.style.top = divPosition!.y + 'px';
       }
 
       if (this.content.style.display !== display) {

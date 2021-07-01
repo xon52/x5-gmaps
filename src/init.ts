@@ -1,4 +1,4 @@
-import { OptionsInterface } from './types/x5gmaps';
+import { X5OptionsInterface } from './types/x5gmaps';
 
 // Google Maps base URL
 const baseURL = 'https://maps.googleapis.com/maps/api/js';
@@ -24,7 +24,7 @@ const loadAPI = (options: string) => {
   if (head) head.appendChild(script);
 };
 // Convert options object into URI parameters
-const uriOptionsInterface = (options: OptionsInterface): string =>
+const uriX5OptionsInterface = (options: X5OptionsInterface): string =>
   `key=${options.key}&libraries=${options.libraries.join(',')}`;
 // Check if loaded
 const loaded = (): boolean => !!globalThis.google && !!globalThis.google.maps;
@@ -40,11 +40,11 @@ const gmaps = (): Promise<typeof google.maps> => {
   return new Promise((resolve, reject) => promises.push({ resolve, reject }));
 };
 // Exported initialisation
-const init = (options: OptionsInterface) => {
+const init = (options: X5OptionsInterface) => {
   // Early return if map already loaded
   if (loaded()) throw new Error('x5GMaps :: Plugin already initialised');
   // Initiate map loading with given key, any options, and a promise resolve callback
-  loadAPI(uriOptionsInterface(options));
+  loadAPI(uriX5OptionsInterface(options));
   // Map is still loading
   loading = true;
   // Give up if map takes too long

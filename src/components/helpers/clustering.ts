@@ -1,4 +1,4 @@
-import { ClusterGroup, ClusterItem, X5Pos } from 'src/types/x5gmaps';
+import { X5ClusterGroup, X5ClusterItem, X5Pos } from 'src/types/x5gmaps';
 
 // https://developers.google.com/maps/documentation/javascript/examples/map-coordinates
 const getMapTile = (pos: X5Pos, zoom: number, size: number) => {
@@ -34,12 +34,12 @@ const getWeight = (cluster: number, total: number) => {
 
 // Organise a given set of items into tiles of given size and appropriate for a given zoom
 export const organiseClusters = (
-  items: ClusterItem[],
+  items: X5ClusterItem[],
   zoom: number,
   maxZoom: number,
   tileSize: number
 ) => {
-  const result: Record<string, ClusterGroup> = {};
+  const result: Record<string, X5ClusterGroup> = {};
   // If zoom exceeds maxZoom, do not cluster
   if (zoom >= maxZoom) {
     items.forEach((item, index) => {
