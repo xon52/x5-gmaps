@@ -85,7 +85,7 @@ export default class GmapsCluster extends Vue {
   }
 
   refresh(force = false) {
-    const _zoom = this.getMap().getZoom();
+    const _zoom = this.getMap().getZoom() || this.lastZoom;
     const _bounds = this.getMap().getBounds()!;
     // Organise
     if (this.shouldOrganise(force, _zoom)) {

@@ -51,7 +51,7 @@ export default class GmapsCircle extends Vue {
   public changedCenter() {
     if (!this.circle) return;
     // This is fired when the component is replaced and may not have a tempCenter
-    const newCenter = this.circle.getCenter().toJSON();
+    const newCenter = this.circle.getCenter()!.toJSON();
     if (
       !this.tempCenter ||
       Math.abs(newCenter.lat - this.tempCenter.lat) > this.sensitivity ||
@@ -82,26 +82,40 @@ export default class GmapsCircle extends Vue {
     });
     this.circle.addListener('center_changed', () => this.changedCenter());
     this.circle.addListener('radius_changed', () => this.changedRadius());
-    this.circle.addListener('click', e => this.$emit('click', e));
-    this.circle.addListener('dblclick', e => this.$emit('double-click', e));
-    this.circle.addListener('drag', e => this.$emit('drag', e.latLng.toJSON()));
-    this.circle.addListener('dragend', e =>
-      this.$emit('drag-end', e.latLng.toJSON())
+    this.circle.addListener('click', (e: google.maps.MapMouseEvent) =>
+      this.$emit('click', e)
     );
-    this.circle.addListener('dragstart', e =>
-      this.$emit('drag-start', e.latLng.toJSON())
+    this.circle.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('double-click', e)
     );
-    this.circle.addListener('mouseover', e => this.$emit('mouseover', e));
-    this.circle.addListener('rightclick', e => this.$emit('right-click', e));
+    this.circle.addListener('drag', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag', e.latLng ? e.latLng.toJSON() : null)
+    );
+    this.circle.addListener('dragend', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag-end', e.latLng ? e.latLng.toJSON() : null)
+    );
+    this.circle.addListener('dragstart', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag-start', e.latLng ? e.latLng.toJSON() : null)
+    );
+    this.circle.addListener('mouseover', (e: google.maps.MapMouseEvent) =>
+      this.$emit('mouseover', e)
+    );
+    this.circle.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('right-click', e)
+    );
     // TODO: Remove in major release
-    this.circle.addListener('dblclick', e => this.$emit('doubleClick', e)); // eslint-disable-line
-    this.circle.addListener('dragend', e =>
-      this.$emit('dragEnd', e.latLng.toJSON())
+    this.circle.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('doubleClick', e)
     ); // eslint-disable-line
-    this.circle.addListener('dragstart', e =>
-      this.$emit('dragStart', e.latLng.toJSON())
+    this.circle.addListener('dragend', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dragEnd', e.latLng ? e.latLng.toJSON() : null)
     ); // eslint-disable-line
-    this.circle.addListener('rightclick', e => this.$emit('rightClick', e)); // eslint-disable-line
+    this.circle.addListener('dragstart', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dragStart', e.latLng ? e.latLng.toJSON() : null)
+    ); // eslint-disable-line
+    this.circle.addListener('rightclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('rightClick', e)
+    ); // eslint-disable-line
   }
 
   beforeDestroy() {

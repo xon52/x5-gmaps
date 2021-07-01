@@ -32,21 +32,33 @@ export default class GmapsData extends Vue {
       new globalThis.google.maps.Data.Feature({ id: '_gmapsDataCollection' })
     );
     // NOTE: Events occur on the whole data object, not individual features
-    this.getMap().data.addListener('click', e => this.$emit('click', e));
-    this.getMap().data.addListener('contextmenu', e =>
-      this.$emit('contextmenu', e)
+    this.getMap().data.addListener('click', (e: google.maps.MapMouseEvent) =>
+      this.$emit('click', e)
     );
-    this.getMap().data.addListener('dblclick', e => this.$emit('dblclick', e));
-    this.getMap().data.addListener('mousedown', e =>
-      this.$emit('mousedown', e)
+    this.getMap().data.addListener(
+      'contextmenu',
+      (e: google.maps.MapMouseEvent) => this.$emit('contextmenu', e)
     );
-    this.getMap().data.addListener('mouseout', e => this.$emit('mouseout', e));
-    this.getMap().data.addListener('mouseover', e =>
-      this.$emit('mouseover', e)
+    this.getMap().data.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dblclick', e)
     );
-    this.getMap().data.addListener('mouseup', e => this.$emit('mouseup', e));
-    this.getMap().data.addListener('rightclick', e =>
-      this.$emit('rightclick', e)
+    this.getMap().data.addListener(
+      'mousedown',
+      (e: google.maps.MapMouseEvent) => this.$emit('mousedown', e)
+    );
+    this.getMap().data.addListener('mouseout', (e: google.maps.MapMouseEvent) =>
+      this.$emit('mouseout', e)
+    );
+    this.getMap().data.addListener(
+      'mouseover',
+      (e: google.maps.MapMouseEvent) => this.$emit('mouseover', e)
+    );
+    this.getMap().data.addListener('mouseup', (e: google.maps.MapMouseEvent) =>
+      this.$emit('mouseup', e)
+    );
+    this.getMap().data.addListener(
+      'rightclick',
+      (e: google.maps.MapMouseEvent) => this.$emit('rightclick', e)
     );
   }
 
