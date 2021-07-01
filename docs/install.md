@@ -38,14 +38,14 @@ new Vue({
 
 ## TypeScript
 
-If you're using TypeScript, you will need to add the Types into your `tsconfig.json` file as you would any other library.
+If you're using TypeScript, and want to use the Google Maps types, you will need to add you will need to add the dependency [@types/google.maps](https://www.npmjs.com/package/@types/google.maps) and make sure your `tsconfig.json` references the `@types` node_modules folder:
 
 ```js
 {
   "compilerOptions": {
-    "types": [
-      "x5-gmaps"
-    ]
+    "typeRoots": [
+      "node_modules/@types"
+    ],
   }
 }
 ```
