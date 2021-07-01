@@ -130,7 +130,7 @@ export default class GmapsCluster extends Vue {
   }
 
   clusterClickHandler(key: string) {
-    const _clusterBounds = getBounds(this.clusters[key].items);
+    const _clusterBounds = getBounds(this.clusters[key].items, 0.1);
     const _clusterCenter = getAveragePosition(this.clusters[key].items);
     this.getMap().fitBounds(_clusterBounds, 1);
     this.getMap().setCenter(_clusterCenter);
