@@ -14,6 +14,11 @@
         :key="`m-${key}`"
         :position="pos"
         :title="items[0].title || items[0].id"
+        :visible="items[0].visible || true"
+        :icon="items[0].icon || undefined"
+        :label="items[0].label || undefined"
+        :opacity="items[0].opacity || undefined"
+        :z-index="items[0].zIndex || undefined"
         @click="$emit('click', items[0].id || $event)"
       />
     </template>
@@ -22,7 +27,7 @@
 
 <script lang="ts">
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
-import { ClusterGroup, ClusterOptions, X5Pos } from '../types/x5gmaps';
+import { ClusterGroup, ClusterItem, ClusterOptions } from '../types/x5gmaps';
 import { getBounds } from './helpers/map';
 import { organiseClusters, getAveragePosition } from './helpers/clustering';
 import gmapsMarker from './Marker';
@@ -42,7 +47,7 @@ export default class GmapsCluster extends Vue {
 
   @Inject('getMap') private getMap!: () => google.maps.Map;
 
-  @Prop({ required: true }) readonly items!: X5Pos[];
+  @Prop({ required: true }) readonly items!: ClusterItem[];
   @Prop({ default: () => ({}) }) readonly options!: ClusterOptions;
 
   @Watch('options', { immediate: true })
