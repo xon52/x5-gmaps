@@ -1,4 +1,4 @@
-import {ClusterGroup, ClusterItem, X5Pos} from 'src/types/x5gmaps';
+import { ClusterGroup, ClusterItem, X5Pos } from 'src/types/x5gmaps';
 
 // https://developers.google.com/maps/documentation/javascript/examples/map-coordinates
 const getMapTile = (pos: X5Pos, zoom: number, size: number) => {

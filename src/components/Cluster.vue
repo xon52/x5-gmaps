@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
-import {ClusterGroup, ClusterItem, ClusterOptions} from '../types/x5gmaps';
+import { ClusterGroup, ClusterItem, ClusterOptions } from '../types/x5gmaps';
 import { getBounds } from './helpers/map';
 import { organiseClusters, getAveragePosition } from './helpers/clustering';
 import gmapsMarker from './Marker';
