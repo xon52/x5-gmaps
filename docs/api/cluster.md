@@ -48,9 +48,15 @@ So I made my own:
 **Things to know:**
 
 - The items given to the cluster component **must** have a `lat` and `lng` number property.
-- You can provide an item a `title` property for a label when you hover over a pin
-- You can provide an item an `id` property which is `$emit`'d when a pin is clicked.
-- The only event presently supported is `@click`; which returns either the _optional_ item `id`, or else the item position as a `google.maps.LatLng`.
+- The following _optional_ item props are for the individual point markers (when zoomed in enough):
+  - `id`: string which is `$emit`'d when a pin is clicked.
+  - `title`: a label when you hover over a pin.
+  - `visible`: if you want to dynamically show/hide a marker.
+  - `icon`: marker icon URL / [Icon Interface](https://developers.google.com/maps/documentation/javascript/reference/marker#Icon).
+  - `label`: marker label text / [Label Interface](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel).
+  - `opacity`: opacity of the marker
+  - `zIndex`: zIndex of the marker
+- The only event presently supported by items is `@click`; which returns either the _optional_ item `id`, or else the item position as a `google.maps.LatLng`.
 - If you click on a cluster, it will zoom into the center of that cluster.
 
 :::
