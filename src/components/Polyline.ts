@@ -52,7 +52,7 @@ export default class GmapsPolyline extends Vue {
       const result = this.polyline
         .getPath()
         .getArray()
-        .map(e => e.toJSON());
+        .map((e: google.maps.LatLng) => e.toJSON());
       this.polyline.setPath(result);
       this.$emit('path-changed', result);
       // TODO: Remove in major release
