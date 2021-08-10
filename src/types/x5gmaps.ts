@@ -8,7 +8,7 @@ export interface X5ClusterItem extends X5Pos {
   title?: string;
   visible?: boolean;
   icon?: string | google.maps.Icon;
-  label?: string | google.maps.Icon;
+  label?: string | google.maps.MarkerLabel;
   opacity?: string | number;
   zIndex?: string | number;
 }
