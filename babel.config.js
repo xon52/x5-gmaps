@@ -1,4 +1,3 @@
-const devPresets = ['@vue/babel-preset-app'];
 const buildPresets = [['@babel/preset-env'], '@babel/preset-typescript'];
 const buildPlugins = [
   ['@babel/plugin-proposal-decorators', { legacy: true }],
