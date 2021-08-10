@@ -61,6 +61,9 @@ export default class GmapsMap extends Vue {
           ...this.options
         });
         this.$emit('mounted', this.map);
+        this.map!.addListener('idle', () =>
+          this.$emit('idle', true)
+        );
         this.map!.addListener('bounds_changed', () =>
           this.$emit('bounds-changed', this.map!.getBounds())
         );

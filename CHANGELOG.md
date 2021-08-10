@@ -1,5 +1,6 @@
 # Change Log
 
+## [0.5.7] - Added idle event for map component, some typescript fixes
 ## [0.5.6] - Enhanced cluster marker options, various typescript related udpates changes
 ## [0.5.5] - Fixed broken update
 ## [0.5.4] - Fixed dependencies mistake, polygon changedPath event, cluster component error

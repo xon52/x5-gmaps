@@ -6,6 +6,7 @@ Maps can take many [options](https://developers.google.com/maps/documentation/ja
 
 This component supports the following events:
 
+- `@idle` _no return value_
 - `@bounds-changed` _returns new bounds_
 - `@center-changed` _returns new center_
 - `@zoom-changed` _returns new zoom level_
