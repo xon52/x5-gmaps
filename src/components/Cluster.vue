@@ -14,11 +14,12 @@
         :key="`m-${key}`"
         :position="pos"
         :title="items[0].title || items[0].id"
-        :visible="items[0].visible || true"
-        :icon="items[0].icon || undefined"
-        :label="items[0].label || undefined"
-        :opacity="items[0].opacity || undefined"
-        :z-index="items[0].zIndex || undefined"
+        :visible="items[0].visible"
+        :icon="items[0].icon"
+        :label="items[0].label"
+        :opacity="items[0].opacity"
+        :z-index="items[0].zIndex"
+        :options="items[0].options"
         @click="$emit('click', items[0].id || $event)"
       />
     </template>
