@@ -49,6 +49,7 @@ So I made my own:
 
 - The items given to the cluster component **must** have a `lat` and `lng` number property.
 - The following _optional_ item props are for the individual point markers (when zoomed in enough):
+  - `options`: [google.maps.MarkerOptions](https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions)
   - `id`: string which is `$emit`'d when a pin is clicked.
   - `title`: a label when you hover over a pin.
   - `visible`: if you want to dynamically show/hide a marker.

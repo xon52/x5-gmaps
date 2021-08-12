@@ -1,5 +1,6 @@
 # Change Log
 
+## [0.5.8] - Added options property for cluster marker, some typescript fixes
 ## [0.5.7] - Added idle event for map component, some typescript fixes
 ## [0.5.6] - Enhanced cluster marker options, various typescript related udpates changes
 ## [0.5.5] - Fixed broken update
