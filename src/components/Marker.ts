@@ -11,7 +11,7 @@ export default class GmapsMarker extends Vue {
   @Prop({ default: 0.001 }) readonly sensitivity!: string | number;
   @Prop({ default: true }) readonly visible!: boolean;
   @Prop({ default: undefined }) readonly icon!: string | google.maps.Icon;
-  @Prop({ default: undefined }) readonly label!: string | google.maps.Icon;
+  @Prop({ default: undefined }) readonly label!: string | google.maps.MarkerLabel;
   @Prop({ default: undefined }) readonly opacity!: string | number;
   @Prop({ default: undefined }) readonly position!: google.maps.LatLngLiteral;
   @Prop({ default: undefined }) readonly title!: string;
@@ -23,7 +23,7 @@ export default class GmapsMarker extends Vue {
     const options: google.maps.MarkerOptions = { ...this.options };
     if (this.visible) options.visible = this.visible;
     if (this.icon) options.icon = this.icon;
-    if (this.label) options.label = this.label.toString();
+    if (this.label) options.label = this.label;
     if (this.opacity) options.opacity = +this.opacity;
     if (this.position) options.position = this.position;
     if (this.title) options.title = this.title;
