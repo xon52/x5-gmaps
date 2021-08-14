@@ -1,8 +1,12 @@
 <template>
   <example-wrapper title="Drop a Marker on the map">
     <div class="instructions">
-      <p class="instructions-title">Click on the map to add a marker.</p>
-      <p class="instructions-title">Click on a marker to remove it.</p>
+      <p class="instructions-title">
+        Click on the map to add a marker.
+      </p>
+      <p class="instructions-title">
+        Click on a marker to remove it.
+      </p>
     </div>
     <template #map>
       <gmaps-map :options="mapOptions" @click="addMarker">

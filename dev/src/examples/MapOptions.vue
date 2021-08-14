@@ -4,7 +4,9 @@
       <p class="instructions-title">
         Move the map to see a live update of its center.
       </p>
-      <button class="instructions-action" @click="reset">Reset</button>
+      <button class="instructions-action" @click="reset">
+        Reset
+      </button>
       <span>Center: {{ center }}</span>
     </div>
     <template #description>
