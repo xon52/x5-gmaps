@@ -1,6 +1,10 @@
 # Change Log
 
-## [0.5.9] - Fixed cluster zoom in when zoomed out, changed cluster refresh event from bounds_changed to idle
+## [0.5.9]
+- Fixed: Cluster zoom wasn't zooming in when was max zoomed out
+- Changed: Cluster refresh event from bounds_changed to idle
+- Changed: Cluster refresh logic to be more efficient
+
 ## [0.5.8] - Added options property for cluster marker, some typescript fixes
 ## [0.5.7] - Added idle event for map component, some typescript fixes
 ## [0.5.6] - Enhanced cluster marker options, various typescript related udpates changes
