@@ -37,7 +37,7 @@ import gmapsClusterPin from './ClusterPin.vue';
 const defaultOptions: X5ClusterOptions = {
   minZoom: -1,
   maxZoom: 8,
-  tileSize: 0.5, // TODO: Seems to break the click to zoom above this number??
+  tileSize: 0.4, // TODO: Seems to break the click to zoom above this number??
   highPercentage: 10,
   lowPercentage: 3
 };
