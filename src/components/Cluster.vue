@@ -140,7 +140,7 @@ export default class GmapsCluster extends Vue {
   mounted() {
     this.refresh(true);
     this.eventListener.push(
-      this.getMap().addListener('bounds_changed', () => this.refresh())
+      this.getMap().addListener('idle', () => this.refresh())
     );
   }
 
