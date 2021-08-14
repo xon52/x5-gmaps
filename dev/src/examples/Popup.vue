@@ -37,9 +37,13 @@
           {{ text }}
         </gmaps-popup>
         <gmaps-popup :position="{ lat: -30, lng: 138 }" height="100px;">
-          <button @click="text = 'Aussie Aussie Aussie'">Anything can</button>
+          <button @click="text = 'Aussie Aussie Aussie'">
+            Anything can
+          </button>
           <br />
-          <button @click="text = 'Oi Oi Oi'">Go here</button>
+          <button @click="text = 'Oi Oi Oi'">
+            Go here
+          </button>
         </gmaps-popup>
       </gmaps-map>
     </template>
