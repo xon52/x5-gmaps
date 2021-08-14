@@ -28,9 +28,13 @@
 
 <script lang="ts">
 import { Component, Prop, Inject, Vue, Watch } from 'vue-property-decorator';
-import { X5ClusterGroup, X5ClusterItem, X5ClusterOptions } from '../types/x5gmaps';
-import { getBounds } from './helpers/map';
-import { organiseClusters, getAveragePosition } from './helpers/clustering';
+import {
+  X5ClusterGroup,
+  X5ClusterItem,
+  X5ClusterOptions
+} from '../types/x5gmaps';
+import { extendBounds, getBounds } from './helpers/map';
+import { organiseClusters } from './helpers/clustering';
 import gmapsMarker from './Marker';
 import gmapsClusterPin from './ClusterPin.vue';
 
@@ -54,61 +58,39 @@ export default class GmapsCluster extends Vue {
   @Watch('options', { immediate: true })
   optionsChanged(newOptions: X5ClusterOptions) {
     this.clusterOptions = { ...defaultOptions, ...newOptions };
-    this.refresh(true);
+    this.handleZoom();
+    this.handlePan();
   }
 
   @Watch('items', { immediate: true })
   itemsChanged() {
-    this.refresh(true);
+    this.handleZoom();
+    this.handlePan();
   }
 
   clusterOptions: X5ClusterOptions = { ...defaultOptions };
   eventListener: google.maps.MapsEventListener[] = [];
   all: Record<string, X5ClusterGroup> = {};
-  lastBounds = new globalThis.google.maps.LatLngBounds();
-  lastZoom = 0;
   clusters: Record<string, X5ClusterGroup> = {};
   clustered = false;
 
-  shouldOrganise(force: boolean, zoom: number) {
-    if (force) return true;
-    if (zoom !== this.lastZoom) return true;
-    return false;
+  handlePan() {
+    const _bounds = extendBounds(this.getMap().getBounds()!);
+    const _filtered: Record<string, X5ClusterGroup> = {};
+    const _rand = Math.floor(Math.random() * 10000);
+    for (const [key, value] of Object.entries(this.all))
+      if (_bounds?.contains(value.pos)) _filtered[`${key}-${_rand}`] = value;
+    this.clusters = _filtered;
   }
 
-  shouldFilter(force: boolean, zoom: number, bounds: google.maps.LatLngBounds) {
-    if (!bounds) return false;
-    if (force) return true;
-    if (zoom !== this.lastZoom) return true;
-    if (!this.lastBounds.contains(bounds.getNorthEast())) return true;
-    if (!this.lastBounds.contains(bounds.getSouthWest())) return true;
-    return false;
-  }
-
-  refresh(force = false) {
-    const _zoom = this.getMap().getZoom() || this.lastZoom;
-    const _bounds = this.getMap().getBounds()!;
-    // Organise
-    if (this.shouldOrganise(force, _zoom)) {
-      this.all = organiseClusters(
-        this.items,
-        Math.max(_zoom, this.clusterOptions.minZoom!),
-        this.clusterOptions.maxZoom!,
-        this.clusterOptions.tileSize!
-      );
-    }
-    // Filter
-    if (this.shouldFilter(force, _zoom, _bounds)) {
-      // Update what is visible in new bounds
-      const _filtered: Record<string, X5ClusterGroup> = {};
-      const _rand = Math.floor(Math.random() * 10000);
-      for (const [key, value] of Object.entries(this.all))
-        if (_bounds?.contains(value.pos)) _filtered[`${key}-${_rand}`] = value;
-      // Update variables
-      this.lastZoom = _zoom;
-      this.lastBounds = _bounds;
-      this.clusters = _filtered;
-    }
+  handleZoom() {
+    const _zoom = this.getMap().getZoom()!;
+    this.all = organiseClusters(
+      this.items,
+      Math.max(_zoom, this.clusterOptions.minZoom!),
+      this.clusterOptions.maxZoom!,
+      this.clusterOptions.tileSize!
+    );
   }
 
   getColor(weight: number) {
@@ -131,16 +113,15 @@ export default class GmapsCluster extends Vue {
   }
 
   clusterClickHandler(key: string) {
-    const _clusterBounds = getBounds(this.clusters[key].items, 0.1);
-    const _clusterCenter = getAveragePosition(this.clusters[key].items);
-    this.getMap().fitBounds(_clusterBounds, 1);
-    this.getMap().setCenter(_clusterCenter);
+    const _clusterBounds = getBounds(this.clusters[key].items);
+    this.getMap().fitBounds(_clusterBounds);
   }
 
   mounted() {
-    this.refresh(true);
+    this.handleZoom();
     this.eventListener.push(
-      this.getMap().addListener('idle', () => this.refresh())
+      this.getMap().addListener('idle', () => this.handlePan()),
+      this.getMap().addListener('zoom_changed', () => this.handleZoom())
     );
   }
 
