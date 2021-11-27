@@ -2,7 +2,7 @@
 
 ### This is a lightweight library to simplify the use of [Google Maps](https://developers.google.com/maps/) in [Vue 2](http://vuejs.org) 🤏🗺️🧩
 
-### For Vue 3 check out [v3-gmaps](https://xon52.github.io/v3-gmaps) 💪
+### For Vue 3 check out [v3-gmaps](https://github.com/xon52/v3-gmaps) 💪
 
 <p>
   <a href="https://npmjs.com/package/x5-gmaps"><img class="center" src="https://img.shields.io/bundlephobia/minzip/x5-gmaps" alt="Bundle size"/></a>
