@@ -1,5 +1,7 @@
 # Change Log
 
+## [0.6.0] - Updated to Webpack ^5 w/ other dev-dependency updates
+
 ## [0.5.9]
 - Fixed: Cluster zoom wasn't zooming in when was max zoomed out
 - Changed: Cluster refresh event from bounds_changed to idle
