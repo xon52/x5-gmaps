@@ -52,6 +52,7 @@ export default class GmapsCluster extends Vue {
 
   @Inject('getMap') private getMap!: () => google.maps.Map;
 
+  @Prop({ default: true }) readonly zoomOnClick!: boolean;
   @Prop({ required: true }) readonly items!: X5ClusterItem[];
   @Prop({ default: () => ({}) }) readonly options!: X5ClusterOptions;
 
@@ -93,7 +94,8 @@ export default class GmapsCluster extends Vue {
     );
   }
 
-  getColor(weight: number) {
+  getColor(weight: number | undefined) {
+    if (weight === undefined) return;
     if (
       !this.clusterOptions.highPercentage &&
       !this.clusterOptions.lowPercentage
@@ -113,8 +115,12 @@ export default class GmapsCluster extends Vue {
   }
 
   clusterClickHandler(key: string) {
-    const _clusterBounds = getBounds(this.clusters[key].items);
-    this.getMap().fitBounds(_clusterBounds);
+    if (this.zoomOnClick) {
+      const _clusterBounds = getBounds(this.clusters[key].items);
+      this.getMap().fitBounds(_clusterBounds);
+    } else {
+      this.$emit('click', this.clusters[key]);
+    }
   }
 
   mounted() {
@@ -126,7 +132,8 @@ export default class GmapsCluster extends Vue {
   }
 
   beforeDestroy() {
-    if (this.eventListener.length) this.eventListener.forEach(e => e.remove());
+    if (this.eventListener.length)
+      this.eventListener.forEach((e) => e.remove());
   }
 }
 </script>

@@ -13,6 +13,11 @@
           20000
         </button>
       </p>
+      <p>
+        <label>
+          <input v-model="zoomOnClick" type="checkbox" /> Zoom on click
+        </label>
+      </p>
       <p>Current zoom level: {{ zoom }}</p>
       <p>
         MaxZoom (zoom level clustering is disabled):
@@ -25,13 +30,16 @@
       <p>Pin Clicked: {{ pinClicked }}</p>
     </div>
     <template #description>
-      <p>
-        Markers can also be clustered together on a map.
-      </p>
+      <p>Markers can also be clustered together on a map.</p>
     </template>
     <template #map>
       <gmaps-map :options="mapOptions" @zoom-changed="zoom = $event">
-        <gmaps-cluster :items="items" :options="clusterOptions" @click="test" />
+        <gmaps-cluster
+          :items="items"
+          :options="clusterOptions"
+          :zoom-on-click="zoomOnClick"
+          @click="test"
+        />
       </gmaps-map>
     </template>
   </example-wrapper>
@@ -56,7 +64,8 @@ export default {
     items: [],
     count: 0,
     pinClicked: null,
-    zoom: mapOptions.zoom
+    zoom: mapOptions.zoom,
+    zoomOnClick: true
   }),
   mounted() {
     this.updateCount(2000);

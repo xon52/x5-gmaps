@@ -10,6 +10,7 @@ export interface X5ClusterItem extends X5Pos {
   icon?: string | google.maps.Icon;
   label?: string | google.maps.MarkerLabel;
   opacity?: string | number;
+  options?: google.maps.MarkerOptions;
   zIndex?: string | number;
 }
 
