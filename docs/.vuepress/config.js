@@ -14,7 +14,7 @@ module.exports = {
     ['meta', { name: 'theme-color', content: '#0086ff' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon.png' }],
-    ['link', { rel: 'mask-icon', href: '/logo.svg', color: '#0086ff' }]
+    ['link', { rel: 'mask-icon', href: '/logo.png', color: '#0086ff' }]
   ],
 
   themeConfig: {
