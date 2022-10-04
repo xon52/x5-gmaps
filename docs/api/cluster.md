@@ -64,7 +64,11 @@ So I made my own:
 
 ### Props
 
-The only props the cluster component currently takes are `items` and `options`. `options` is an object with any of the following you want to override:
+The only props the cluster component currently takes are `items`, `options`, and `zoom-on-click`.
+
+`zoom-on-click` stops the cluster from zooming in when clicked. This can be useful when you want to listen to the click event without zooming in.
+
+`options` is an object with any of the following you want to override:
 
 | Props          |  Type  | Default | Description                                                                    |
 | :------------- | :----: | :-----: | :----------------------------------------------------------------------------- |
