@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /img/logo.svg
+heroImage: /img/logo.png
 actionText: Get Started
 actionLink: /guide/
 footer: Made by Keagan Chisnall
