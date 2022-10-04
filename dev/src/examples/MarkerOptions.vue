@@ -8,6 +8,9 @@
       <p class="instructions-title">
         Move the bouncing pin to update its position data below
       </p>
+      <p class="instructions-title">
+        The Australian Flag is a demonstration of how to show and scale an external image as a marker.
+      </p>
       <p>
         {{
           `Lat: ${positionA.lat.toFixed(2)} | Lng: ${positionA.lng.toFixed(2)}`
@@ -30,6 +33,7 @@
       <gmaps-map :options="mapOptions">
         <gmaps-marker :options="optionsA" @move="updatePosition" />
         <gmaps-marker :options="optionsB" @click="increaseOpacity" />
+        <gmaps-marker :options="optionsC" />
       </gmaps-map>
     </template>
   </example-wrapper>
@@ -37,7 +41,7 @@
 
 <script>
 import ExampleWrapper from './Wrapper';
-import { gmapsMap, gmapsMarker } from 'x5-gmaps';
+import { gmapsMap, gmapsMarker, gmaps } from 'x5-gmaps';
 import { mapOptions } from './helpers';
 
 export default {
@@ -48,18 +52,32 @@ export default {
     optionsA: {
       position: { lat: -25, lng: 130 },
       icon: require('../../public/img/marker.png'),
-      title: 'Marker A',
+      title: 'Drag Me!',
       draggable: true,
       animation: 1
     },
     optionsB: {
       position: { lat: -30, lng: 138 },
       icon: require('../../public/img/marker2.png'),
-      title: 'Marker B',
+      title: 'Click me!',
       opacity: 0.7
+    },
+    optionsC: {
+      position: { lat: -30, lng: 124 },
+      title: 'Custom Image'
     },
     positionA: { lat: -25, lng: 130 }
   }),
+  async mounted() {
+    gmaps().then(
+      (x) =>
+        (this.optionsC.icon = {
+          url: 'https://www.seekpng.com/png/detail/122-1228243_australian-flag-png-australia-flag-png.png',
+          scaledSize: new x.Size(80, 50),
+          origin: new x.Point(10, 10)
+        })
+    );
+  },
   methods: {
     increaseOpacity() {
       const op = this.optionsB.opacity;
