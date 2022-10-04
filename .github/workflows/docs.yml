@@ -1,7 +1,6 @@
 name: docs
 
 on:
-  # trigger deployment on every push to main branch
   push:
     branches:
       - master
@@ -20,6 +19,7 @@ jobs:
       - name: Install and Build Docs 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
           npm install
+          npm i -D webpack@4
           npm run docs:build
 
       - name: Deploy Docs 🚀
