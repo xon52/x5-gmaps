@@ -1,5 +1,7 @@
 # Change Log
 
+## [0.6.2] - Added drag, dragend, dragstart events to marker component
+
 ## [0.6.1] - Added ZoomOnClick property to cluster component
 
 ## [0.6.0] - Updated to Webpack ^5 w/ other dev-dependency updates

@@ -9,7 +9,8 @@
         Move the bouncing pin to update its position data below
       </p>
       <p class="instructions-title">
-        The Australian Flag is a demonstration of how to show and scale an external image as a marker.
+        The Australian Flag is a demonstration of how to show and scale an
+        external image as a marker.
       </p>
       <p>
         {{
@@ -31,7 +32,12 @@
     </template>
     <template #map>
       <gmaps-map :options="mapOptions">
-        <gmaps-marker :options="optionsA" @move="updatePosition" />
+        <gmaps-marker
+          :options="optionsA"
+          @move="updatePosition"
+          @dragstart="dragstart"
+          @dragend="dragend"
+        />
         <gmaps-marker :options="optionsB" @click="increaseOpacity" />
         <gmaps-marker :options="optionsC" />
       </gmaps-map>
@@ -85,6 +91,12 @@ export default {
     },
     updatePosition(pos) {
       this.positionA = pos;
+    },
+    dragend(e) {
+      console.log('dragend', e);
+    },
+    dragstart(e) {
+      console.log('dragstart', e);
     }
   }
 };
