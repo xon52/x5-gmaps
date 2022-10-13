@@ -10,6 +10,9 @@ This component supports the following events:
 - `@click` _returns event_
 - `@double-click` _returns event_
 - `@right-click` _returns event_
+- `@drag` _returns event_
+- `@dragend` _returns event_
+- `@dragstart` _returns event_
 - ~~`@positionChanged`~~ (depreciated) _returns new position_
 
 | Props       |      Type       | Default | Description                                                                                                                     |

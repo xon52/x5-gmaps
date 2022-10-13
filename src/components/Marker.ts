@@ -82,6 +82,15 @@ export default class GmapsMarker extends Vue {
     this.marker.addListener('mouseout', (e: google.maps.MapMouseEvent) =>
       this.$emit('mouseout', e)
     );
+    this.marker.addListener('drag', (e: google.maps.MapMouseEvent) =>
+      this.$emit('drag', e)
+    );
+    this.marker.addListener('dragend', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dragend', e)
+    );
+    this.marker.addListener('dragstart', (e: google.maps.MapMouseEvent) =>
+      this.$emit('dragstart', e)
+    );
     // TODO: Remove in major release
     this.marker.addListener('dblclick', (e: google.maps.MapMouseEvent) =>
       this.$emit('doubleClick', e)
