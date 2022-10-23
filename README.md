@@ -67,7 +67,8 @@ export default {
 
 - [Map](https://xon52.github.io/x5-gmaps/api/map.html)
 - [Marker](https://xon52.github.io/x5-gmaps/api/marker.html)
-- [InfoWindow](https://xon52.github.io/x5-gmaps/api/infowindow.html)
+- [Marker Cluster](https://xon52.github.io/x5-gmaps/api/cluster.html)
+- [InfoWindow](https://xon52.github.io/x5-gmaps/api/infoWindow.html)
 - [Popup](https://xon52.github.io/x5-gmaps/api/popup.html)
 - [Heatmap](https://xon52.github.io/x5-gmaps/api/heatmap.html)
 - [Polylines / Polygons](https://xon52.github.io/x5-gmaps/api/polylines.html)
