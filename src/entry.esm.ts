@@ -1,5 +1,7 @@
 import { VueConstructor, PluginFunction } from 'Vue';
-import { init, gmaps } from './init';
+import init, { apiOptionsType } from './install/init';
+import { getGoogleAPI as gmaps } from './install/api';
+
 import gmapsMap from './components/Map.vue';
 import gmapsCircle from './components/Circle';
 import gmapsCluster from './components/Cluster.vue';
@@ -12,18 +14,17 @@ import gmapsPolyline from './components/Polyline';
 import gmapsPopup from './components/Popup.vue';
 import gmapsHeatmap from './components/Heatmap';
 import gmapsRectangle from './components/Rectangle';
-import { X5OptionsInterface } from './types/x5gmaps';
 
 // install function executed by Vue.use()
 const install: PluginFunction<any> = function installX5Gmaps(
   Vue: VueConstructor,
-  options: string | X5OptionsInterface
+  options: string | apiOptionsType
 ) {
   if (!options)
     throw new Error(
       `x5-gmaps :: (Google API) 'key' is required for plugin install.`
     );
-  if (typeof options === 'string') init({ key: options, libraries: [] });
+  if (typeof options === 'string') init({ key: options });
   else init(options);
   Vue.prototype.$GMaps = (): (() => Promise<typeof google.maps>) => gmaps;
 };

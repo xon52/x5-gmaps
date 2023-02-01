@@ -9,7 +9,7 @@
     <!-- Loading slot -->
     <template v-else-if="loading">
       <slot name="loading">
-        <span class="gmaps-spinner" />
+        <span class="gmaps-spinner"></span>
       </slot>
     </template>
     <!-- Map -->
@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { Component, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
-import { gmaps } from '../init';
+import { getGoogleAPI } from '../install/api'
 
 const defaultOptions = {
   center: { lat: -27.5, lng: 153 },
@@ -36,7 +36,7 @@ export default class GmapsMap extends Vue {
 
   error: string | null = null;
   loading = true;
-  private map: google.maps.Map | undefined;
+  public map: google.maps.Map | undefined;
   public getMap(): google.maps.Map {
     if (this.map) return this.map;
     throw new Error('Map not found.');
@@ -54,7 +54,7 @@ export default class GmapsMap extends Vue {
   }
 
   mounted() {
-    gmaps()
+    getGoogleAPI()
       .then((maps: any) => {
         this.map = new maps.Map(this.$refs.gmap as Element, {
           ...defaultOptions,

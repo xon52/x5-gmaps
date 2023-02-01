@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.7.0] - Updated way maps API is loaded and added additional plugin options:
+ - version _string_
+ - language _string_
+ - region _string_
+ - callback _() => any_
+
+## [0.6.3] - HOTFIX: extendBounds error
+
 ## [0.6.2] - Added drag, dragend, dragstart events to marker component
 
 ## [0.6.1] - Added ZoomOnClick property to cluster component

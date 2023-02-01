@@ -31,6 +31,10 @@ module.exports = {
         link: '/guide.md'
       },
       {
+        text: 'Configuration',
+        link: '/configuration/'
+      },
+      {
         text: 'Components',
         link: '/api/'
       },

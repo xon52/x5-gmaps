@@ -18,20 +18,13 @@ export default {
 };
 ```
 
+### See [Configuration](/configuration/) for how to include Google Maps options like Libraries, Version, Region, Language, and Callback.
+
 ### See [Components](/api/) for other components to use.
 
 ### Or [Demo](/demo.md) for live examples.
 
 <br>
-
-## Google Places Library
-
-As mentioned above, additional libraries can be used in conjunction with this package, and as an example, this is how you would include the [Places Library](https://developers.google.com/maps/documentation/javascript/places).
-
-```js
-// main.js
-Vue.use(x5GMaps, { key: 'YOUR_GOOGLE_KEY', libraries: ['places'] });
-```
 
 <br/>
 

@@ -1,8 +1,8 @@
 {
   "name": "x5-gmaps",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "private": false,
-  "description": "A lightweight Google Maps plugin for Vue",
+  "description": "A lightweight Google Maps plugin for Vue 2",
   "author": "Keagan Chisnall",
   "scripts": {
     "link": "npm link && npm link x5-gmaps",
