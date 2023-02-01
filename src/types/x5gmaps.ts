@@ -27,8 +27,3 @@ export interface X5ClusterOptions {
   highPercentage?: number;
   lowPercentage?: number;
 }
-
-export interface X5OptionsInterface {
-  key: string;
-  libraries: Array<string>;
-}
