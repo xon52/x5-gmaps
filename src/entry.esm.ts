@@ -1,4 +1,4 @@
-import { VueConstructor, PluginFunction } from 'Vue';
+import { VueConstructor, PluginFunction } from 'vue';
 import init, { apiOptionsType } from './install/init';
 import { getGoogleAPI as gmaps } from './install/api';
 

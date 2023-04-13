@@ -82,7 +82,8 @@ export default class GmapsCluster extends Vue {
     const _filtered: Record<string, X5ClusterGroup> = {};
     const _rand = Math.floor(Math.random() * 10000);
     for (const [key, value] of Object.entries(this.all))
-      if (_newbounds?.contains(value.pos)) _filtered[`${key}-${_rand}`] = value;
+      if (_newbounds && _newbounds.contains(value.pos))
+        _filtered[`${key}-${_rand}`] = value;
     this.clusters = _filtered;
   }
 
