@@ -1,6 +1,6 @@
 {
   "name": "x5-gmaps-docs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "A lightweight Google Maps plugin for Vue 2",
   "author": "Keagan Chisnall",
