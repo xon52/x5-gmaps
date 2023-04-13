@@ -16,7 +16,7 @@ jobs:
       - name: Install NodeJS 💾
         uses: actions/setup-node@v3
         with:
-          node-version: 'latest'
+          node-version: '16.x'
           cache: 'npm'
       - run: npm ci
 
