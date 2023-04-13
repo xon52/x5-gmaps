@@ -19,7 +19,6 @@ jobs:
           node-version: 'latest'
           cache: 'npm'
         run: npm ci
-        run: npm test
 
       - name: Build Docs 🔧
         run: npm run docs:build
