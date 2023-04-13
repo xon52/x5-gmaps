@@ -1,13 +1,12 @@
 export default {
   base: '/x5-gmaps/',
   title: 'x5-gmaps Docs',
-  description:
-    'Documentation for the x5-gmaps lightweight Google Maps plugin for Vue.',
+  description: 'Documentation for the x5-gmaps lightweight Google Maps plugin for Vue.',
   head: [
     ['meta', { name: 'theme-color', content: '#0086ff' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon.png' }],
-    ['link', { rel: 'mask-icon', href: '/logo.png', color: '#0086ff' }]
+    ['link', { rel: 'mask-icon', href: '/logo.png', color: '#0086ff' }],
   ],
 
   themeConfig: {
@@ -21,20 +20,20 @@ export default {
     nav: [
       {
         text: 'Guide',
-        link: '/guide.md'
+        link: '/guide.md',
       },
       {
         text: 'Configuration',
-        link: '/configuration/'
+        link: '/configuration/',
       },
       {
         text: 'Components',
-        link: '/api/'
+        link: '/api/',
       },
       {
         text: 'Demo',
-        link: '/demo.md'
-      }
+        link: '/demo.md',
+      },
     ],
     sidebar: [
       { title: 'Installation', path: '/install.md' },
@@ -52,16 +51,11 @@ export default {
           { title: 'Heatmap', path: '/api/heatmap.md' },
           { title: 'Polylines', path: '/api/polylines.md' },
           { title: 'Shapes', path: '/api/shapes.md' },
-          { title: 'Data (GeoJSON)', path: '/api/data.md' }
-        ]
+          { title: 'Data (GeoJSON)', path: '/api/data.md' },
+        ],
       },
       { title: 'Advanced', path: '/advanced.md' },
-      { title: 'Demo', path: '/demo.md' }
-    ]
+      { title: 'Demo', path: '/demo.md' },
+    ],
   },
-
-  /**
-   * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
-   */
-  plugins: ['@vuepress/plugin-back-to-top', '@vuepress/plugin-medium-zoom']
-};
+}

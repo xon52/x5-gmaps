@@ -3,7 +3,7 @@ name: docs
 on:
   push:
     branches:
-      - master
+      - docs
 
 jobs:
   docs:
@@ -13,10 +13,9 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
         with:
-          # fetch all commits to get last updated time or other git log info
           fetch-depth: 0
 
-      - name: Install and Build Docs 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+      - name: Install and Build Docs 🔧
         run: |
           npm install
           npm run docs:build
