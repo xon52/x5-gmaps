@@ -1,6 +1,6 @@
 ## Heatmap
 
-![Heatmap](~@img/readme-heatmap.png)
+![Heatmap](/img/readme-heatmap.png)
 
 Heatmaps are placed within Maps and have several props which are derived from Google's [Heatmap Options](https://developers.google.com/maps/documentation/javascript/reference/visualization#HeatmapLayerOptions). Some are named differently as they have been enhanced/simplified.
 

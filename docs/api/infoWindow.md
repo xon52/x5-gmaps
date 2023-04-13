@@ -1,6 +1,6 @@
 ## InfoWindow
 
-![InfoWindow](~@img/readme-info-window.png)
+![InfoWindow](/img/readme-info-window.png)
 
 InfoWindows are placed with Maps can take a few [options](https://developers.google.com/maps/documentation/javascript/reference/info-window#InfoWindowOptions) using the type `google.maps.InfoWindowOptions`. A `position` option `{ lat: number, lng: number }` (Type: `google.maps.LatLngLiteral`) is required.
 

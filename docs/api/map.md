@@ -1,6 +1,6 @@
 ## Map
 
-![Map](~@img/readme-map.png)
+![Map](/img/readme-map.png)
 
 Maps can take many [options](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions). `zoom` is defaulted to `12` and `center` is defaulted to Brisbane (as these options are required). The type of these is `google.maps.MapOptions`.
 

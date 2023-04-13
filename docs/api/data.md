@@ -1,6 +1,6 @@
 ## Data / GeoJSON
 
-![Data / GeoJSON](~@img/readme-geojson.png)
+![Data / GeoJSON](/img/readme-geojson.png)
 
 [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) is an open standard format designed for representing simple geographical features, along with their non-spatial attributes.
 It can be used in Google Maps, and now in this libary using two new components: _GmapsData_, and _GmapsDataGeoJson_.

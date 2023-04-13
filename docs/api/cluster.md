@@ -1,6 +1,6 @@
 ## Cluster
 
-![Cluster](~@img/readme-cluster.png)
+![Cluster](/img/readme-cluster.png)
 
 ::: warning
 This component is at a proof of concept stage. If you have any issues or suggestions, please [create a new issue](https://github.com/xon52/x5-gmaps/issues).
