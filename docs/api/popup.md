@@ -1,6 +1,6 @@
 ## Popup
 
-![Popup](~@img/readme-popup.png)
+![Popup](/img/readme-popup.png)
 
 A Popup is a custom [DOM Element](https://developers.google.com/maps/documentation/javascript/reference/overlay-view). It is here primarily as an example of what is needed when creating your own map objects, but serves as a cleaner InfoWindow for Vue.
 

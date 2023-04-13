@@ -1,7 +1,7 @@
 ## Polylines / Polygons
 
-![Polyline](~@img/readme-polyline.png)
-![Polygon](~@img/readme-polygon.png)
+![Polyline](/img/readme-polyline.png)
+![Polygon](/img/readme-polygon.png)
 
 Polylines/polygons are placed within Maps and have several props which are derived from Google's [Polyline Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolylineOptions) and [Polygon Options](https://developers.google.com/maps/documentation/javascript/reference/polygon#PolygonOptions).
 
