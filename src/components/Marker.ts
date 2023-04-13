@@ -41,8 +41,8 @@ export default class GmapsMarker extends Vue {
     // This function is fired when a marker is replaced by Vue (and options is undefined)
     if (!oldPosition) return false;
     const newPosition = this.marker!.getPosition()!.toJSON();
-    return Math.abs(newPosition.lat - oldPosition.lat) > this.sensitivity ||
-      Math.abs(newPosition.lng - oldPosition.lng) > this.sensitivity
+    return Math.abs(newPosition.lat - oldPosition.lat) > +this.sensitivity ||
+      Math.abs(newPosition.lng - oldPosition.lng) > +this.sensitivity
       ? newPosition
       : false;
   }

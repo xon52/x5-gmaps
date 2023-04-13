@@ -59,10 +59,10 @@ export default class GmapsRectangle extends Vue {
     };
     const newBounds = this.rectangle.getBounds()!.toJSON();
     if (
-      Math.abs(newBounds.north - oldBounds.north) > this.sensitivity ||
-      Math.abs(newBounds.south - oldBounds.south) > this.sensitivity ||
-      Math.abs(newBounds.east - oldBounds.east) > this.sensitivity ||
-      Math.abs(newBounds.west - oldBounds.west) > this.sensitivity
+      Math.abs(newBounds.north - oldBounds.north) > +this.sensitivity ||
+      Math.abs(newBounds.south - oldBounds.south) > +this.sensitivity ||
+      Math.abs(newBounds.east - oldBounds.east) > +this.sensitivity ||
+      Math.abs(newBounds.west - oldBounds.west) > +this.sensitivity
     ) {
       this.tempBounds = newBounds;
       this.$emit('bounds-changed', newBounds);

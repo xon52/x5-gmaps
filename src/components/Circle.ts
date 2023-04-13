@@ -54,8 +54,8 @@ export default class GmapsCircle extends Vue {
     const newCenter = this.circle.getCenter()!.toJSON();
     if (
       !this.tempCenter ||
-      Math.abs(newCenter.lat - this.tempCenter.lat) > this.sensitivity ||
-      Math.abs(newCenter.lng - this.tempCenter.lng) > this.sensitivity
+      Math.abs(newCenter.lat - this.tempCenter.lat) > +this.sensitivity ||
+      Math.abs(newCenter.lng - this.tempCenter.lng) > +this.sensitivity
     ) {
       this.tempCenter = newCenter;
       this.$emit('center-changed', newCenter);

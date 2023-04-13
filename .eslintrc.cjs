@@ -9,7 +9,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/recommended'
   ],
-  "ignorePatterns": ["**/dist/*"],
+  ignorePatterns: ['**/dist/*'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,

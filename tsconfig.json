@@ -15,11 +15,6 @@
     "sourceMap": true,
     "strict": true,
     "target": "esnext",
-    "types": [
-      "webpack-env",
-      "geojson",
-      "google.maps"
-    ],
     "typeRoots": [
       "node_modules/@types"
     ],
