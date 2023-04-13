@@ -9,6 +9,6 @@ const messages = {
 };
 
 const handleFatalError = (message: string): Error =>
-  new Error(`vue3-gmaps :: ${message}`);
+  new Error(`x5-gmaps :: ${message}`);
 
 export default { ...messages };
