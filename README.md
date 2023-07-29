@@ -88,3 +88,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 <a href="https://www.buymeacoffee.com/chisnallio" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 107px !important;" ></a>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=xon52/x5-gmaps&type=Timeline)](https://star-history.com/#xon52/x5-gmaps&Timeline)
