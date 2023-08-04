@@ -1,5 +1,6 @@
 # Change Log
 
+## [0.7.3] - Package updates and properly committed package.json changes
 ## [0.7.2] - Separated repo docs into new branch, and small typo for errors
 ## [0.7.1] - Package updates and removed optional chaining use
 ## [0.7.0] - Updated way maps API is loaded and added additional plugin options:
