@@ -1,5 +1,6 @@
 # Change Log
 
+## [0.7.6] - Bug fix for "appropriate loader" error
 ## [0.7.5] - Package updates
 ## [0.7.4] - Package updates
 ## [0.7.3] - Package updates and properly committed package.json changes

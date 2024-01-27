@@ -16,7 +16,7 @@ const loadAPI = (params: string): Promise<void> =>
   new Promise((resolve, reject) => {
     // Remove any existing Google Maps script
     const oldAPI = document.getElementById(scriptID);
-    if (oldAPI) oldAPI.parentNode?.removeChild(oldAPI);
+    if (oldAPI && oldAPI.parentNode) oldAPI.parentNode.removeChild(oldAPI);
     // Get callback reference ready
     window._gmapsInit = () => resolve();
     // Generate and add new API
@@ -26,9 +26,9 @@ const loadAPI = (params: string): Promise<void> =>
     script.id = scriptID;
     script.src = `${baseURL}?${params}&callback=_gmapsInit`;
     script.onerror = () => reject(error.SCRIPT_LOAD());
-    const head = document.querySelector('head')
-    if(head) head.appendChild(script);
-    else throw new Error('Could not find <head> element in the document.')
+    const head = document.querySelector('head');
+    if (head) head.appendChild(script);
+    else throw new Error('Could not find <head> element in the document.');
   });
 
 // Insert Google script and update attached Vue apps
