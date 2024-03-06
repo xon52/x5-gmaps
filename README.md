@@ -1,10 +1,20 @@
 # x5-gmaps ([Docs](https://xon52.github.io/x5-gmaps))
 
-<div style="width: 512px; padding: 16px; margin: 8px; border: 1px solid red; border-radius: 8px; background-color: #fee; margin: 0 auto; color:red; font-size: 18px;">
-  <p style="font-size: 24px; font-weight: bold; text-align: center;"><span style="text-decoration: underline;">WARNING</span>: No longer maintained :(</p>
-  <p>As Vue 2 has reached end of life, and some of the Google Maps components that this uses are now depreciated, this will no longer be maintained.</p>
-  <p>Thank you for your support and using my thing 💖</p>
-</div>
+### ---------------------------------------------------------------------------------------------------------------
+
+<br/>
+
+<h1>WARNING: No longer maintained</h1>
+<h3>As Vue 2 has reached end of life, and some of the Google Maps components that this uses are now depreciated, this will no longer be maintained.</h3>
+<h3>Thank you for your support and using my thing 💖</h3>
+
+<br/>
+<br/>
+
+### ---------------------------------------------------------------------------------------------------------------
+
+<br/>
+<br/>
 
 ### This is a lightweight library to simplify the use of [Google Maps](https://developers.google.com/maps/) in [Vue 2](http://vuejs.org) 🤏🗺️🧩
 
